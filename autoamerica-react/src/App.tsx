@@ -7,6 +7,7 @@ import { createInitialCatalog, isPublished, toNewVehicle, toUsedVehicle } from '
 import type { CatalogRecord, CatalogKind, UsedVehicle } from './catalog';
 import { getVehicleModel, vehicleModels } from './vehicleModels';
 import type { VehicleModelId } from './vehicleModels';
+import LocationMap from './components/LocationMap';
 
 const VehicleScene = lazy(() => import('./components/VehicleScene'));
 const AdminCMS = lazy(() => import('./components/AdminCMS'));
@@ -67,11 +68,14 @@ function Proposal({onAdmin}:{onAdmin:()=>void}) {
 function Explorer({onQuote}:{onQuote:(s:string)=>void}) {
   const section=useRef<HTMLElement>(null);
   const [scrollProgress,setScrollProgress]=useState(0);
-  const [manual,setManual]=useState<number|null>(null);
+  const [manual,setManual]=useState<number|null>(0);
   const [selected,setSelected]=useState('body');
   const [color,setColor]=useState('#c5cbc8');
   const [modelId,setModelId]=useState<VehicleModelId>('prado');
   const [rotate,setRotate]=useState(false);
+  const [view,setView]=useState<'perspective'|'front'|'side'|'rear'>('perspective');
+  const [resetView,setResetView]=useState(0);
+  const [reference,setReference]=useState(false);
   const [ready,setReady]=useState(false);
   const reduced=useReducedMotion();
   const progress=manual??(reduced?0:scrollProgress);
@@ -80,12 +84,12 @@ function Explorer({onQuote}:{onQuote:(s:string)=>void}) {
   useEffect(()=>{let scheduled=false;const update=()=>{scheduled=false;const el=section.current;if(!el)return;const r=el.getBoundingClientRect();const amount=Math.max(1,el.offsetHeight-window.innerHeight+82);setScrollProgress(Math.max(0,Math.min(1,(82-r.top)/amount)));};const scroll=()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}};window.addEventListener('scroll',scroll,{passive:true});window.addEventListener('resize',scroll);update();return()=>{window.removeEventListener('scroll',scroll);window.removeEventListener('resize',scroll);};},[]);
   const activePart=parts.find(p=>p.id===selected)!;
   const activeModel=getVehicleModel(modelId);
-  function selectPart(id:string){setSelected(id);if(progress<.75)setManual(.82);}
+  function selectPart(id:string){setSelected(id);setManual(id==='body'?.55:1);}
   return <section className={`explorer-track ${reduced?'reduced':''}`} id="repuestos" ref={section}>
     <div className="explorer-sticky">
       <div className="section-width explorer-heading">
         <div><span className="eyebrow light-eyebrow"><span className="section-number">02</span> EXPLORA LO QUE TE MUEVE</span><h2>Extraordinario por fuera.<br/><span>Fascinante por dentro.</span></h2></div>
-        <div className="explore-hint"><Mouse size={22}/><p>Desplázate para<br/><strong>descubrir cada sistema.</strong></p></div>
+        <div className="explore-hint"><Mouse size={22}/><p>Elige tu modelo. Gira para explorar.<br/><strong>Separa las piezas a tu ritmo.</strong></p></div>
       </div>
       <div className="explorer-layout section-width">
         <div className="scene-column">
@@ -96,13 +100,15 @@ function Explorer({onQuote}:{onQuote:(s:string)=>void}) {
               {vehicleModels.map(model=><option key={model.id} value={model.id}>{model.name}</option>)}
             </select>
           </div>
-          <div className="scene-canvas">{ready?<Suspense fallback={<div className="scene-loading"><Box size={34}/><span>Preparando tu experiencia…</span></div>}><VehicleScene modelId={modelId} progress={progress} selectedPart={progress>.08?selected:null} onSelectPart={selectPart} color={color} autoRotate={rotate}/></Suspense>:<div className="scene-loading"><Box size={34}/><span>Explora en tres dimensiones</span></div>}</div>
+          <div className="scene-views" aria-label="Ángulo del vehículo">{([['perspective','3/4'],['front','Frente'],['side','Lateral'],['rear','Atrás']] as const).map(([id,label])=><button key={id} aria-pressed={view===id} onClick={()=>{setView(id);setResetView(value=>value+1);setRotate(false);}}>{label}</button>)}<button aria-pressed={reference} onClick={()=>setReference(!reference)}>Foto real</button></div>
+          {reference&&<figure className="scene-reference"><img src={activeModel.image} alt={`Fotografía de referencia ${activeModel.name}`}/><figcaption>{activeModel.name} · Imagen de catálogo</figcaption><button aria-label="Cerrar foto de referencia" onClick={()=>setReference(false)}><X size={14}/></button></figure>}
+          <div className="scene-canvas">{ready?<Suspense fallback={<div className="scene-loading"><Box size={34}/><span>Preparando tu experiencia…</span></div>}><VehicleScene modelId={modelId} progress={progress} selectedPart={progress>.08?selected:null} onSelectPart={selectPart} color={color} autoRotate={rotate} view={view} resetView={resetView}/></Suspense>:<div className="scene-loading"><Box size={34}/><span>Explora en tres dimensiones</span></div>}</div>
           <span className="sr-only" role="status" aria-live="polite">Modelo seleccionado: {activeModel.name}</span>
           <div className="scene-tools">
             <div className="paint-controls" aria-label="Acabado del vehículo">{[['#c5cbc8','Plata'],['#edebe1','Perla'],['#343c39','Grafito'],['#ae272c','Rojo']].map(([hex,name])=><button key={hex} style={{background:hex}} className={color===hex?'selected':''} onClick={()=>setColor(hex)} aria-label={`Acabado ${name}`} aria-pressed={color===hex}/>)}</div>
             <span className="drag-hint"><Move size={15}/> Arrastra para girar</span>
             <button className={`scene-icon ${rotate?'active':''}`} onClick={()=>setRotate(!rotate)} disabled={reduced} aria-pressed={rotate} aria-label={rotate?'Detener giro automático':'Activar giro automático'}><RotateCcw size={17}/></button>
-            <button className="scene-icon" onClick={()=>{setManual(0);setSelected('body');setRotate(false);}} aria-label="Ensamblar vehículo"><Layers3 size={17}/></button>
+            <button className="scene-icon" onClick={()=>{setManual(0);setSelected('body');setRotate(false);setView('perspective');setResetView(value=>value+1);}} aria-label="Ensamblar vehículo"><Layers3 size={17}/></button>
           </div>
         </div>
         <aside className="parts-panel">
@@ -115,7 +121,7 @@ function Explorer({onQuote}:{onQuote:(s:string)=>void}) {
         <div className="explosion-control">
           <div className="progress-caption"><span>{progress<.12?'Vehículo ensamblado':progress<.48?'Abriendo la carrocería':progress<.8?'Descubriendo la mecánica':'Vista de los componentes'}</span><button onClick={()=>setManual(manual===null?.85:null)}>{manual===null?'Control manual':'Seguir con el scroll'} <ArrowRight size={13}/></button></div>
           <input aria-label="Nivel de despiece del vehículo" type="range" min="0" max="100" value={Math.round(progress*100)} onChange={e=>setManual(Number(e.target.value)/100)} style={{'--progress':`${progress*100}%`} as React.CSSProperties}/>
-          <div className="range-labels"><button onClick={()=>setManual(0)}>Ensamblado</button><span>Carrocería</span><span>Mecánica</span><button onClick={()=>setManual(1)}>Despiece</button></div>
+          <div className="range-labels"><button onClick={()=>setManual(0)}>Ensamblado</button><button onClick={()=>setManual(.35)}>Apertura</button><button onClick={()=>setManual(.55)}>Carrocería</button><button onClick={()=>setManual(1)}>Despiece</button></div>
         </div>
         <p className="technical-note">Visualización conceptual. La geometría y disposición no corresponden a un despiece técnico Toyota.</p>
         <a className="skip-explorer" href="#usados">Continuar explorando <ArrowDown size={15}/></a>
@@ -134,9 +140,7 @@ function UsedCatalog({onQuote,onCredit,items,isEdited}:{onQuote:(s:string)=>void
 }
 
 function LocationSection() {
-  const [active,setActive]=useState(0);
-  const location=locations[active];
-  return <section className="locations-section section-pad" id="sedes"><div className="section-width location-grid"><div className="location-copy"><span className="eyebrow"><span className="section-number">05</span> SIEMPRE CERCA</span><h2>Nos vemos<br/>en el camino.</h2><p>Encuentra tu sede Autoamérica y ven a vivir la experiencia en persona.</p><div className="location-tabs">{locations.map((l,i)=><button key={l.name} onClick={()=>setActive(i)} className={i===active?'active':''} aria-pressed={i===active}>{l.name}</button>)}</div><div className="location-details" key={active}><span className="eyebrow red-text">{location.area}</span><h3>{location.name}</h3><p><MapPin size={17}/>{location.address}</p><span className="location-services">{location.services}</span><p className="hours">{location.hours}</p><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Autoamérica ${location.name} ${location.address} Colombia`)}`} target="_blank" rel="noreferrer" className="text-button">Cómo llegar <ArrowUpRight size={17}/></a></div></div><div className="location-visual" aria-label="Esquema de sedes de Autoamérica en Antioquia"><div className="map-lines"><svg viewBox="0 0 600 560" aria-hidden="true"><path d="M-20 160 130 210 185 299 237 302 292 510M90 -20 160 100 180 200 255 285 280 385 470 590M630 310 500 313 410 340 300 330 230 300 20 320M380 -20 360 110 330 210 390 280 400 380 370 590M-10 470 160 445 210 370 270 350 355 385 540 455 640 460M-10 100 175 90 315 160 430 180 620 120"/><path className="map-highway" d="M130 -10 205 120 210 210 246 291 260 340 265 470 345 590"/><path className="map-highway" d="M245 299 330 335 420 323 530 330 640 355"/><path className="map-river" d="M200 -5Q150 80 228 160T255 290T285 425T315 590"/></svg></div><span className="map-region">ANTIOQUIA</span><span className="map-city">Medellín</span>{locations.map((l,i)=><button key={l.name} style={{left:`${l.x}%`,top:`${l.y}%`}} className={`map-pin ${active===i?'active':''}`} onClick={()=>setActive(i)} aria-label={`Ver sede ${l.name}`}><MapPin size={active===i?24:19} fill="currentColor"/><span>{l.name}</span></button>)}<div className="map-legend"><span className="live-dot"/> Conectados contigo <small>Ubicaciones esquemáticas</small></div><a href="https://autoamerica.com.co/sedes-y-horarios/" className="map-official" target="_blank" rel="noreferrer">Todas las sedes y horarios <ArrowUpRight size={15}/></a></div></div></section>;
+  return <LocationMap/>;
 }
 
 export default function App() {

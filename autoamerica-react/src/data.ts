@@ -14,11 +14,12 @@ export const parts = [
   {id:'battery', name:'Sistema eléctrico', number:'05', label:'Energía para seguir adelante.', description:'Ubica la batería y su relación con el conjunto del vehículo. Su disposición es esquemática en esta demostración.', examples:'Batería · Conexiones eléctricas', image:''},
 ];
 export const locations = [
-  {name:'Palacé', area:'Medellín', address:'Cra. 50 #38-50', services:'Vehículos nuevos · Taller · Repuestos', hours:'Comercial: lun–vie 8:00 a. m.–6:00 p. m. · sáb 9:00 a. m.–1:00 p. m.', x:40,y:54},
-  {name:'Sur', area:'Envigado', address:'Cra. 48 #44 sur-151 · Av. Las Vegas', services:'Vehículos nuevos · Taller · Repuestos', hours:'Comercial: lun–vie 8:00 a. m.–6:00 p. m. · sáb 9:00 a. m.–1:00 p. m.', x:45,y:76},
-  {name:'Oriente', area:'Rionegro', address:'CC Jardines Llanogrande · Sótano', services:'Taller', hours:'Taller: lun–vie 8:00 a. m.–4:30 p. m. · sáb 8:30 a. m.–1:00 p. m.', x:75,y:60},
-  {name:'Apartadó', area:'Urabá', address:'Cra. 100 #77-502 · Mall La 100, local 9', services:'Vehículos nuevos · Usados', hours:'Comercial: lun–vie 8:30 a. m.–12:00 m. y 2:00–6:00 p. m. · sáb 9:00 a. m.–1:00 p. m.', x:22,y:21},
-  {name:'Usados Medellín', area:'Medellín', address:'Cra. 46 #37-53 · Glorieta San Diego', services:'Vehículos usados', hours:'Comercial: lun–vie 8:00 a. m.–6:00 p. m. · sáb 9:00 a. m.–1:00 p. m.', x:53,y:59},
+  {name:'Palacé', area:'Medellín', city:'Medellín', address:'Cra. 50 #38-50', services:'Vehículos nuevos · Taller · Repuestos', hours:'Comercial: lun–vie 8:00 a. m.–6:00 p. m. · sáb 9:00 a. m.–1:00 p. m.'},
+  {name:'Sur', area:'Envigado', city:'Envigado', address:'Cra. 48 #44 sur-151 · Av. Las Vegas', services:'Vehículos nuevos · Taller · Repuestos', hours:'Comercial: lun–vie 8:00 a. m.–6:00 p. m. · sáb 9:00 a. m.–1:00 p. m.'},
+  {name:'Oriente', area:'Rionegro', city:'Rionegro', address:'CC Jardines Llanogrande · Sótano · Don Diego–Llanogrande km 8', services:'Taller', hours:'Taller: lun–vie 8:30 a. m.–4:30 p. m. · sáb 8:00 a. m.–1:00 p. m.'},
+  {name:'Apartadó', area:'Urabá', city:'Apartadó', address:'Cra. 100 #77-502 · Mall La 100, local 9', services:'Vehículos nuevos · Usados', hours:'Comercial: lun–vie 8:30 a. m.–12:00 m. y 2:00–6:00 p. m. · sáb 9:00 a. m.–1:00 p. m.'},
+  {name:'Usados Medellín', area:'Medellín', city:'Medellín', address:'Cra. 46 #37-53 · Glorieta San Diego', services:'Vehículos usados', hours:'Comercial: lun–vie 8:00 a. m.–6:00 p. m. · sáb 9:00 a. m.–1:00 p. m.'},
+  {name:'Taller Apartadó', area:'Urabá', city:'Apartadó', address:'Cra. 103 A #97-24 · Barrio Nuevo', services:'Taller', hours:'Taller: lun–vie 7:30 a. m.–12:00 m. y 2:00–5:00 p. m. · sáb 9:00 a. m.–1:00 p. m.'},
 ];
 export const sourceLinks = [
   ['Portal y modelos', 'https://autoamerica.com.co/home/'],

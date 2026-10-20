@@ -50,6 +50,15 @@ La comprobación nueva corresponde al navegador de escritorio del equipo; no sus
 
 La captura [preview-modelos-3d.png](preview-modelos-3d.png) documenta la Hilux ensamblada y el selector de modelos en la versión WebGL.
 
+## Sedes, guía editorial y correcciones de visualización — 20 de octubre de 2026
+
+- Se sustituyó el esquema SVG de sedes por Google Maps embebido por dirección, con seis sedes, rutas externas, estado de carga y reintento. Se contrastaron direcciones con la página oficial de sedes; se observó cartografía real en Sur, Oriente y Usados Medellín. Oriente se ubica en el centro comercial Jardines Llanogrande. La respuesta y geocodificación de Google son externas a esta aplicación.
+- Tour del CMS: se recorrieron los seis pasos en Chrome, se cambió temporalmente el nombre de una ficha y se observó la vista previa. Finalizar conservó el cambio pendiente sin publicar; cancelar dejó intacto el registro original. Escape cerró solo el tour. Se revisó su presentación a 390 × 844 y se restauró el tamaño de escritorio.
+- Visor: inicia ensamblado y con control manual; vistas 3/4, frente, lateral y atrás; foto de referencia opcional; ensamblar reinicia la cámara. Se ajustaron proporciones, cristales, ruedas y baterías según la silueta. La selección de carrocería ya no tiñe cristales, asientos y neumáticos.
+- Se reemplazaron rotaciones alrededor del origen por extracciones escalonadas compartidas por los cinco vehículos. Los paneles se desplazan lateralmente antes de subir y las ruedas salen después. Se revisó visualmente el despiece de Prado y Yaris Cross y el encuadre ensamblado en móvil.
+- `npm test`: cuatro pruebas aprobadas, con muestreo de las trayectorias para holguras panel/rueda, techo/marco, capó/motor, módulo/piso, límites y retorno al ensamblado. No es detección exhaustiva triángulo contra triángulo ni validación mecánica CAD.
+- Compilación de producción TypeScript/Vite en Docker aprobada. Servicio HTTP local 200 y contenedor saludable. No se observaron errores de aplicación en la consola durante el recorrido.
+
 ## Validaciones pendientes del producto definitivo
 
 El prototipo no valida inventario en tiempo real, integración Quiter/Hathor, CRM, pagos, reservas, acceso al CMS, exactitud de un catálogo técnico ni derechos de uso de activos para publicación comercial. Tampoco constituye una auditoría de seguridad, una prueba de carga ni una certificación de accesibilidad.

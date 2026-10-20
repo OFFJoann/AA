@@ -73,6 +73,14 @@ El selector **Modelo** del explorador permite alternar entre Prado, Corolla Cros
 
 Sin WebGL, Prado conserva su alternativa esquemática SVG; los otros modelos muestran su fotografía de referencia e indican que el giro y el despiece requieren WebGL.
 
+El visor comienza ensamblado en modo manual. Incluye vistas 3/4, frontal, lateral y trasera, reinicio de cámara y comparación con la fotografía del catálogo. El despiece utiliza trayectorias compartidas en `src/components/explosionLayout.ts`: extracción lateral antes de elevar paneles, techo/capó antes de la mecánica y ruedas después de liberar la carrocería. La selección conserva los materiales exteriores y resalta suavemente los sistemas mecánicos. Prado e Hilux muestran una batería de 12 V esquemática; los HEV, un módulo compacto.
+
+La sección de sedes incluye Google Maps por dirección, seis puntos de atención, enlaces de rutas y alternativa para abrir el mapa externamente. Las direcciones se contrastaron con [Sedes y horarios de Autoamérica](https://autoamerica.com.co/sedes-y-horarios/) el 20 de octubre de 2026. En Oriente se localiza el centro comercial Jardines Llanogrande, donde está el taller. La cartografía requiere internet y queda sujeta al servicio de Google; no se solicita geolocalización al visitante ni se inventan coordenadas.
+
+En **Administrar catálogo → Iniciar tour asistido**, una guía de seis pasos acompaña la edición, las fotos, la vista previa y la publicación. Se puede cerrar con Escape, retroceder o terminar conservando la edición pendiente. El tour nunca guarda ni publica por sí solo. El CMS continúa siendo una demostración en memoria.
+
+Para verificar las holguras de las trayectorias: `npm test` con Node 24. Las pruebas muestrean las separaciones relevantes; no son una simulación física ni una certificación de ausencia de intersecciones entre todas las mallas.
+
 Es una aproximación visual, no un modelo CAD ni una reproducción exacta de una versión Toyota. La mecánica y su disposición siguen siendo esquemáticas: no valida referencias OEM, compatibilidad VIN, dimensiones, torques ni procedimientos. Su finalidad es validar interacción y diseño antes de adquirir o producir activos técnicos autorizados.
 
 Los usados reflejan una captura pública, no una integración en vivo. Sus datos, fotografías, precios y disponibilidad deben confirmarse con el concesionario. No se realizan reservas ni pagos. Los formularios solo modifican estado en memoria; no transmiten datos.

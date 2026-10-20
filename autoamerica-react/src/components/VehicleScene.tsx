@@ -7,6 +7,8 @@ import VehicleFallback from './VehicleFallback';
 import { getVehicleModel } from '../vehicleModels';
 import type { VehicleModelId } from '../vehicleModels';
 import { buildVehicleExterior } from './vehicleExterior';
+import { motionAmount, motionPlan } from './explosionLayout';
+import type { MotionPlan } from './explosionLayout';
 
 export interface VehicleSceneProps {
   modelId?: VehicleModelId;
@@ -16,6 +18,8 @@ export interface VehicleSceneProps {
   onSelectPart?: (id: string) => void;
   className?: string;
   autoRotate?: boolean;
+  view?: 'perspective' | 'front' | 'side' | 'rear';
+  resetView?: number;
 }
 
 type Family = 'body' | 'engine' | 'brakes' | 'suspension' | 'battery';
@@ -23,10 +27,7 @@ type ExplodedPart = {
   group: THREE.Group;
   start: THREE.Vector3;
   offset: THREE.Vector3;
-  rotation: THREE.Euler;
-  spin: THREE.Vector3;
-  from: number;
-  to: number;
+  plan: MotionPlan;
 };
 
 /** Original visual study of the Prado 250 exterior; mechanical assemblies are schematic. */
@@ -38,7 +39,7 @@ export default function VehicleScene(props: VehicleSceneProps) {
   const [isDragging, setIsDragging] = useState(false);
   latest.current = props;
 
-  useEffect(() => { invalidate.current(); }, [props.progress, props.color, props.selectedPart, props.autoRotate]);
+  useEffect(() => { invalidate.current(); }, [props.progress, props.color, props.selectedPart, props.autoRotate, props.view, props.resetView]);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -125,12 +126,12 @@ export default function VehicleScene(props: VehicleSceneProps) {
     platform.position.y = 0.002;
     scene.add(platform);
 
-    const paint = new THREE.MeshPhysicalMaterial({ color: props.color, metalness: 0.6, roughness: 0.24, clearcoat: 1, clearcoatRoughness: 0.12 });
+    const paint = new THREE.MeshPhysicalMaterial({ color: props.color, metalness: 0.48, roughness: 0.27, clearcoat: 1, clearcoatRoughness: 0.12, side: THREE.DoubleSide });
     const aluminum = new THREE.MeshStandardMaterial({ color: 0xa1acb4, metalness: 0.86, roughness: 0.27 });
     const darkMetal = new THREE.MeshStandardMaterial({ color: 0x262c30, metalness: 0.68, roughness: 0.39 });
     const black = new THREE.MeshStandardMaterial({ color: 0x111719, metalness: 0.12, roughness: 0.64 });
     const rubber = new THREE.MeshStandardMaterial({ color: 0x0e1215, roughness: 0.87 });
-    const glass = new THREE.MeshPhysicalMaterial({ color: 0x17282c, metalness: 0.12, roughness: 0.075, clearcoat: 1, clearcoatRoughness: 0.045, envMapIntensity: 1.5, side: THREE.DoubleSide });
+    const glass = new THREE.MeshPhysicalMaterial({ color: 0x17282c, metalness: 0, roughness: .19, clearcoat: .40, clearcoatRoughness: .12, envMapIntensity: .55, side: THREE.DoubleSide });
     const lens = new THREE.MeshPhysicalMaterial({ color: 0xbac9ce, metalness: 0.15, roughness: 0.12, clearcoat: 1 });
     const indicator = new THREE.MeshStandardMaterial({ color: 0xe69a31, emissive: 0xb76416, emissiveIntensity: 0.18, roughness: 0.3 });
     const seam = new THREE.MeshStandardMaterial({ color: 0x202a29, roughness: 0.72 });
@@ -191,8 +192,9 @@ export default function VehicleScene(props: VehicleSceneProps) {
       geometry.translate(0, 0, z - thickness / 2);
       return mesh(parent, geometry, material, family);
     }
-    function moving(group: THREE.Group, offset: [number, number, number], from = 0, to = 1, spin: [number, number, number] = [0, 0, 0]) {
-      exploded.push({ group, start: group.position.clone(), offset: new THREE.Vector3(...offset), rotation: group.rotation.clone(), spin: new THREE.Vector3(...spin), from, to });
+    function moving(group: THREE.Group, offset: [number, number, number], from = 0, to = 1, _spin?: [number, number, number]) {
+      const plan = motionPlan(group.name, { offset, from, to });
+      exploded.push({ group, start: group.position.clone(), offset: new THREE.Vector3(...plan.offset), plan });
     }
     function newGroup(name: string) {
       const group = new THREE.Group();
@@ -389,7 +391,7 @@ export default function VehicleScene(props: VehicleSceneProps) {
     hoodGeometry.computeVertexNormals();
     mesh(hood, hoodGeometry, paint, 'body');
     for (const sign of [-1, 1]) sidePolygon(hood, [[1.31, 1.438], [2.44, 1.385], [2.44, 1.417], [1.31, 1.472]], sign * 0.957, 0.025, paint, 'body', 0.005);
-    box(hood, [0.045, 0.06, 1.90], [2.432, 1.39, 0], paint, 'body', 0.012);
+    box(hood, [0.045, 0.075, 1.90], [2.432, 1.414, 0], paint, 'body', 0.012);
     for (const sign of [-1, 1]) contour(hood, [[1.31, 1.47, sign * 0.97], [2.435, 1.415, sign * 0.956]], seam, 0.004);
     moving(hood, [0.70, 1.18, 0], 0.15, 0.74, [0, 0, -0.21]);
 
@@ -479,22 +481,31 @@ export default function VehicleScene(props: VehicleSceneProps) {
     for (const z of [-0.21, 0.21]) rod(engine, new THREE.Vector3(-0.28, 0.31, z), new THREE.Vector3(-0.48, -0.01, z), 0.03, aluminum, 'engine');
     moving(engine, [1.20, 0.73, -0.18], 0.37, 1, [0, 0, 0.05]);
 
-    const battery = newGroup('Módulo de energía');
-    battery.position.set(-0.50, 0.59, 0);
-    box(battery, [1.66, 0.20, 1.22], [0, 0, 0], aluminum, 'battery', 0.04);
-    box(battery, [1.51, 0.055, 1.08], [0, 0.12, 0], darkMetal, 'battery', 0.018);
-    for (let x = 0; x < 6; x++) {
-      for (let z = 0; z < 3; z++) box(battery, [0.205, 0.09, 0.28], [-0.625 + x * 0.25, 0.178, -0.35 + z * 0.35], batteryCell, 'battery', 0.008);
+    const hybrid = model.silhouette === 'crossover';
+    const battery = newGroup(hybrid ? 'Módulo de energía' : 'Batería de 12 V');
+    if (hybrid) {
+      // Compact schematic HEV module fits between the rails and below the floor.
+      battery.position.set(-.50, .61, 0);
+      box(battery, [.75, .13, .98], [0, 0, 0], aluminum, 'battery', .018);
+      for (let x = 0; x < 4; x++) for (let z = 0; z < 3; z++) {
+        box(battery, [.15, .018, .25], [-.27 + x * .18, .074, -.30 + z * .30], batteryCell, 'battery', .004);
+      }
+      box(battery, [.55, .014, .025], [0, .088, -.42], orange, 'battery', .004);
+    } else {
+      battery.position.set(2.02, 1.12, -.70);
+      box(battery, [.40, .27, .27], [0, 0, 0], black, 'battery', .018);
+      box(battery, [.41, .035, .28], [0, .145, 0], darkMetal, 'battery', .008);
+      for (const sign of [-1, 1]) cylinder(battery, .025, .04, [sign * .13, .18, 0], sign > 0 ? red : aluminum, 'battery');
     }
-    for (const z of [-0.48, 0.48]) box(battery, [1.42, 0.023, 0.035], [0, 0.225, z], orange, 'battery', 0.005);
-    box(battery, [0.14, 0.13, 0.25], [0.9, 0.02, 0.2], orange, 'battery', 0.01);
-    moving(battery, [-0.46, 0.35, -1.88], 0.52, 1, [0.03, -0.11, 0]);
+    moving(battery, [0, .2, -1.68]);
 
     // Revolved tyre profile gives a flat tread and rounded sidewalls, unlike a torus.
-    const tyreProfile = [[0.272, -0.126], [0.32, -0.142], [0.396, -0.143], [0.443, -0.123], [0.469, -0.090], [0.475, -0.065], [0.475, 0.065], [0.469, 0.090], [0.443, 0.123], [0.396, 0.143], [0.32, 0.142], [0.272, 0.126]].map(([r, z]) => new THREE.Vector2(r, z));
+    const roadWheel = model.silhouette === 'crossover';
+    const rimScale = roadWheel ? 1.10 : 1;
+    const tyreProfile = [[0.272, -0.126], [0.32, -0.142], [0.396, -0.143], [0.443, -0.123], [0.469, -0.090], [0.475, -0.065], [0.475, 0.065], [0.469, 0.090], [0.443, 0.123], [0.396, 0.143], [0.32, 0.142], [0.272, 0.126]].map(([r, z]) => new THREE.Vector2(r < .33 ? r * rimScale : r, z));
     const tyreGeometry = new THREE.LatheGeometry(tyreProfile, 80);
     tyreGeometry.rotateX(Math.PI / 2);
-    const treadGeometry = new THREE.BoxGeometry(0.027, 0.008, 0.058);
+    const treadGeometry = new THREE.BoxGeometry(roadWheel ? .018 : .027, roadWheel ? .004 : .008, .058);
     for (const x of axlePositions) {
       for (const sign of [-1, 1]) {
         const wheel = newGroup(`Rueda ${x} ${sign}`);
@@ -516,17 +527,17 @@ export default function VehicleScene(props: VehicleSceneProps) {
         tread.userData.family = 'brakes';
         selectable.push(tread);
         wheel.add(tread);
-        cylinder(wheel, 0.274, 0.10, [0, 0, 0.034], black, 'brakes', 'z', 64);
-        mesh(wheel, new THREE.TorusGeometry(0.268, 0.012, 8, 64), darkMetal, 'brakes', [0, 0, 0.132]);
-        for (const radius of [0.315, 0.414]) mesh(wheel, new THREE.TorusGeometry(radius, 0.003, 4, 64), rubber, 'brakes', [0, 0, 0.143]);
+        cylinder(wheel, .274 * rimScale, 0.10, [0, 0, 0.034], black, 'brakes', 'z', 64);
+        mesh(wheel, new THREE.TorusGeometry(.268 * rimScale, 0.012, 8, 64), aluminum, 'brakes', [0, 0, 0.132]);
+        for (const radius of [roadWheel ? .35 : .315, .414]) mesh(wheel, new THREE.TorusGeometry(radius, 0.003, 4, 64), rubber, 'brakes', [0, 0, 0.143]);
         const spokeCount = model.silhouette === 'crossover' ? 5 : 6;
         for (let i = 0; i < spokeCount; i++) {
           const angle = i * Math.PI * 2 / spokeCount;
           for (const split of [-0.095, 0.095]) {
             const a = angle + split;
-            const spoke = box(wheel, [0.025, 0.21, 0.032], [Math.sin(a) * 0.163, Math.cos(a) * 0.163, 0.127], darkMetal, 'brakes', 0.006);
+            const spoke = box(wheel, [0.025, .21 * rimScale, 0.032], [Math.sin(a) * .163 * rimScale, Math.cos(a) * .163 * rimScale, 0.127], darkMetal, 'brakes', 0.006);
             spoke.rotation.z = -a;
-            const face = box(wheel, [0.009, 0.19, 0.006], [Math.sin(a) * 0.169, Math.cos(a) * 0.169, 0.146], aluminum, 'brakes', 0.002);
+            const face = box(wheel, [roadWheel ? .018 : .009, .19 * rimScale, 0.006], [Math.sin(a) * .169 * rimScale, Math.cos(a) * .169 * rimScale, 0.146], aluminum, 'brakes', 0.002);
             face.rotation.z = -a;
           }
           cylinder(wheel, 0.013, 0.015, [Math.sin(angle) * 0.065, Math.cos(angle) * 0.065, 0.153], aluminum, 'brakes', 'z', 10);
@@ -584,6 +595,8 @@ export default function VehicleScene(props: VehicleSceneProps) {
     let lastColor = '';
     let lastSelection: string | null | undefined = undefined;
     let lastTime = 0;
+    let lastView: VehicleSceneProps['view'];
+    let lastReset: number | undefined;
     let desiredDistance = 10;
     const tempOffset = new THREE.Vector3();
     let pointerDown = new THREE.Vector2();
@@ -596,7 +609,7 @@ export default function VehicleScene(props: VehicleSceneProps) {
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
       renderer.setSize(width, height, false);
-      const visibleHeight = Math.max(3.65 + currentProgress * 1.98, (6.75 + currentProgress * 2.1) / camera.aspect) * fitScale;
+      const visibleHeight = Math.max(3.65 + currentProgress * 2.25, (6.75 + currentProgress * 3.1) / camera.aspect) * fitScale;
       desiredDistance = visibleHeight / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)));
       tempOffset.copy(camera.position).sub(controls.target).normalize().multiplyScalar(desiredDistance);
       camera.position.copy(controls.target).add(tempOffset);
@@ -616,10 +629,8 @@ export default function VehicleScene(props: VehicleSceneProps) {
       currentProgress = reduced ? target : THREE.MathUtils.damp(currentProgress, target, 7.5, dt);
       if (Math.abs(target - currentProgress) < 0.0007) currentProgress = target;
       for (const part of exploded) {
-        const raw = THREE.MathUtils.clamp((currentProgress - part.from) / (part.to - part.from), 0, 1);
-        const amount = raw * raw * (3 - 2 * raw);
-        part.group.position.copy(part.start).addScaledVector(part.offset, amount);
-        part.group.rotation.set(part.rotation.x + part.spin.x * amount, part.rotation.y + part.spin.y * amount, part.rotation.z + part.spin.z * amount);
+        const offset = motionAmount(currentProgress, part.plan);
+        part.group.position.copy(part.start).add(new THREE.Vector3(...offset));
       }
       guideMaterial.opacity = Math.max(0, currentProgress - 0.18) * 0.21;
       for (const { line, part, anchor } of guides) {
@@ -636,15 +647,26 @@ export default function VehicleScene(props: VehicleSceneProps) {
       }
       if (lastSelection !== p.selectedPart) {
         for (const entry of familyMaterials) {
-          const selected = entry.family === p.selectedPart;
-          entry.material.emissive.copy(selected ? new THREE.Color(0xc13721) : entry.originalEmissive);
-          entry.material.emissiveIntensity = selected ? 0.33 : entry.originalIntensity;
+          const selected = entry.family === p.selectedPart && entry.family !== 'body';
+          entry.material.emissive.copy(selected ? new THREE.Color(0x6197ac) : entry.originalEmissive);
+          entry.material.emissiveIntensity = selected ? 0.20 : entry.originalIntensity;
         }
         lastSelection = p.selectedPart;
       }
-      const visibleHeight = Math.max(3.65 + currentProgress * 1.98, (6.75 + currentProgress * 2.1) / camera.aspect) * fitScale;
+      const visibleHeight = Math.max(3.65 + currentProgress * 2.25, (6.75 + currentProgress * 3.1) / camera.aspect) * fitScale;
       desiredDistance = visibleHeight / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)));
-      controls.target.y = (1.04 + currentProgress * 0.53) * model.scale[1];
+      controls.target.y = (1.04 + currentProgress * 0.85) * model.scale[1];
+      if (lastView !== p.view || lastReset !== p.resetView) {
+        const direction = p.view === 'front' ? new THREE.Vector3(1, .18, 0) : p.view === 'side' ? new THREE.Vector3(0, .16, 1) : p.view === 'rear' ? new THREE.Vector3(-1, .18, 0) : new THREE.Vector3(8, 2.65, 8.8);
+        // Clear pending orbit damping so a reset is deterministic after dragging.
+        controls.enableDamping = false;
+        controls.update();
+        camera.position.copy(controls.target).add(direction.normalize().multiplyScalar(desiredDistance));
+        controls.update();
+        controls.enableDamping = true;
+        lastView = p.view;
+        lastReset = p.resetView;
+      }
       tempOffset.copy(camera.position).sub(controls.target);
       const length = THREE.MathUtils.damp(tempOffset.length(), desiredDistance, 5, dt);
       camera.position.copy(controls.target).add(tempOffset.normalize().multiplyScalar(length));

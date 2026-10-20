@@ -209,35 +209,53 @@ export function buildVehicleExterior(builder: ExteriorBuilder) {
   box(nose, [0.16, 0.72, 1.91], [2.39, 0.94, 0], paint, 'body', pickup ? 0.07 : 0.078);
   box(nose, [0.18, 0.19, 1.98], [2.43, 0.50, 0], black, 'body', 0.055);
   box(nose, [0.07, 0.045, 1.33], [2.535, 0.433, 0], aluminum, 'body', 0.015);
-  const grilleWidth = pickup ? 1.40 : yaris ? 1.24 : 1.34;
-  box(nose, [0.075, pickup ? 0.47 : 0.34, grilleWidth], [2.495, pickup ? 1.00 : 0.99, 0], pickup ? black : darkMetal, 'body', 0.045);
+  const grilleOutline: Outline = pickup
+    ? [[-.61,.77],[.61,.77],[.76,.96],[.59,1.25],[-.59,1.25],[-.76,.96]]
+    : rav4
+      ? [[-.53,.82],[.53,.82],[.68,1.17],[-.68,1.17]]
+      : yaris
+        ? [[-.59,.87],[.59,.87],[.65,1.16],[-.65,1.16]]
+        : [[-.63,.84],[.63,.84],[.66,1.03],[.56,1.17],[-.56,1.17],[-.66,1.03]];
+  frontPanel(nose, grilleOutline, 2.505, black);
   if (pickup) {
-    for (const z of [-0.77, 0.77]) {
-      const edge = box(nose, [0.045, 0.43, 0.057], [2.55, 0.99, z], aluminum, 'body', 0.013);
-      edge.rotation.x = z > 0 ? -0.25 : 0.25;
-    }
-    for (let i = 0; i < 7; i++) box(nose, [0.022, 0.018, 1.34 - Math.abs(i - 3) * 0.045], [2.543, 0.81 + i * 0.062, 0], darkMetal, 'body', 0.006);
+    contour(nose, [...grilleOutline, grilleOutline[0]].map(([z,y])=>[2.538,y,z]), aluminum, .025);
+    for (let i = 0; i < 7; i++) box(nose, [0.022, 0.018, 1.28 - Math.abs(i - 3) * 0.075], [2.543, 0.81 + i * 0.062, 0], darkMetal, 'body', 0.006);
+    box(nose, [.03,.064,1.29], [2.555,1.01,0], darkMetal, 'body', .01);
   } else {
-    // Hexagonal grille inserts share a single geometry/material and one draw call.
-    const grilleFinish = box(nose, [0.01, 0.01, 0.01], [2.49, 0.99, 0], modelId === 'corolla-cross' ? paint : darkMetal, 'body').material;
-    const cells = new THREE.InstancedMesh(new THREE.TorusGeometry(yaris ? 0.052 : 0.039, 0.007, 4, 6), grilleFinish, 60);
+    // Body-coloured hexagonal inserts match the catalog's current HEV fronts.
+    const grilleFinish = box(nose, [0.01, 0.01, 0.01], [2.49, 0.99, 0], paint, 'body').material;
+    const radius = modelId === 'corolla-cross' ? .039 : .055;
+    const columns = modelId === 'corolla-cross' ? 15 : 11;
+    const spacing = radius * 2.04;
+    const cells = new THREE.InstancedMesh(new THREE.TorusGeometry(radius, .007, 6, 6), grilleFinish, columns * 4);
     const transform = new THREE.Object3D();
     let index = 0;
-    for (let row = 0; row < 4; row++) for (let col = 0; col < 15; col++) {
-      transform.position.set(2.548, 0.875 + row * 0.068, (col - 7) * 0.082 + row % 2 * 0.04);
+    for (let row = 0; row < 4; row++) for (let col = 0; col < columns; col++) {
+      const z = (col - (columns - 1) / 2) * spacing + (row % 2 ? radius : 0);
+      const halfWidth = rav4 ? .50 + row * .033 : .57;
+      if (Math.abs(z) + radius > halfWidth) continue;
+      transform.position.set(2.548, .874 + row * .073, z);
       transform.rotation.set(0, Math.PI / 2, 0);
+      transform.scale.set(1, .72, 1);
       transform.updateMatrix();
       cells.setMatrixAt(index++, transform.matrix);
     }
+    cells.count = index;
     nose.add(cells);
   }
-  box(nose, [0.08, 0.16, 1.13], [2.49, 0.668, 0], black, 'body', 0.024);
+  frontPanel(nose, [[-.74,.54],[.74,.54],[.58,.78],[-.58,.78]], 2.515, black);
   for (let i = 0; i < 3; i++) box(nose, [0.018, 0.014, 1.04], [2.54, 0.62 + i * 0.04, 0], darkMetal, 'body', 0.004);
   box(nose, [0.026, 0.15, 0.47], [2.58, 0.75, 0], black, 'body', 0.008);
   lettering(nose, modelLabel, [2.599, 0.75, 0], 0.40, 0.075);
   const badge = mesh(nose, new THREE.TorusGeometry(0.063, 0.009, 6, 28), aluminum, 'body', [2.57, pickup ? 1.12 : 1.245, 0]);
   badge.rotation.y = Math.PI / 2;
   badge.scale.set(1.35, 0.85, 1);
+  const badgeUpright = mesh(nose, new THREE.TorusGeometry(.040, .006, 6, 24), aluminum, 'body', [2.578, pickup ? 1.12 : 1.245, 0]);
+  badgeUpright.rotation.y = Math.PI / 2;
+  badgeUpright.scale.set(.55, 1.12, 1);
+  const badgeCrossbar = mesh(nose, new THREE.TorusGeometry(.041, .005, 6, 24), aluminum, 'body', [2.579, pickup ? 1.14 : 1.265, 0]);
+  badgeCrossbar.rotation.y = Math.PI / 2;
+  badgeCrossbar.scale.set(1.42, .43, 1);
   for (const sign of [-1, 1]) {
     const lightShape: Outline = pickup
       ? [[0.49, 1.19], [0.95, 1.22], [0.99, 1.40], [0.51, 1.34]]
@@ -250,7 +268,11 @@ export function buildVehicleExterior(builder: ExteriorBuilder) {
     const upper = pickup ? 1.34 : yaris ? 1.30 : 1.31;
     contour(nose, [[2.517, upper - 0.04, sign * 0.54], [2.517, upper, sign * 0.80], [2.517, upper + 0.035, sign * 0.95], [2.517, upper - 0.065, sign * 0.93]], led, 0.008);
     for (const z of [0.73, 0.86]) box(nose, [0.018, 0.052, 0.065], [2.517, pickup ? 1.265 : 1.245, sign * z], lens, 'body', 0.015);
-    box(nose, [0.06, rav4 ? 0.33 : 0.25, 0.15], [2.492, 0.86, sign * 0.845], black, 'body', 0.032);
+    if (rav4) {
+      frontPanel(nose, [[sign*.74,.70],[sign*.95,.70],[sign*.95,1.06],[sign*.85,1.06]], 2.50, black);
+      contour(nose, [[2.525,1.35,sign*.54],[2.525,1.39,sign*.95],[2.525,1.26,sign*.92],[2.525,1.22,sign*.58]], led, .008);
+    } else if (!yaris) box(nose, [0.06, 0.25, 0.15], [2.492, 0.86, sign * 0.845], black, 'body', 0.032);
+    if (yaris) box(nose, [.045,.13,.30], [2.50,.66,sign*.78], black, 'body', .04);
     box(nose, [0.025, 0.041, 0.095], [2.535, 0.75, sign * 0.845], lens, 'body', 0.012);
   }
   moving(nose, [0.49, 0.04, 0], 0.29, 0.92);

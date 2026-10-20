@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import { ArrowLeft, ArrowUpRight, Check, CheckCircle2, ChevronRight, Copy, Eye, FileEdit, ImagePlus, LayoutDashboard, LoaderCircle, Package, Plus, RotateCcw, Search, Send, Settings2, ShieldCheck, Upload, X } from 'lucide-react';
 import type { CatalogKind, CatalogRecord } from '../catalog';
 import './AdminCMS.css';
+import EditorTour from './EditorTour';
 
 interface AdminCMSProps {
   records: CatalogRecord[];
@@ -30,6 +31,7 @@ export default function AdminCMS({ records, onSave, onReset, onOpenSite }: Admin
   const [error, setError] = useState('');
   const [reading, setReading] = useState(false);
   const [showReset, setShowReset] = useState(false);
+  const [tour, setTour] = useState(false);
   const file = useRef<HTMLInputElement>(null);
   const form = useRef<HTMLFormElement>(null);
   const editorTitle = useRef<HTMLHeadingElement>(null);
@@ -37,7 +39,12 @@ export default function AdminCMS({ records, onSave, onReset, onOpenSite }: Admin
   const filtered = useMemo(() => records.filter(record => (kind === 'all' || record.kind === kind) && (status === 'all' || record.status === status) && (record.name + ' ' + record.category + ' ' + record.location).toLocaleLowerCase('es').includes(query.trim().toLocaleLowerCase('es'))), [records, kind, status, query]);
   const editingExisting = !!draft && records.some(record => record.id === draft.id);
   useEffect(() => { if (toast) { const timer = window.setTimeout(() => setToast(''), 5000); return () => window.clearTimeout(timer); } }, [toast]);
-  useEffect(() => { if (draft) editorTitle.current?.focus(); }, [draft?.id]);
+  useEffect(() => { if (draft && !tour) editorTitle.current?.focus(); }, [draft?.id, tour]);
+  useEffect(() => { if (!draft) setTour(false); }, [draft]);
+  function startTour() {
+    if (!draft) setDraft(records[0] ? { ...records[0] } : emptyRecord('new'));
+    setTour(true);
+  }
 
   const update = <K extends keyof CatalogRecord>(key: K, value: CatalogRecord[K]) => setDraft(previous => previous ? { ...previous, [key]: value } : previous);
   const create = (value: CatalogKind) => { setError(''); setDraft(emptyRecord(value)); window.scrollTo({ top: 0, behavior: 'instant' }); };
@@ -92,6 +99,7 @@ export default function AdminCMS({ records, onSave, onReset, onOpenSite }: Admin
       <header className="cms-topbar"><div className="cms-breadcrumb">Contenido <ChevronRight size={13} /><strong>{draft ? 'Editor de vehículos' : 'Catálogo'}</strong></div><button className="cms-btn cms-btn-quiet" onClick={() => onOpenSite(draft?.kind ?? (kind === 'all' ? undefined : kind))}><Eye size={15} /> Ver propuesta <ArrowUpRight size={13} /></button></header>
       <main className="cms-content">
         <div className="cms-demo-banner"><ShieldCheck size={18} /><div><strong>CMS de demostración</strong><span>Cambios solo en esta pestaña; no modifica el sitio actual.</span></div><span className="cms-demo-dot">DEMO</span></div>
+        <div className="cms-tour-invitation"><div><strong>¿Primera vez editando un vehículo?</strong><span>Te acompañamos desde la ficha hasta la publicación.</span></div><button type="button" className="cms-btn cms-btn-secondary" onClick={startTour}>Iniciar tour asistido <ChevronRight size={16}/></button></div>
         {!draft ? <>
           <div className="cms-page-heading"><div><span className="cms-eyebrow">CONTENIDO QUE MUEVE TU NEGOCIO</span><h1>Tu catálogo, bajo control.</h1><p>Agrega vehículos, actualiza sus detalles y decide qué mostrar.</p></div><button className="cms-btn cms-btn-primary" onClick={() => create(kind === 'used' ? 'used' : 'new')}><Plus size={17} /> Agregar vehículo</button></div>
           <div className="cms-metrics">
@@ -137,6 +145,7 @@ export default function AdminCMS({ records, onSave, onReset, onOpenSite }: Admin
         </>}
       </main>
     </div>
+    {tour && draft && <EditorTour onClose={() => setTour(false)}/>}
     {toast && <div className="cms-toast" role="status"><CheckCircle2 size={19} /><span>{toast}</span><button onClick={() => setToast('')} aria-label="Cerrar aviso"><X size={15} /></button></div>}
   </div>;
 }
