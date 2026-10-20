@@ -1,0 +1,36 @@
+{
+  "cutoff": "2026-10-20",
+  "basis": [
+    "AA-landing-motion-completo.zip",
+    "AA-parche-visor360-corolla-cross.zip"
+  ],
+  "privateGitHubFetched": false,
+  "changesThisExport": [
+    "Consolidated photographic 360 patch into complete Landing Motion tree",
+    "Fixed catalog ID normalization in VehicleStory",
+    "Added direct Exterior 360 anchor",
+    "Added offline non-overwriting local frame importer",
+    "Added guarded integration/restore helper and current documentation"
+  ],
+  "local360ImageFilesIncluded": 0,
+  "officialVideoFilesIncluded": 0,
+  "newOEM3dModelsIncluded": 0,
+  "automatedTests": {
+    "passed": 132,
+    "failed": 0,
+    "includesPriorTests": 113,
+    "scope": "Pure logic and source contracts; no real browser run"
+  },
+  "syntax": {
+    "typescriptSourceFiles": 37,
+    "cssFiles": 10,
+    "diagnostics": 0,
+    "missingRelativeImports": 0
+  },
+  "temporaryGitIntegrationScenarios": 15,
+  "fullTypecheck": "not run: dependency installation failed",
+  "productionBuild": "not run: dependency installation failed",
+  "browserValidation": "not run",
+  "preservedCriticalFiles": 15,
+  "sourceMedia": "Local frames supplied by user computer, not attached here; import required"
+}

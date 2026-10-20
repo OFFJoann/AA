@@ -1,0 +1,151 @@
+{
+  "environment": "Chromium, React 18.2 compatibility + ReactDOM prerelease 18.2 bundled with Jupyter; simulated History/location, substituted icons and Three.js, local raster images inlined. NOT a Vite/React19 build. HTTP deep-link reload not tested here.",
+  "results": [
+    {
+      "test": "home mounts only the gateway",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "semantic navigation links have real destinations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "new catalog does not mount used or workshop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "carousel selection opens a canonical vehicle URL",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "vehicle detail mounts cinematic theatre",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "technical specification table accessible without scroll animation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "scroll chapter selects motor",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "scroll reverses to exterior",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "reading mode removes pinned track",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "variant switch updates the engine data",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "search filters the technical sheet",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "Hilux diesel variants retain their own specs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "Hilux SRX variant changes torque and tires",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "Cross discloses its 2026 source",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "RAV4 discloses incomplete HEV documentation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "used catalog isolated from new cars and 3D",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "posventa has separate four-service gateway",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "location map page lazy-loads independently",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "original explorer mounts only in its own page",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "unpublished model gives not-found message",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "unknown URL has safe not-found screen",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "comparison selection survives route navigation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "quote dialog preserved on a separate page",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "CMS remains reachable from shared footer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "no unexpected JS runtime errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mobile home fits horizontally",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mobile navigation selects posventa",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "mobile cinematic screen fits horizontally",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "test": "OS reduced-motion replaces cinematic with readable chapters",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "errors": []
+}

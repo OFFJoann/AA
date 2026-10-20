@@ -1,3 +1,7 @@
+> **EXPORT CONSOLIDADO 20/10/2026:** [guía vigente](docs/exportacion-consolidada.md). Incluye Landing Motion, rutas independientes y el visor fotográfico Corolla Cross con el ID corregido. Las imágenes 360 locales y videos oficiales no están en este ZIP. La documentación posterior se conserva como historial.
+
+> **Actualización 20/10/2026: páginas separadas y fichas por sistemas.** Consulte [docs/entornos-y-cinematica.md](docs/entornos-y-cinematica.md) y las limitaciones de validación de esta entrega. La documentación anterior se conserva como historial.
+
 > **Actualización Red & Black, 20/10/2026.** Consulta primero [la entrega actual](docs/entrega-red-black.md) y [sus pruebas y limitaciones](docs/validacion-red-black.md). El contenido posterior es la documentación histórica de la base; sus verificaciones de compilación no certifican esta actualización. No se modificaron dependencias ni Docker.
 
 # Autoamérica — Tu próximo camino
@@ -102,3 +106,6 @@ Se inventariaron 373 URLs declaradas en 13 sitemaps: 359 produjeron HTML legible
 7. Probar rendimiento, accesibilidad, analítica, formularios y disponibilidad antes de un lanzamiento gradual con rollback.
 
 El presupuesto del documento aportado no fue validado ni convertido en una oferta comercial. Deben incluirse modelado, licencias, integraciones, nube y mantenimiento según alcance acordado.
+
+
+Actualizacion Landing Motion: consultar `docs/landing-motion-y-360.md`. Videos y modelo 3D Toyota original NO incluidos; ver limites y validacion antes de publicar.

@@ -1,0 +1,7 @@
+{
+  "tests": 113,
+  "passed": 113,
+  "failed": 0,
+  "node": "22.16.0 with --experimental-strip-types",
+  "runtimeBuildVerified": false
+}

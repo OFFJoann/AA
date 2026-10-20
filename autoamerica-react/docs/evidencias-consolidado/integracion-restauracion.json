@@ -1,0 +1,66 @@
+{
+  "passed": 15,
+  "tests": [
+    {
+      "test": "Dry run on latest complete bundle does not write",
+      "passed": true
+    },
+    {
+      "test": "Existing untracked frame files are permitted but not touched",
+      "passed": true
+    },
+    {
+      "test": "Full integration applies successfully",
+      "passed": true
+    },
+    {
+      "test": "Normalized new: ID and integrated viewer survive installation",
+      "passed": true
+    },
+    {
+      "test": "User frame content preserved",
+      "passed": true
+    },
+    {
+      "test": "Reapplying the same export is idempotent",
+      "passed": true
+    },
+    {
+      "test": "Restore dry run preserves installed files",
+      "passed": true
+    },
+    {
+      "test": "Restore returns exact pre-integration content including user photos",
+      "passed": true
+    },
+    {
+      "test": "Committed peer change is rejected before writing",
+      "passed": true
+    },
+    {
+      "test": "Previous independent-routes export accepted",
+      "passed": true
+    },
+    {
+      "test": "Unrelated untracked files block integration",
+      "passed": true
+    },
+    {
+      "test": "LF/CRLF variations accepted",
+      "passed": true
+    },
+    {
+      "test": "Old 360 patch accepted and integration ID corrected",
+      "passed": true
+    },
+    {
+      "test": "Restore protects subsequent source edits",
+      "passed": true
+    },
+    {
+      "test": "Altered export fails manifest validation",
+      "passed": true
+    }
+  ],
+  "scope": "Temporary local Git repositories, not the user repository"
+}

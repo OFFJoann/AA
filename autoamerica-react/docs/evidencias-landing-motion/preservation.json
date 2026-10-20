@@ -1,0 +1,17 @@
+{
+  "autoamerica-react/package.json": true,
+  "autoamerica-react/package-lock.json": true,
+  "autoamerica-react/Dockerfile": true,
+  "autoamerica-react/compose.yaml": true,
+  "autoamerica-react/nginx.conf": true,
+  "autoamerica-react/src/App.tsx": true,
+  "autoamerica-react/src/components/EditorTour.tsx": true,
+  "autoamerica-react/src/components/AdminCMS.tsx": true,
+  "autoamerica-react/src/components/VehicleScene.tsx": true,
+  "autoamerica-react/src/components/vehicleExterior.ts": true,
+  "autoamerica-react/src/components/explosionLayout.ts": true,
+  "autoamerica-react/src/components/parts/PartsExplorer.tsx": true,
+  "autoamerica-react/src/components/used-vehicles/UsedVehicleCatalog.tsx": true,
+  "autoamerica-react/src/components/vehicles/VehicleCompare.tsx": true,
+  "autoamerica-react/src/components/LocationMap.tsx": true
+}

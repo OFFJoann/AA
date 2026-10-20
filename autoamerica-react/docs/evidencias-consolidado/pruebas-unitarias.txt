@@ -1,0 +1,820 @@
+
+> autoamerica-experience@0.1.0 test
+> node --test tests/*.test.ts
+
+TAP version 13
+# (node:1020) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: 360 integration accepts the actual routed catalog ID
+ok 1 - 360 integration accepts the actual routed catalog ID
+  ---
+  duration_ms: 1.222119
+  type: 'test'
+  ...
+# Subtest: 360 reference is not inherited by a marketing-edited record
+ok 2 - 360 reference is not inherited by a marketing-edited record
+  ---
+  duration_ms: 0.142975
+  type: 'test'
+  ...
+# Subtest: 360 reference is not attached to a used record
+ok 3 - 360 reference is not attached to a used record
+  ---
+  duration_ms: 0.180752
+  type: 'test'
+  ...
+# Subtest: 360 JSX uses normalized ID rather than the broken bare comparison
+ok 4 - 360 JSX uses normalized ID rather than the broken bare comparison
+  ---
+  duration_ms: 0.21286
+  type: 'test'
+  ...
+# Subtest: 360 shortcut targets the integrated viewer
+ok 5 - 360 shortcut targets the integrated viewer
+  ---
+  duration_ms: 0.281393
+  type: 'test'
+  ...
+# Subtest: 360 component keeps the local frame path, controls and US notice
+ok 6 - 360 component keeps the local frame path, controls and US notice
+  ---
+  duration_ms: 0.185279
+  type: 'test'
+  ...
+# Subtest: both existing reference tours and the technical sheet are retained
+ok 7 - both existing reference tours and the technical sheet are retained
+  ---
+  duration_ms: 0.201754
+  type: 'test'
+  ...
+# Subtest: all previous route pages remain reachable
+ok 8 - all previous route pages remain reachable
+  ---
+  duration_ms: 0.254192
+  type: 'test'
+  ...
+# (node:1021) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: both sides extract along the wheel-arch axis before lifting
+ok 9 - both sides extract along the wheel-arch axis before lifting
+  ---
+  duration_ms: 16.300225
+  type: 'test'
+  ...
+# Subtest: roof and bonnet clear the next assemblies before they move
+ok 10 - roof and bonnet clear the next assemblies before they move
+  ---
+  duration_ms: 7.69565
+  type: 'test'
+  ...
+# Subtest: hybrid module leaves the floor footprint before rising
+ok 11 - hybrid module leaves the floor footprint before rising
+  ---
+  duration_ms: 1.964836
+  type: 'test'
+  ...
+# Subtest: all paths clamp their endpoints and reassemble without hysteresis
+ok 12 - all paths clamp their endpoints and reassemble without hysteresis
+  ---
+  duration_ms: 1.815171
+  type: 'test'
+  ...
+# (node:1022) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: GLB inventories mesh nodes without asserting OEM parts
+ok 13 - GLB inventories mesh nodes without asserting OEM parts
+  ---
+  duration_ms: 1.241959
+  type: 'test'
+  ...
+# Subtest: GLB rejects a PNG or web page
+ok 14 - GLB rejects a PNG or web page
+  ---
+  duration_ms: 0.307052
+  type: 'test'
+  ...
+# Subtest: GLB rejects truncated header
+ok 15 - GLB rejects truncated header
+  ---
+  duration_ms: 0.180141
+  type: 'test'
+  ...
+# Subtest: GLB rejects declared size mismatch
+ok 16 - GLB rejects declared size mismatch
+  ---
+  duration_ms: 0.2592
+  type: 'test'
+  ...
+# Subtest: GLB rejects missing referenced mesh
+ok 17 - GLB rejects missing referenced mesh
+  ---
+  duration_ms: 0.223436
+  type: 'test'
+  ...
+# Subtest: GLB rejects graph cycles
+ok 18 - GLB rejects graph cycles
+  ---
+  duration_ms: 0.156736
+  type: 'test'
+  ...
+# Subtest: GLB detects unnamed and duplicate nodes
+ok 19 - GLB detects unnamed and duplicate nodes
+  ---
+  duration_ms: 0.929839
+  type: 'test'
+  ...
+# Subtest: GLB counts external resources but never requests them
+ok 20 - GLB counts external resources but never requests them
+  ---
+  duration_ms: 0.457508
+  type: 'test'
+  ...
+# Subtest: GLB warns on a single exterior-only mesh instead of inventing internals
+ok 21 - GLB warns on a single exterior-only mesh instead of inventing internals
+  ---
+  duration_ms: 0.502736
+  type: 'test'
+  ...
+# Subtest: GLB detects nodes using a skin
+ok 22 - GLB detects nodes using a skin
+  ---
+  duration_ms: 1.918427
+  type: 'test'
+  ...
+# (node:1053) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: local 360 importer parses dimensions without network access
+ok 23 - local 360 importer parses dimensions without network access
+  ---
+  duration_ms: 1.917185
+  type: 'test'
+  ...
+# Subtest: local 360 importer rejects an HTML response
+ok 24 - local 360 importer rejects an HTML response
+  ---
+  duration_ms: 0.401914
+  type: 'test'
+  ...
+# Subtest: local 360 importer rejects an incomplete JPEG segment
+ok 25 - local 360 importer rejects an incomplete JPEG segment
+  ---
+  duration_ms: 7.409859
+  type: 'test'
+  ...
+# Subtest: local 360 dry run validates all frames without writing
+ok 26 - local 360 dry run validates all frames without writing
+  ---
+  duration_ms: 14.448899
+  type: 'test'
+  ...
+# Subtest: local 360 apply copies frames but preserves the source
+ok 27 - local 360 apply copies frames but preserves the source
+  ---
+  duration_ms: 11.603654
+  type: 'test'
+  ...
+# Subtest: local 360 import is idempotent for identical frames
+ok 28 - local 360 import is idempotent for identical frames
+  ---
+  duration_ms: 6.242036
+  type: 'test'
+  ...
+# Subtest: local 360 conflicts are detected before any copying
+ok 29 - local 360 conflicts are detected before any copying
+  ---
+  duration_ms: 4.071793
+  type: 'test'
+  ...
+# Subtest: local 360 incomplete sequences do not create a destination
+ok 30 - local 360 incomplete sequences do not create a destination
+  ---
+  duration_ms: 3.916489
+  type: 'test'
+  ...
+# Subtest: local 360 rejects the old 400-pixel frame before copying
+ok 31 - local 360 rejects the old 400-pixel frame before copying
+  ---
+  duration_ms: 2.996376
+  type: 'test'
+  ...
+# Subtest: local 360 reports byte-identical duplicates without inferring camera positions
+ok 32 - local 360 reports byte-identical duplicates without inferring camera positions
+  ---
+  duration_ms: 4.415791
+  type: 'test'
+  ...
+# Subtest: local 360 rejects source equal to destination
+ok 33 - local 360 rejects source equal to destination
+  ---
+  duration_ms: 2.262051
+  type: 'test'
+  ...
+# (node:1054) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: separate route /
+ok 34 - separate route /
+  ---
+  duration_ms: 5.861083
+  type: 'test'
+  ...
+# Subtest: separate route /nuevos
+ok 35 - separate route /nuevos
+  ---
+  duration_ms: 0.216906
+  type: 'test'
+  ...
+# Subtest: separate route /usados
+ok 36 - separate route /usados
+  ---
+  duration_ms: 0.19934
+  type: 'test'
+  ...
+# Subtest: separate route /posventa
+ok 37 - separate route /posventa
+  ---
+  duration_ms: 0.110656
+  type: 'test'
+  ...
+# Subtest: separate route /posventa/repuestos
+ok 38 - separate route /posventa/repuestos
+  ---
+  duration_ms: 0.145589
+  type: 'test'
+  ...
+# Subtest: separate route /sedes
+ok 39 - separate route /sedes
+  ---
+  duration_ms: 0.114492
+  type: 'test'
+  ...
+# Subtest: model ID round trip
+ok 40 - model ID round trip
+  ---
+  duration_ms: 0.475235
+  type: 'test'
+  ...
+# Subtest: unknown paths do not show homepage
+ok 41 - unknown paths do not show homepage
+  ---
+  duration_ms: 0.138028
+  type: 'test'
+  ...
+# Subtest: invalid percent encodings are handled
+ok 42 - invalid percent encodings are handled
+  ---
+  duration_ms: 19.753324
+  type: 'test'
+  ...
+# Subtest: encoded path traversal does not become a model
+ok 43 - encoded path traversal does not become a model
+  ---
+  duration_ms: 0.527443
+  type: 'test'
+  ...
+# Subtest: trailing slash is accepted
+ok 44 - trailing slash is accepted
+  ---
+  duration_ms: 0.226861
+  type: 'test'
+  ...
+# Subtest: old hashes preserve filters and campaign queries
+ok 45 - old hashes preserve filters and campaign queries
+  ---
+  duration_ms: 0.380112
+  type: 'test'
+  ...
+# Subtest: old vehicle bookmarks map to canonical path
+ok 46 - old vehicle bookmarks map to canonical path
+  ---
+  duration_ms: 0.105188
+  type: 'test'
+  ...
+# Subtest: old service bookmarks map to independent page
+ok 47 - old service bookmarks map to independent page
+  ---
+  duration_ms: 0.158098
+  type: 'test'
+  ...
+# Subtest: chapter hash is not mistaken for a page
+ok 48 - chapter hash is not mistaken for a page
+  ---
+  duration_ms: 0.131468
+  type: 'test'
+  ...
+# Subtest: foreign redirect refused
+ok 49 - foreign redirect refused
+  ---
+  duration_ms: 0.203035
+  type: 'test'
+  ...
+# Subtest: route title
+ok 50 - route title
+  ---
+  duration_ms: 0.277788
+  type: 'test'
+  ...
+# Subtest: cinematic endpoints clamp correctly
+ok 51 - cinematic endpoints clamp correctly
+  ---
+  duration_ms: 0.195113
+  type: 'test'
+  ...
+# Subtest: crossfade is bounded and holds for reading
+ok 52 - crossfade is bounded and holds for reading
+  ---
+  duration_ms: 0.349215
+  type: 'test'
+  ...
+# Subtest: scroll choreography is reversible without hidden state
+ok 53 - scroll choreography is reversible without hidden state
+  ---
+  duration_ms: 1.147776
+  type: 'test'
+  ...
+# Subtest: single scene does not fade out
+ok 54 - single scene does not fade out
+  ---
+  duration_ms: 0.131658
+  type: 'test'
+  ...
+# Subtest: track math accounts for sticky header
+ok 55 - track math accounts for sticky header
+  ---
+  duration_ms: 0.150586
+  type: 'test'
+  ...
+# Subtest: four technical models have independent profiles
+ok 56 - four technical models have independent profiles
+  ---
+  duration_ms: 0.1062
+  type: 'test'
+  ...
+# Subtest: all technical rows have an explicit official/dealer source
+ok 57 - all technical rows have an explicit official/dealer source
+  ---
+  duration_ms: 0.456276
+  type: 'test'
+  ...
+# Subtest: marketing edits never inherit reference specs merely by ID
+ok 58 - marketing edits never inherit reference specs merely by ID
+  ---
+  duration_ms: 0.11292
+  type: 'test'
+  ...
+# Subtest: Prado TX never acquires TX-L-specific imagery
+ok 59 - Prado TX never acquires TX-L-specific imagery
+  ---
+  duration_ms: 0.091248
+  type: 'test'
+  ...
+# Subtest: Cross 2026 PDF is never relabelled 2027
+ok 60 - Cross 2026 PDF is never relabelled 2027
+  ---
+  duration_ms: 0.081613
+  type: 'test'
+  ...
+# Subtest: RAV4 HEV never inherits a PHEV download or unverified photograph
+ok 61 - RAV4 HEV never inherits a PHEV download or unverified photograph
+  ---
+  duration_ms: 0.069795
+  type: 'test'
+  ...
+# Subtest: hybrid power is differentiated from individual electric motor
+ok 62 - hybrid power is differentiated from individual electric motor
+  ---
+  duration_ms: 0.190837
+  type: 'test'
+  ...
+# Subtest: archived Cross 2026 never receives a current 2027 reference image
+ok 63 - archived Cross 2026 never receives a current 2027 reference image
+  ---
+  duration_ms: 0.068153
+  type: 'test'
+  ...
+# Subtest: Prado diesel never uses the gasoline studio image
+ok 64 - Prado diesel never uses the gasoline studio image
+  ---
+  duration_ms: 0.077267
+  type: 'test'
+  ...
+# (node:1075) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: all brands remain visible without filters
+ok 65 - all brands remain visible without filters
+  ---
+  duration_ms: 14.981358
+  type: 'test'
+  ...
+# Subtest: brand selection supports Mazda (not only Toyota)
+ok 66 - brand selection supports Mazda (not only Toyota)
+  ---
+  duration_ms: 1.649891
+  type: 'test'
+  ...
+# Subtest: multiple brands use OR within the same facet
+ok 67 - multiple brands use OR within the same facet
+  ---
+  duration_ms: 0.37192
+  type: 'test'
+  ...
+# Subtest: different facets combine with AND
+ok 68 - different facets combine with AND
+  ---
+  duration_ms: 0.170606
+  type: 'test'
+  ...
+# Subtest: accent-insensitive location and search
+ok 69 - accent-insensitive location and search
+  ---
+  duration_ms: 0.170997
+  type: 'test'
+  ...
+# Subtest: search tolerates leading spaces and unordered tokens
+ok 70 - search tolerates leading spaces and unordered tokens
+  ---
+  duration_ms: 0.148404
+  type: 'test'
+  ...
+# Subtest: brand changes clear dependent model selection
+ok 71 - brand changes clear dependent model selection
+  ---
+  duration_ms: 0.158449
+  type: 'test'
+  ...
+# Subtest: price range includes both boundaries
+ok 72 - price range includes both boundaries
+  ---
+  duration_ms: 0.355114
+  type: 'test'
+  ...
+# Subtest: unknown prices are excluded when a price range is active
+ok 73 - unknown prices are excluded when a price range is active
+  ---
+  duration_ms: 0.424919
+  type: 'test'
+  ...
+# Subtest: zero actual mileage is supported
+ok 74 - zero actual mileage is supported
+  ---
+  duration_ms: 0.547433
+  type: 'test'
+  ...
+# Subtest: unknown mileage -1 is not interpreted as low mileage
+ok 75 - unknown mileage -1 is not interpreted as low mileage
+  ---
+  duration_ms: 0.196976
+  type: 'test'
+  ...
+# Subtest: year range includes boundaries
+ok 76 - year range includes boundaries
+  ---
+  duration_ms: 0.128643
+  type: 'test'
+  ...
+# Subtest: inverted ranges give a useful message and no results
+ok 77 - inverted ranges give a useful message and no results
+  ---
+  duration_ms: 0.315124
+  type: 'test'
+  ...
+# Subtest: negative ranges rejected
+ok 78 - negative ranges rejected
+  ---
+  duration_ms: 0.11283
+  type: 'test'
+  ...
+# Subtest: NaN ranges rejected
+ok 79 - NaN ranges rejected
+  ---
+  duration_ms: 0.196746
+  type: 'test'
+  ...
+# Subtest: empty results are valid
+ok 80 - empty results are valid
+  ---
+  duration_ms: 0.100821
+  type: 'test'
+  ...
+# Subtest: manual and mechanical transmission normalize to Manual
+ok 81 - manual and mechanical transmission normalize to Manual
+  ---
+  duration_ms: 0.229154
+  type: 'test'
+  ...
+# Subtest: certification is never inferred
+ok 82 - certification is never inferred
+  ---
+  duration_ms: 0.108092
+  type: 'test'
+  ...
+# Subtest: favorite filter uses only selected IDs
+ok 83 - favorite filter uses only selected IDs
+  ---
+  duration_ms: 0.083926
+  type: 'test'
+  ...
+# Subtest: price ascending puts unknown prices last
+ok 84 - price ascending puts unknown prices last
+  ---
+  duration_ms: 0.349706
+  type: 'test'
+  ...
+# Subtest: price descending puts unknown prices last
+ok 85 - price descending puts unknown prices last
+  ---
+  duration_ms: 0.173441
+  type: 'test'
+  ...
+# Subtest: year descending
+ok 86 - year descending
+  ---
+  duration_ms: 0.106841
+  type: 'test'
+  ...
+# Subtest: mileage ascending
+ok 87 - mileage ascending
+  ---
+  duration_ms: 0.143877
+  type: 'test'
+  ...
+# Subtest: sort does not mutate original inventory
+ok 88 - sort does not mutate original inventory
+  ---
+  duration_ms: 0.17987
+  type: 'test'
+  ...
+# Subtest: model facet respects selected brands
+ok 89 - model facet respects selected brands
+  ---
+  duration_ms: 0.460562
+  type: 'test'
+  ...
+# Subtest: facet counts ignore only their own selection
+ok 90 - facet counts ignore only their own selection
+  ---
+  duration_ms: 10.896776
+  type: 'test'
+  ...
+# Subtest: unknown attributes do not acquire an invented brand
+ok 91 - unknown attributes do not acquire an invented brand
+  ---
+  duration_ms: 0.178248
+  type: 'test'
+  ...
+# Subtest: URL roundtrip keeps multi-selections, range and sort
+ok 92 - URL roundtrip keeps multi-selections, range and sort
+  ---
+  duration_ms: 1.020494
+  type: 'test'
+  ...
+# Subtest: unrelated campaign parameters are preserved
+ok 93 - unrelated campaign parameters are preserved
+  ---
+  duration_ms: 0.11278
+  type: 'test'
+  ...
+# Subtest: clearing filters removes all u_ params
+ok 94 - clearing filters removes all u_ params
+  ---
+  duration_ms: 0.276346
+  type: 'test'
+  ...
+# Subtest: invalid URL sort and numbers use safe defaults
+ok 95 - invalid URL sort and numbers use safe defaults
+  ---
+  duration_ms: 0.100371
+  type: 'test'
+  ...
+# Subtest: normalization strips accents
+ok 96 - normalization strips accents
+  ---
+  duration_ms: 0.05964
+  type: 'test'
+  ...
+# Subtest: quarantined reference images never appear
+ok 97 - quarantined reference images never appear
+  ---
+  duration_ms: 0.233201
+  type: 'test'
+  ...
+# Subtest: used images may come from a multibrand HTTPS source
+ok 98 - used images may come from a multibrand HTTPS source
+  ---
+  duration_ms: 0.148213
+  type: 'test'
+  ...
+# Subtest: script URLs are rejected
+ok 99 - script URLs are rejected
+  ---
+  duration_ms: 0.100121
+  type: 'test'
+  ...
+# Subtest: script image URLs are rejected
+ok 100 - script image URLs are rejected
+  ---
+  duration_ms: 0.151168
+  type: 'test'
+  ...
+# Subtest: photo uploads allow raster formats, not SVG data scripts
+ok 101 - photo uploads allow raster formats, not SVG data scripts
+  ---
+  duration_ms: 0.066621
+  type: 'test'
+  ...
+# Subtest: zero/missing price is not advertised as free
+ok 102 - zero/missing price is not advertised as free
+  ---
+  duration_ms: 0.063406
+  type: 'test'
+  ...
+# Subtest: maps URLs preserve address \# characters by encoding
+ok 103 - maps URLs preserve address \# characters by encoding
+  ---
+  duration_ms: 0.474013
+  type: 'test'
+  ...
+# Subtest: maps does not request location or define a false origin
+ok 104 - maps does not request location or define a false origin
+  ---
+  duration_ms: 0.149355
+  type: 'test'
+  ...
+# Subtest: reviewed Place IDs are propagated
+ok 105 - reviewed Place IDs are propagated
+  ---
+  duration_ms: 0.147361
+  type: 'test'
+  ...
+# Subtest: embed URL rejects non Google host
+ok 106 - embed URL rejects non Google host
+  ---
+  duration_ms: 0.169264
+  type: 'test'
+  ...
+# Subtest: reviewed official Google embed accepted
+ok 107 - reviewed official Google embed accepted
+  ---
+  duration_ms: 0.105919
+  type: 'test'
+  ...
+# (node:1086) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: model key recognizes an exact supported reference
+ok 108 - model key recognizes an exact supported reference
+  ---
+  duration_ms: 0.905582
+  type: 'test'
+  ...
+# Subtest: marketing records never inherit media of a reference vehicle
+ok 109 - marketing records never inherit media of a reference vehicle
+  ---
+  duration_ms: 0.096505
+  type: 'test'
+  ...
+# Subtest: unknown and similar names never inherit a Toyota background
+ok 110 - unknown and similar names never inherit a Toyota background
+  ---
+  duration_ms: 0.108924
+  type: 'test'
+  ...
+# Subtest: Toyota retail sources are explicit
+ok 111 - Toyota retail sources are explicit
+  ---
+  duration_ms: 0.239119
+  type: 'test'
+  ...
+# Subtest: lookalike and editorial-only source domains are not enabled
+ok 112 - lookalike and editorial-only source domains are not enabled
+  ---
+  duration_ms: 0.168093
+  type: 'test'
+  ...
+# Subtest: source cannot carry login credentials or insecure HTTP
+ok 113 - source cannot carry login credentials or insecure HTTP
+  ---
+  duration_ms: 0.819733
+  type: 'test'
+  ...
+# Subtest: direct playback accepts local MP4 and WebM only
+ok 114 - direct playback accepts local MP4 and WebM only
+  ---
+  duration_ms: 0.214683
+  type: 'test'
+  ...
+# Subtest: playback rejects pages, embeds, hotlinks and path traversal
+ok 115 - playback rejects pages, embeds, hotlinks and path traversal
+  ---
+  duration_ms: 0.100581
+  type: 'test'
+  ...
+# Subtest: reviewed video is selected for the correct model and variant
+ok 116 - reviewed video is selected for the correct model and variant
+  ---
+  duration_ms: 0.697149
+  type: 'test'
+  ...
+# Subtest: one model never plays another models video
+ok 117 - one model never plays another models video
+  ---
+  duration_ms: 0.283006
+  type: 'test'
+  ...
+# Subtest: variant changes cannot leak a previous variants video
+ok 118 - variant changes cannot leak a previous variants video
+  ---
+  duration_ms: 0.17304
+  type: 'test'
+  ...
+# Subtest: US media are not silently promoted to a Colombian model
+ok 119 - US media are not silently promoted to a Colombian model
+  ---
+  duration_ms: 0.137437
+  type: 'test'
+  ...
+# Subtest: fitment confirmation and documentary permission are required
+ok 120 - fitment confirmation and documentary permission are required
+  ---
+  duration_ms: 0.144136
+  type: 'test'
+  ...
+# Subtest: mime and extension must agree
+ok 121 - mime and extension must agree
+  ---
+  duration_ms: 0.079489
+  type: 'test'
+  ...
+# Subtest: review requires a date and a plausible model year
+ok 122 - review requires a date and a plausible model year
+  ---
+  duration_ms: 0.153822
+  type: 'test'
+  ...
+# Subtest: null or missing media safely falls back
+ok 123 - null or missing media safely falls back
+  ---
+  duration_ms: 0.081643
+  type: 'test'
+  ...
+# Subtest: visible desktop can play permitted media
+ok 124 - visible desktop can play permitted media
+  ---
+  duration_ms: 0.068382
+  type: 'test'
+  ...
+# Subtest: background is stopped when reduced
+ok 125 - background is stopped when reduced
+  ---
+  duration_ms: 0.05306
+  type: 'test'
+  ...
+# Subtest: background is stopped when compact
+ok 126 - background is stopped when compact
+  ---
+  duration_ms: 0.032609
+  type: 'test'
+  ...
+# Subtest: background is stopped when saveData
+ok 127 - background is stopped when saveData
+  ---
+  duration_ms: 0.031387
+  type: 'test'
+  ...
+# Subtest: background is stopped when hidden
+ok 128 - background is stopped when hidden
+  ---
+  duration_ms: 0.029915
+  type: 'test'
+  ...
+# Subtest: background is stopped when paused
+ok 129 - background is stopped when paused
+  ---
+  duration_ms: 0.029695
+  type: 'test'
+  ...
+# Subtest: background is stopped when blocked
+ok 130 - background is stopped when blocked
+  ---
+  duration_ms: 0.028053
+  type: 'test'
+  ...
+# Subtest: offscreen players do not run
+ok 131 - offscreen players do not run
+  ---
+  duration_ms: 0.11312
+  type: 'test'
+  ...
+# Subtest: delivery has no invented video URL or implied approval
+ok 132 - delivery has no invented video URL or implied approval
+  ---
+  duration_ms: 0.321293
+  type: 'test'
+  ...
+1..132
+# tests 132
+# suites 0
+# pass 132
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 470.211356

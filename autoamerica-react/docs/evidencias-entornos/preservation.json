@@ -1,0 +1,82 @@
+[
+  {
+    "check": "Original function QuoteForm",
+    "unchanged": true
+  },
+  {
+    "check": "Original function CreditSimulator",
+    "unchanged": true
+  },
+  {
+    "check": "Original function Modal",
+    "unchanged": true
+  },
+  {
+    "check": "Original function Proposal",
+    "unchanged": true
+  },
+  {
+    "check": "Original Explorer body extracted without modification",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/package.json",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/package-lock.json",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/Dockerfile",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/compose.yaml",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/nginx.conf",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/src/components/AdminCMS.tsx",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/src/components/VehicleScene.tsx",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/src/components/vehicles/VehicleCompare.tsx",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/src/components/LocationMap.tsx",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/src/catalog.ts",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/src/data.ts",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/src/vehicleModels.ts",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/src/lib/usedSearch.ts",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/src/components/ThemeSwitch.tsx",
+    "unchanged": true
+  },
+  {
+    "check": "autoamerica-react/tests/usedSearch.test.ts",
+    "unchanged": true
+  }
+]

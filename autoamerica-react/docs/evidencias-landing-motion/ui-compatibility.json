@@ -1,0 +1,90 @@
+{
+  "environment": "React 18.2 compatibility; inline assets, mocked routing and fetch, substitute icons. Not React 19/Vite. No real Toyota video, official viewer, maps or Three renderer tested. Local HTTP blocked in this browser.",
+  "checks": [
+    {
+      "name": "Three whole-card landing links",
+      "pass": true
+    },
+    {
+      "name": "Landing links lead to distinct existing routes",
+      "pass": true
+    },
+    {
+      "name": "No invented videos shipped",
+      "pass": true
+    },
+    {
+      "name": "Landing photo has pause control",
+      "pass": true
+    },
+    {
+      "name": "Pause stops photo animation",
+      "pass": true
+    },
+    {
+      "name": "Desktop 768px landing decisions fully visible",
+      "pass": true
+    },
+    {
+      "name": "Mobile landing decisions fully visible",
+      "pass": true
+    },
+    {
+      "name": "Mobile has no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "Mobile disables decorative animation",
+      "pass": true
+    },
+    {
+      "name": "Used landing link opens existing catalog",
+      "pass": true
+    },
+    {
+      "name": "Service link opens separate aftersales route",
+      "pass": true
+    },
+    {
+      "name": "Carousel has per-model background",
+      "pass": true
+    },
+    {
+      "name": "Switching model replaces background identity",
+      "pass": true
+    },
+    {
+      "name": "Detail includes background player slot",
+      "pass": true
+    },
+    {
+      "name": "No source page URL mistaken for a video",
+      "pass": true
+    },
+    {
+      "name": "Reduced motion is respected",
+      "pass": true
+    },
+    {
+      "name": "Player can load a configured MP4",
+      "pass": true
+    },
+    {
+      "name": "MP4 plays muted in fixture test",
+      "pass": true
+    },
+    {
+      "name": "Pause button pauses video",
+      "pass": true
+    },
+    {
+      "name": "Mobile unmounts MP4 to save data",
+      "pass": true
+    },
+    {
+      "name": "No uncaught JS errors in tested UI",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

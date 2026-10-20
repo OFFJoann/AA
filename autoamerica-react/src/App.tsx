@@ -7,16 +7,21 @@ import { createInitialCatalog, isPublished, toNewVehicle, toUsedVehicle } from '
 import type { CatalogRecord, CatalogKind, UsedVehicle } from './catalog';
 import { getVehicleModel, vehicleModels } from './vehicleModels';
 import type { VehicleModelId } from './vehicleModels';
-import LocationMap from './components/LocationMap';
-import LandingHero from './components/vehicles/LandingHero';
-import NewVehicleCarousel from './components/vehicles/NewVehicleCarousel';
-import UsedVehicleCatalog from './components/used-vehicles/UsedVehicleCatalog';
+const LocationMap = lazy(() => import('./components/LocationMap'));
+import HomePage from './pages/HomePage';
+import { SiteLink, useSiteLocation, navigate, RouteReady } from './navigation/SiteNavigation';
+import { resolveRoute, pageTitle, vehiclePath } from './lib/routes';
+import PageErrorBoundary from './pages/PageErrorBoundary';
+const NewVehicleCarousel = lazy(() => import('./components/vehicles/NewVehicleCarousel'));
+const AftersalesPage = lazy(() => import('./pages/AftersalesPage'));
+const Explorer = lazy(() => import('./components/parts/PartsExplorer'));
+const UsedVehicleCatalog = lazy(() => import('./components/used-vehicles/UsedVehicleCatalog'));
 import VehicleCompare from './components/vehicles/VehicleCompare';
 import ThemeSwitch from './components/ThemeSwitch';
 const VehicleStory = lazy(() => import('./components/vehicles/VehicleStory'));
 
 
-const VehicleScene = lazy(() => import('./components/VehicleScene'));
+
 const AdminCMS = lazy(() => import('./components/AdminCMS'));
 type ModalState = { kind:'vehicle'; vehicle:Vehicle } | { kind:'quote'; subject:string } | {kind:'credit'; subject:string; price?:number} | {kind:'proposal'} | {kind:'compare'} | {kind:'cms'} | null;
 const money = (value:number) => new Intl.NumberFormat('es-CO', {style:'currency',currency:'COP',maximumFractionDigits:0}).format(value);
@@ -28,7 +33,7 @@ function useReducedMotion() {
 }
 
 function Logo({inverse=false}:{inverse?:boolean}) {
-  return <a className={`brand ${inverse?'inverse':''}`} href="#inicio" aria-label="Autoamérica, inicio"><img className="brand-main" src="/assets/logo-autoamerica.png" alt="Autoamérica"/><span className="brand-divider"/><img className="brand-toyota" src="/assets/logo-toyota.png" alt="Toyota"/></a>;
+  return <SiteLink className={`brand ${inverse?'inverse':''}`} href="/" aria-label="Autoamérica, inicio"><img className="brand-main" src="/assets/logo-autoamerica.png" alt="Autoamérica"/><span className="brand-divider"/><img className="brand-toyota" src="/assets/logo-toyota.png" alt="Toyota"/></SiteLink>;
 }
 
 function Modal({state,onClose,children}:{state:ModalState;onClose:()=>void;children:ReactNode}) {
@@ -72,75 +77,6 @@ function Proposal({onAdmin}:{onAdmin:()=>void}) {
   </div>;
 }
 
-function Explorer({onQuote}:{onQuote:(s:string)=>void}) {
-  const section=useRef<HTMLElement>(null);
-  const [scrollProgress,setScrollProgress]=useState(0);
-  const [manual,setManual]=useState<number|null>(0);
-  const [selected,setSelected]=useState('body');
-  const [color,setColor]=useState('#c5cbc8');
-  const [modelId,setModelId]=useState<VehicleModelId>('prado');
-  const [rotate,setRotate]=useState(false);
-  const [view,setView]=useState<'perspective'|'front'|'side'|'rear'>('perspective');
-  const [resetView,setResetView]=useState(0);
-  const [reference,setReference]=useState(false);
-  const [ready,setReady]=useState(false);
-  const reduced=useReducedMotion();
-  const progress=manual??(reduced?0:scrollProgress);
-  useEffect(()=>{if(reduced)setRotate(false);},[reduced]);
-  useEffect(()=>{const el=section.current;if(!el)return;const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){setReady(true);observer.disconnect();}},{rootMargin:'400px'});observer.observe(el);return()=>observer.disconnect();},[]);
-  useEffect(()=>{let scheduled=false;const update=()=>{scheduled=false;const el=section.current;if(!el)return;const r=el.getBoundingClientRect();const amount=Math.max(1,el.offsetHeight-window.innerHeight+82);setScrollProgress(Math.max(0,Math.min(1,(82-r.top)/amount)));};const scroll=()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}};window.addEventListener('scroll',scroll,{passive:true});window.addEventListener('resize',scroll);update();return()=>{window.removeEventListener('scroll',scroll);window.removeEventListener('resize',scroll);};},[]);
-  const activePart=parts.find(p=>p.id===selected)!;
-  const activeModel=getVehicleModel(modelId);
-  function selectPart(id:string){setSelected(id);setManual(id==='body'?.55:1);}
-  return <section className={`explorer-track ${reduced?'reduced':''}`} id="repuestos" ref={section}>
-    <div className="explorer-sticky">
-      <div className="section-width explorer-heading">
-        <div><span className="eyebrow light-eyebrow"><span className="section-number">02</span> EXPLORA LO QUE TE MUEVE</span><h2>Extraordinario por fuera.<br/><span>Fascinante por dentro.</span></h2></div>
-        <div className="explore-hint"><Mouse size={22}/><p>Elige tu modelo. Gira para explorar.<br/><strong>Separa las piezas a tu ritmo.</strong></p></div>
-      </div>
-      <div className="explorer-layout section-width">
-        <div className="scene-column">
-          <div className="scene-meta"><span className="live-dot"/> EXPLORADOR 3D <span className="concept-tag">Referencia visual</span></div>
-          <div className="vehicle-model-picker">
-            <label htmlFor="vehicle-model">MODELO</label>
-            <select id="vehicle-model" value={modelId} aria-label="Modelo del explorador 3D" onChange={event=>{setModelId(event.target.value as VehicleModelId);setManual(0);setSelected('body');setRotate(false);}}>
-              {vehicleModels.map(model=><option key={model.id} value={model.id}>{model.name}</option>)}
-            </select>
-          </div>
-          <div className="scene-views" aria-label="Ángulo del vehículo">{([['perspective','3/4'],['front','Frente'],['side','Lateral'],['rear','Atrás']] as const).map(([id,label])=><button key={id} aria-pressed={view===id} onClick={()=>{setView(id);setResetView(value=>value+1);setRotate(false);}}>{label}</button>)}<button aria-pressed={reference} onClick={()=>setReference(!reference)}>Foto real</button></div>
-          {reference&&<figure className="scene-reference"><img src={activeModel.image} alt={`Fotografía de referencia ${activeModel.name}`}/><figcaption>{activeModel.name} · Imagen de catálogo</figcaption><button aria-label="Cerrar foto de referencia" onClick={()=>setReference(false)}><X size={14}/></button></figure>}
-          <div className="scene-canvas">{ready?<Suspense fallback={<div className="scene-loading"><Box size={34}/><span>Preparando tu experiencia…</span></div>}><VehicleScene modelId={modelId} progress={progress} selectedPart={progress>.08?selected:null} onSelectPart={selectPart} color={color} autoRotate={rotate} view={view} resetView={resetView}/></Suspense>:<div className="scene-loading"><Box size={34}/><span>Explora en tres dimensiones</span></div>}</div>
-          <span className="sr-only" role="status" aria-live="polite">Modelo seleccionado: {activeModel.name}</span>
-          <div className="scene-tools">
-            <div className="paint-controls" aria-label="Acabado del vehículo">{[['#c5cbc8','Plata'],['#edebe1','Perla'],['#343c39','Grafito'],['#ae272c','Rojo']].map(([hex,name])=><button key={hex} style={{background:hex}} className={color===hex?'selected':''} onClick={()=>setColor(hex)} aria-label={`Acabado ${name}`} aria-pressed={color===hex}/>)}</div>
-            <span className="drag-hint"><Move size={15}/> Arrastra para girar</span>
-            <button className={`scene-icon ${rotate?'active':''}`} onClick={()=>setRotate(!rotate)} disabled={reduced} aria-pressed={rotate} aria-label={rotate?'Detener giro automático':'Activar giro automático'}><RotateCcw size={17}/></button>
-            <button className="scene-icon" onClick={()=>{setManual(0);setSelected('body');setRotate(false);setView('perspective');setResetView(value=>value+1);}} aria-label="Ensamblar vehículo"><Layers3 size={17}/></button>
-          </div>
-        </div>
-        <aside className="parts-panel">
-          <div className="parts-label">SELECCIONA UN SISTEMA <span>05</span></div>
-          <div className="parts-list">{parts.map(part=><button key={part.id} className={selected===part.id?'selected':''} onClick={()=>selectPart(part.id)} aria-pressed={selected===part.id}><span className="part-number">{part.number}</span><span>{part.name}</span><ArrowUpRight size={17}/></button>)}</div>
-          <div className="part-detail" key={selected}><span className="eyebrow red-text">MIRA MÁS DE CERCA</span><h3>{activePart.label}</h3><p>{activePart.description}</p><span className="part-examples">{activePart.examples}</span><button className="button light full" onClick={()=>onQuote(`Repuestos · ${activeModel.name} · ${activePart.name}`)}>Consultar este sistema <ArrowRight size={17}/></button><small>Compatibilidad y referencia: validar por VIN.</small></div>
-        </aside>
-      </div>
-      <div className="explorer-bottom section-width">
-        <div className="explosion-control">
-          <div className="progress-caption"><span>{progress<.12?'Vehículo ensamblado':progress<.48?'Abriendo la carrocería':progress<.8?'Descubriendo la mecánica':'Vista de los componentes'}</span><button onClick={()=>setManual(manual===null?.85:null)}>{manual===null?'Control manual':'Seguir con el scroll'} <ArrowRight size={13}/></button></div>
-          <input aria-label="Nivel de despiece del vehículo" type="range" min="0" max="100" value={Math.round(progress*100)} onChange={e=>setManual(Number(e.target.value)/100)} style={{'--progress':`${progress*100}%`} as React.CSSProperties}/>
-          <div className="range-labels"><button onClick={()=>setManual(0)}>Ensamblado</button><button onClick={()=>setManual(.35)}>Apertura</button><button onClick={()=>setManual(.55)}>Carrocería</button><button onClick={()=>setManual(1)}>Despiece</button></div>
-        </div>
-        <p className="technical-note">Visualización conceptual. La geometría y disposición no corresponden a un despiece técnico Toyota.</p>
-        <a className="skip-explorer" href="#usados">Continuar explorando <ArrowDown size={15}/></a>
-      </div>
-    </div>
-  </section>;
-}
-
-function LocationSection() {
-  return <LocationMap/>;
-}
-
 export default function App() {
   const [catalogRecords,setCatalogRecords]=useState<CatalogRecord[]>(createInitialCatalog);
   const [catalogEdited,setCatalogEdited]=useState(false);
@@ -149,12 +85,12 @@ export default function App() {
   const featuredPrado=vehicles.find(vehicle=>vehicle.id==='new:prado');
   const [modal,setModal]=useState<ModalState>(null);
   const [navOpen,setNavOpen]=useState(false);
-  const readStory=()=>{try {const h=window.location.hash;return h.startsWith('#vehiculo/')?decodeURIComponent(h.slice(10)):'';}catch{return '';}};
-  const [storyId,setStoryId]=useState(readStory);
-  const storyVehicle=vehicles.find(v=>v.id===storyId);
-  useEffect(()=>{const change=()=>{const next=readStory();setStoryId(next);setNavOpen(false);if(!next){requestAnimationFrame(()=>document.getElementById(window.location.hash.slice(1)||'inicio')?.scrollIntoView({behavior:'instant'}));}};window.addEventListener('hashchange',change);return()=>window.removeEventListener('hashchange',change);},[]);
-  const openVehicle=(vehicle:Vehicle)=>{setModal(null);window.location.hash='vehiculo/'+encodeURIComponent(vehicle.id);};
-  const goTo=(section:string)=>{window.location.hash=section;setStoryId('');requestAnimationFrame(()=>document.getElementById(section)?.scrollIntoView({behavior:'instant'}));};
+  const location=useSiteLocation();
+  const route=resolveRoute(location.pathname);
+  const storyVehicle=vehicles.find(v=>v.id===route.vehicleId);
+  useEffect(()=>{setNavOpen(false);setModal(null);document.title=storyVehicle?`${storyVehicle.name} | Autoamérica`:pageTitle(route);},[location.pathname,storyVehicle?.name]);
+  const openVehicle=(vehicle:Vehicle)=>{setModal(null);navigate(vehiclePath(vehicle.id));};
+  const goTo=(section:string)=>{const paths:Record<string,string>={inicio:'/',modelos:'/nuevos',usados:'/usados',servicios:'/posventa',repuestos:'/posventa/repuestos',sedes:'/sedes'};navigate(paths[section]||'/');};
 
   const [compare,setCompare]=useState<string[]>([]);
   const [toast,setToast]=useState('');
@@ -171,14 +107,18 @@ export default function App() {
   const openCredit=(subject:string,price?:number)=>setModal({kind:'credit',subject,price});
   useEffect(()=>{if(!toast)return;const timer=setTimeout(()=>setToast(''),3500);return()=>clearTimeout(timer);},[toast]);
   function toggleCompare(id:string){setCompare(prev=>{if(prev.includes(id))return prev.filter(x=>x!==id);if(prev.length>=2){setToast('Puedes comparar dos vehículos. Retira uno para cambiar tu selección.');return prev;}return [...prev,id];});}
-  return <><a className="skip-link" href="#modelos">Ir al contenido</a><div className="utility-bar"><div className="section-width"><span>El respaldo de siempre. Una nueva forma de explorarlo.</span><button onClick={()=>setModal({kind:'proposal'})}>Propuesta interactiva <ArrowUpRight size={12}/></button></div></div><header className="main-header"><div className="header-inner section-width"><Logo/><nav className={navOpen?'main-nav open':'main-nav'} aria-label="Navegación principal">{[['Vehículos','#modelos'],['Usados','#usados'],['Repuestos 3D','#repuestos'],['Servicios','#servicios'],['Sedes','#sedes']].map(([label,to])=><a key={to} href={to} onClick={()=>setNavOpen(false)}>{label}{label==='Repuestos 3D'&&<span className="nav-dot"/>}</a>)}</nav><ThemeSwitch/><button className="button red header-cta" onClick={()=>openQuote('Mi próximo Toyota')}>Hablemos <ArrowUpRight size={16}/></button><button className="mobile-menu icon-button" onClick={()=>setNavOpen(!navOpen)} aria-label={navOpen?'Cerrar menú':'Abrir menú'} aria-expanded={navOpen}>{navOpen?<X/>:<Menu/>}</button></div></header>
-  <main>{storyId ? (storyVehicle ? <Suspense fallback={<div className="aa-story-loading" role="status">Preparando tu siguiente historia…</div>}><VehicleStory key={storyVehicle.id} vehicle={storyVehicle} onBack={()=>goTo('modelos')} onQuote={openQuote} onCredit={openCredit} onExplorer={()=>goTo('repuestos')}/></Suspense> : <div className="aa-empty"><h1>Este modelo no está publicado.</h1><button className="button red" onClick={()=>goTo('modelos')}>Volver al catálogo</button></div>) : <>
-  <LandingHero featured={featuredPrado} onDiscover={openVehicle} onQuote={openQuote}/>
-  <NewVehicleCarousel items={vehicles} selected={compare} onCompare={toggleCompare} onDiscover={openVehicle} onQuote={openQuote} onCredit={openCredit}/>
-  <UsedVehicleCatalog onQuote={openQuote} onCredit={openCredit} items={usedVehicles} isEdited={catalogEdited} selected={compare} onCompare={toggleCompare}/><Explorer onQuote={openQuote}/>
-  <section className="services-section section-pad" id="servicios"><div className="section-width"><div className="section-heading"><div><span className="eyebrow"><span className="section-number">04</span> CONTIGO, KILÓMETRO A KILÓMETRO</span><h2>El respaldo se siente.<br/>En cada detalle.</h2></div><p>Mucho más que encontrar tu Toyota.<br/>Todo para seguir disfrutándolo.</p></div><div className="services-layout"><div className="service-feature"><img src="/assets/taller.webp" alt="Servicio de taller Autoamérica" loading="lazy"/><div className="service-feature-shade"/><div className="service-feature-copy"><span className="eyebrow">TU TOYOTA, EN BUENAS MANOS</span><h3>Cuídalo como<br/>el primer día.</h3><a className="button light" href="https://autoamerica.com.co/pide-tu-cita/" target="_blank" rel="noreferrer">Agenda tu cita <ArrowUpRight size={18}/></a></div></div><div className="service-options">{[[CalendarDays,'Taller y mantenimiento','Encuentra el servicio que tu Toyota necesita.','https://autoamerica.com.co/taller/'],[Box,'Repuestos y accesorios','La pieza correcta para continuar tu historia.','https://autoamerica.com.co/repuesto/'],[CreditCard,'Pagos en línea','Accede al portal oficial de pagos.','https://autoamerica.com.co/pagos/'],[ShieldCheck,'Financiación','Conoce las alternativas para tu próximo Toyota.','https://autoamerica.com.co/planes-vigentes/']].map(([Icon,title,desc,url])=>{const I=Icon as typeof Box;return <a className="service-row" key={String(title)} href={String(url)} target="_blank" rel="noreferrer"><span className="service-icon"><I size={25}/></span><span><h3>{String(title)}</h3><p>{String(desc)}</p></span><ArrowUpRight size={22}/></a>;})}</div></div></div></section>
-  <LocationSection/><section className="final-cta"><div className="section-width"><span className="eyebrow">TÚ PONES EL DESTINO.</span><h2>Vamos por<br/>lo que viene.</h2><button className="button light" onClick={()=>openQuote('Asesoría Autoamérica')}>Conversemos <ArrowUpRight size={20}/></button><span className="cta-outline" aria-hidden="true">A</span></div></section></>}</main>
-  <footer><div className="section-width"><div className="footer-main"><div><Logo inverse/><p>El respaldo que conoces.<br/>Los caminos que faltan por descubrir.</p><a className="footer-phone" href="tel:+576044441121"><Phone size={16}/> 60 (4) 444 11 21</a></div><div><h4>Tu próximo Toyota</h4><a href="#modelos">Vehículos nuevos</a><a href="#usados">Vehículos usados</a><a href="https://autoamerica.com.co/flotas-toyota-autoamerica/" target="_blank" rel="noreferrer">Flotas y empresas</a><a href="https://autoamerica.com.co/home/" target="_blank" rel="noreferrer">Catálogo completo</a></div><div><h4>Siempre contigo</h4><a href="#servicios">Taller y mantenimiento</a><a href="#repuestos">Repuestos</a><a href="#sedes">Sedes y horarios</a><a href="https://autoamerica.com.co/contacto/" target="_blank" rel="noreferrer">Contáctanos</a></div><div><h4>Autoamérica</h4><a href="https://autoamerica.com.co/historia/" target="_blank" rel="noreferrer">Nuestra historia</a><a href="https://autoamerica.com.co/politica-tratamiento-de-datos-personales/" target="_blank" rel="noreferrer">Tratamiento de datos</a><a href="https://autoamerica.com.co/terminos-y-condiciones/" target="_blank" rel="noreferrer">Términos y condiciones</a><button onClick={()=>setModal({kind:'proposal'})}>Acerca de esta propuesta <ArrowUpRight size={13}/></button><button onClick={()=>setModal({kind:'cms'})}>Administrar catálogo <Settings2 size={13}/></button></div></div><div className="footer-bottom"><span>© 2026 Autoamérica · Propuesta de experiencia digital</span><span>Diseñado para explorar. Creado para conectar.</span></div></div></footer>
+  return <><a className="skip-link" href="#contenido">Ir al contenido</a><div className="utility-bar"><div className="section-width"><span>El respaldo de siempre. Una nueva forma de explorarlo.</span><button onClick={()=>setModal({kind:'proposal'})}>Propuesta interactiva <ArrowUpRight size={12}/></button></div></div><header className="main-header"><div className="header-inner section-width"><Logo/><nav className={navOpen?'main-nav open':'main-nav'} aria-label="Navegación principal">{[['Inicio','/'],['Nuevos','/nuevos'],['Usados','/usados'],['Posventa','/posventa'],['Sedes','/sedes']].map(([label,to])=><SiteLink key={to} href={to} aria-current={(to==='/'?location.pathname==='/':location.pathname===to||location.pathname.startsWith(to+'/'))?'page':undefined} onClick={()=>setNavOpen(false)}>{label}</SiteLink>)}</nav><ThemeSwitch/><button className="button red header-cta" onClick={()=>openQuote('Mi próximo Toyota')}>Hablemos <ArrowUpRight size={16}/></button><button className="mobile-menu icon-button" onClick={()=>setNavOpen(!navOpen)} aria-label={navOpen?'Cerrar menú':'Abrir menú'} aria-expanded={navOpen}>{navOpen?<X/>:<Menu/>}</button></div></header>
+  <main id="contenido" tabIndex={-1}><PageErrorBoundary key={location.pathname}><Suspense fallback={<div className="aa-route-loading" role="status"><span/> Preparando tu experiencia...</div>}><RouteReady path={location.pathname}>
+    {route.page==='home'&&<HomePage/>}
+    {route.page==='new'&&<div data-page="new"><NewVehicleCarousel items={vehicles} selected={compare} onCompare={toggleCompare} onDiscover={openVehicle} onQuote={openQuote} onCredit={openCredit}/></div>}
+    {route.page==='used'&&<div data-page="used"><UsedVehicleCatalog onQuote={openQuote} onCredit={openCredit} items={usedVehicles} isEdited={catalogEdited} selected={compare} onCompare={toggleCompare}/></div>}
+    {route.page==='aftersales'&&<AftersalesPage/>}
+    {route.page==='locations'&&<div data-page="locations"><div className="aa-route-label section-width"><SiteLink href="/">Inicio</SiteLink><span>/</span><h1>Sedes y horarios</h1></div><LocationMap/></div>}
+    {route.page==='parts'&&<div data-page="parts"><div className="aa-route-label section-width"><SiteLink href="/posventa">Posventa</SiteLink><span>/</span><h1>Repuestos y explorador 3D</h1></div><Explorer onQuote={openQuote}/></div>}
+    {route.page==='vehicle'&&(storyVehicle?<VehicleStory key={storyVehicle.id} vehicle={storyVehicle} onBack={()=>goTo('modelos')} onQuote={openQuote} onCredit={openCredit} onExplorer={()=>goTo('repuestos')}/>:<section className="section-width aa-empty aa-missing-page"><h1>Este modelo no está publicado.</h1><p>Puede haber sido retirado del catálogo. No mostramos información de otra unidad.</p><SiteLink className="button red" href="/nuevos">Volver a nuevos</SiteLink></section>)}
+    {route.page==='not-found'&&<section className="section-width aa-empty aa-missing-page"><span className="aa-kicker">404 / RUTA NO ENCONTRADA</span><h1>Ese camino no está aquí.</h1><p>Vuelve al inicio y elige nuevos, usados o posventa.</p><SiteLink className="button red" href="/">Elegir mi destino <ArrowRight size={18}/></SiteLink></section>}
+  </RouteReady></Suspense></PageErrorBoundary></main>
+  <footer><div className="section-width"><div className="footer-main"><div><Logo inverse/><p>El respaldo que conoces.<br/>Los caminos que faltan por descubrir.</p><a className="footer-phone" href="tel:+576044441121"><Phone size={16}/> 60 (4) 444 11 21</a></div><div><h4>Tu próximo Toyota</h4><SiteLink href="/nuevos">Vehículos nuevos</SiteLink><SiteLink href="/usados">Vehículos usados</SiteLink><a href="https://autoamerica.com.co/flotas-toyota-autoamerica/" target="_blank" rel="noreferrer">Flotas y empresas</a><a href="https://autoamerica.com.co/home/" target="_blank" rel="noreferrer">Catálogo completo</a></div><div><h4>Siempre contigo</h4><SiteLink href="/posventa">Taller y mantenimiento</SiteLink><SiteLink href="/posventa/repuestos">Repuestos</SiteLink><SiteLink href="/sedes">Sedes y horarios</SiteLink><a href="https://autoamerica.com.co/contacto/" target="_blank" rel="noreferrer">Contáctanos</a></div><div><h4>Autoamérica</h4><a href="https://autoamerica.com.co/historia/" target="_blank" rel="noreferrer">Nuestra historia</a><a href="https://autoamerica.com.co/politica-tratamiento-de-datos-personales/" target="_blank" rel="noreferrer">Tratamiento de datos</a><a href="https://autoamerica.com.co/terminos-y-condiciones/" target="_blank" rel="noreferrer">Términos y condiciones</a><button onClick={()=>setModal({kind:'proposal'})}>Acerca de esta propuesta <ArrowUpRight size={13}/></button><button onClick={()=>setModal({kind:'cms'})}>Administrar catálogo <Settings2 size={13}/></button></div></div><div className="footer-bottom"><span>© 2026 Autoamérica · Propuesta de experiencia digital</span><span>Diseñado para explorar. Creado para conectar.</span></div></div></footer>
   {compare.length>0&&<div className="compare-bar"><span><Layers3 size={18}/> {compare.length} de 2 vehículos seleccionados</span><button className="button red small" onClick={()=>setModal({kind:'compare'})} disabled={compare.length<2}>Comparar <ArrowRight size={16}/></button><button className="icon-button" onClick={()=>setCompare([])} aria-label="Limpiar comparación"><X size={17}/></button></div>}{toast&&<div role="status" className="toast">{toast}</div>}
   <Modal state={modal} onClose={()=>setModal(null)}>{modal?.kind==='quote'?<QuoteForm key={modal.subject} subject={modal.subject}/>:modal?.kind==='proposal'?<Proposal onAdmin={()=>setModal({kind:'cms'})}/>:modal?.kind==='cms'?<Suspense fallback={<div className="cms-loading">Preparando el catálogo de mercadeo…</div>}><AdminCMS records={catalogRecords} onSave={saveCatalogRecord} onReset={resetCatalog} onOpenSite={openCatalog}/></Suspense>:modal?.kind==='vehicle'?<div className="vehicle-modal"><span className="eyebrow red-text">ENCUENTRA TU PRÓXIMO CAMINO</span><h2>{modal.vehicle.name}</h2><p>{modal.vehicle.description}</p><div className="vehicle-modal-image"><img src={modal.vehicle.image} alt={modal.vehicle.name}/></div><div className="vehicle-summary"><div><span>Carrocería</span><strong>{modal.vehicle.category}</strong></div><div><span>Motorización de la gama</span><strong>{modal.vehicle.power}</strong></div><div><span>Precio y disponibilidad</span><strong>{modal.vehicle.price?money(modal.vehicle.price):'Consulta tu versión'}</strong></div></div>{modal.vehicle.origin==='marketing'&&<div className="vehicle-summary"><div><span>Año</span><strong>{modal.vehicle.year||'Por confirmar'}</strong></div><div><span>Sede</span><strong>{modal.vehicle.location||'Por confirmar'}</strong></div><div><span>Transmisión</span><strong>{modal.vehicle.transmission||'Por confirmar'}</strong></div></div>}<p className="notice">{modal.vehicle.origin==='marketing'?'Ficha editada en el CMS de demostración. Datos de prueba, sujetos a validación.':'Imagen comercial de referencia. Consulta equipamiento, colores, versiones y precio vigente con Autoamérica.'}</p><div className="modal-actions"><button className="button red" onClick={()=>openQuote(modal.vehicle.name)}>Quiero cotizar <ArrowRight size={18}/></button><a className="button outline" href={modal.vehicle.url||"https://autoamerica.com.co/contacto/"} target="_blank" rel="noreferrer">{modal.vehicle.url?"Consultar fuente oficial":"Contactar a Autoamérica"} <ArrowUpRight size={17}/></a></div></div>:modal?.kind==='credit'?<CreditSimulator subject={modal.subject} price={modal.price} onQuote={openQuote}/>:modal?.kind==='compare'?<VehicleCompare items={[...vehicles,...usedVehicles].filter(v=>compare.includes(v.id))} onQuote={openQuote} onRemove={toggleCompare}/>:null}</Modal>
   </>;

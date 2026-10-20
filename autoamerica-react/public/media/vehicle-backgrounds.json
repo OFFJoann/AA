@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "reviewedOn": "2026-10-20",
+  "notice": "No hay videos incorporados ni autorizaciones inferidas. Las paginas son referencias, no archivos MP4. Cada modelo requiere revision de mercado, version y derechos.",
+  "models": {
+    "prado": {
+      "name": "Land Cruiser Prado",
+      "referencePage": "https://www.toyota.com/vehicles/landcruiser/2027",
+      "video": null,
+      "status": "pending-source-file-fitment-and-permission"
+    },
+    "hilux": {
+      "name": "Hilux",
+      "referencePage": "https://www.toyota.com.co/vehiculos/pick-ups/hilux",
+      "video": null,
+      "status": "pending-source-file-fitment-and-permission"
+    },
+    "corolla-cross": {
+      "name": "Corolla Cross HEV",
+      "referencePage": "https://www.toyota.com/corollacross/",
+      "video": null,
+      "status": "pending-source-file-fitment-and-permission"
+    },
+    "rav4": {
+      "name": "RAV4 HEV",
+      "referencePage": "https://www.toyota.com/rav4/",
+      "video": null,
+      "status": "pending-source-file-fitment-and-permission"
+    },
+    "yaris-cross": {
+      "name": "Yaris Cross HEV",
+      "referencePage": null,
+      "video": null,
+      "status": "pending-source-file-fitment-and-permission"
+    }
+  }
+}

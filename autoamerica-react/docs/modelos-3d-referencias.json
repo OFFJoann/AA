@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "reviewedOn": "2026-10-20",
+  "scope": "Muestra documental para preparacion del despiece. NO es inventario exhaustivo ni se importa al renderer.",
+  "viewerReference": "https://www.toyota.com/",
+  "partsReference": "https://toyocar.com.co/",
+  "editableToyotaAssetObtained": false,
+  "embeddedToyotaViewer": false,
+  "models": [
+    {
+      "id": "prado",
+      "glb": null,
+      "fitmentApproved": false,
+      "parts": []
+    },
+    {
+      "id": "hilux",
+      "glb": null,
+      "fitmentApproved": false,
+      "parts": []
+    },
+    {
+      "id": "corolla-cross",
+      "glb": null,
+      "fitmentApproved": false,
+      "parts": []
+    },
+    {
+      "id": "rav4",
+      "glb": null,
+      "fitmentApproved": false,
+      "parts": []
+    }
+  ],
+  "retailExamples": [
+    {
+      "name": "Cerradura de puerta trasera izquierda",
+      "supplierPartNumber": "69060-33120",
+      "reportedModel": "Prado TX",
+      "reportedYears": "2010-2020",
+      "targetNewModelFitment": "not-validated",
+      "geometry": null,
+      "source": "https://toyocar.com.co/producto/cerradura-trasera-izquierda-toyota-prado-tx-10-20-4runner-09-13-69060-33120/"
+    },
+    {
+      "name": "Rejilla de parachoques delantero",
+      "supplierPartNumber": "53112-0K160",
+      "reportedModel": "Hilux Revo",
+      "reportedYears": "2015-2024",
+      "targetNewModelFitment": "not-validated",
+      "geometry": null,
+      "source": "https://toyocar.com.co/producto/rejilla-de-bomper-toyota-hilux-revo-15-24-53112-0k160/"
+    }
+  ],
+  "designRequirements": [
+    "Separar exterior 360, panorama interior y despiece 3D.",
+    "Modelo, ano, mercado, version y motor verificados antes de asociar piezas.",
+    "Cada pieza visible debe tener geometria y transformacion original propia.",
+    "Requiere correspondencia entre pieza, nodo y fuente; no basta copiar un nombre.",
+    "Los nodos sin modelar permanecen pendientes, no se representan como piezas exactas.",
+    "No mostrar precios, disponibilidad ni enlaces de compra en el despiece.",
+    "La secuencia visual no es un procedimiento de reparacion."
+  ]
+}

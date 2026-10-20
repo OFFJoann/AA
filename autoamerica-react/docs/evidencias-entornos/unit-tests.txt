@@ -1,0 +1,484 @@
+TAP version 13
+# (node:3316) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: both sides extract along the wheel-arch axis before lifting
+ok 1 - both sides extract along the wheel-arch axis before lifting
+  ---
+  duration_ms: 15.217495
+  type: 'test'
+  ...
+# Subtest: roof and bonnet clear the next assemblies before they move
+ok 2 - roof and bonnet clear the next assemblies before they move
+  ---
+  duration_ms: 13.077771
+  type: 'test'
+  ...
+# Subtest: hybrid module leaves the floor footprint before rising
+ok 3 - hybrid module leaves the floor footprint before rising
+  ---
+  duration_ms: 2.724985
+  type: 'test'
+  ...
+# Subtest: all paths clamp their endpoints and reassemble without hysteresis
+ok 4 - all paths clamp their endpoints and reassemble without hysteresis
+  ---
+  duration_ms: 1.756266
+  type: 'test'
+  ...
+# (node:3317) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: separate route /
+ok 5 - separate route /
+  ---
+  duration_ms: 0.986526
+  type: 'test'
+  ...
+# Subtest: separate route /nuevos
+ok 6 - separate route /nuevos
+  ---
+  duration_ms: 0.120922
+  type: 'test'
+  ...
+# Subtest: separate route /usados
+ok 7 - separate route /usados
+  ---
+  duration_ms: 0.234593
+  type: 'test'
+  ...
+# Subtest: separate route /posventa
+ok 8 - separate route /posventa
+  ---
+  duration_ms: 0.082754
+  type: 'test'
+  ...
+# Subtest: separate route /posventa/repuestos
+ok 9 - separate route /posventa/repuestos
+  ---
+  duration_ms: 0.07294
+  type: 'test'
+  ...
+# Subtest: separate route /sedes
+ok 10 - separate route /sedes
+  ---
+  duration_ms: 0.115464
+  type: 'test'
+  ...
+# Subtest: model ID round trip
+ok 11 - model ID round trip
+  ---
+  duration_ms: 0.283877
+  type: 'test'
+  ...
+# Subtest: unknown paths do not show homepage
+ok 12 - unknown paths do not show homepage
+  ---
+  duration_ms: 0.09336
+  type: 'test'
+  ...
+# Subtest: invalid percent encodings are handled
+ok 13 - invalid percent encodings are handled
+  ---
+  duration_ms: 4.036901
+  type: 'test'
+  ...
+# Subtest: encoded path traversal does not become a model
+ok 14 - encoded path traversal does not become a model
+  ---
+  duration_ms: 0.553584
+  type: 'test'
+  ...
+# Subtest: trailing slash is accepted
+ok 15 - trailing slash is accepted
+  ---
+  duration_ms: 0.141804
+  type: 'test'
+  ...
+# Subtest: old hashes preserve filters and campaign queries
+ok 16 - old hashes preserve filters and campaign queries
+  ---
+  duration_ms: 0.202966
+  type: 'test'
+  ...
+# Subtest: old vehicle bookmarks map to canonical path
+ok 17 - old vehicle bookmarks map to canonical path
+  ---
+  duration_ms: 0.100872
+  type: 'test'
+  ...
+# Subtest: old service bookmarks map to independent page
+ok 18 - old service bookmarks map to independent page
+  ---
+  duration_ms: 0.267503
+  type: 'test'
+  ...
+# Subtest: chapter hash is not mistaken for a page
+ok 19 - chapter hash is not mistaken for a page
+  ---
+  duration_ms: 0.113962
+  type: 'test'
+  ...
+# Subtest: foreign redirect refused
+ok 20 - foreign redirect refused
+  ---
+  duration_ms: 0.197548
+  type: 'test'
+  ...
+# Subtest: route title
+ok 21 - route title
+  ---
+  duration_ms: 0.209025
+  type: 'test'
+  ...
+# Subtest: cinematic endpoints clamp correctly
+ok 22 - cinematic endpoints clamp correctly
+  ---
+  duration_ms: 0.141463
+  type: 'test'
+  ...
+# Subtest: crossfade is bounded and holds for reading
+ok 23 - crossfade is bounded and holds for reading
+  ---
+  duration_ms: 0.317188
+  type: 'test'
+  ...
+# Subtest: scroll choreography is reversible without hidden state
+ok 24 - scroll choreography is reversible without hidden state
+  ---
+  duration_ms: 1.883247
+  type: 'test'
+  ...
+# Subtest: single scene does not fade out
+ok 25 - single scene does not fade out
+  ---
+  duration_ms: 0.115625
+  type: 'test'
+  ...
+# Subtest: track math accounts for sticky header
+ok 26 - track math accounts for sticky header
+  ---
+  duration_ms: 0.981769
+  type: 'test'
+  ...
+# Subtest: four technical models have independent profiles
+ok 27 - four technical models have independent profiles
+  ---
+  duration_ms: 0.121263
+  type: 'test'
+  ...
+# Subtest: all technical rows have an explicit official/dealer source
+ok 28 - all technical rows have an explicit official/dealer source
+  ---
+  duration_ms: 0.412671
+  type: 'test'
+  ...
+# Subtest: marketing edits never inherit reference specs merely by ID
+ok 29 - marketing edits never inherit reference specs merely by ID
+  ---
+  duration_ms: 0.114312
+  type: 'test'
+  ...
+# Subtest: Prado TX never acquires TX-L-specific imagery
+ok 30 - Prado TX never acquires TX-L-specific imagery
+  ---
+  duration_ms: 0.150917
+  type: 'test'
+  ...
+# Subtest: Cross 2026 PDF is never relabelled 2027
+ok 31 - Cross 2026 PDF is never relabelled 2027
+  ---
+  duration_ms: 0.129155
+  type: 'test'
+  ...
+# Subtest: RAV4 HEV never inherits a PHEV download or unverified photograph
+ok 32 - RAV4 HEV never inherits a PHEV download or unverified photograph
+  ---
+  duration_ms: 0.107552
+  type: 'test'
+  ...
+# Subtest: hybrid power is differentiated from individual electric motor
+ok 33 - hybrid power is differentiated from individual electric motor
+  ---
+  duration_ms: 0.135784
+  type: 'test'
+  ...
+# Subtest: archived Cross 2026 never receives a current 2027 reference image
+ok 34 - archived Cross 2026 never receives a current 2027 reference image
+  ---
+  duration_ms: 0.092859
+  type: 'test'
+  ...
+# Subtest: Prado diesel never uses the gasoline studio image
+ok 35 - Prado diesel never uses the gasoline studio image
+  ---
+  duration_ms: 0.114042
+  type: 'test'
+  ...
+# (node:3318) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: all brands remain visible without filters
+ok 36 - all brands remain visible without filters
+  ---
+  duration_ms: 3.549938
+  type: 'test'
+  ...
+# Subtest: brand selection supports Mazda (not only Toyota)
+ok 37 - brand selection supports Mazda (not only Toyota)
+  ---
+  duration_ms: 1.117313
+  type: 'test'
+  ...
+# Subtest: multiple brands use OR within the same facet
+ok 38 - multiple brands use OR within the same facet
+  ---
+  duration_ms: 0.30568
+  type: 'test'
+  ...
+# Subtest: different facets combine with AND
+ok 39 - different facets combine with AND
+  ---
+  duration_ms: 0.309957
+  type: 'test'
+  ...
+# Subtest: accent-insensitive location and search
+ok 40 - accent-insensitive location and search
+  ---
+  duration_ms: 0.153852
+  type: 'test'
+  ...
+# Subtest: search tolerates leading spaces and unordered tokens
+ok 41 - search tolerates leading spaces and unordered tokens
+  ---
+  duration_ms: 0.183596
+  type: 'test'
+  ...
+# Subtest: brand changes clear dependent model selection
+ok 42 - brand changes clear dependent model selection
+  ---
+  duration_ms: 0.178088
+  type: 'test'
+  ...
+# Subtest: price range includes both boundaries
+ok 43 - price range includes both boundaries
+  ---
+  duration_ms: 0.353001
+  type: 'test'
+  ...
+# Subtest: unknown prices are excluded when a price range is active
+ok 44 - unknown prices are excluded when a price range is active
+  ---
+  duration_ms: 0.446212
+  type: 'test'
+  ...
+# Subtest: zero actual mileage is supported
+ok 45 - zero actual mileage is supported
+  ---
+  duration_ms: 0.533273
+  type: 'test'
+  ...
+# Subtest: unknown mileage -1 is not interpreted as low mileage
+ok 46 - unknown mileage -1 is not interpreted as low mileage
+  ---
+  duration_ms: 0.240372
+  type: 'test'
+  ...
+# Subtest: year range includes boundaries
+ok 47 - year range includes boundaries
+  ---
+  duration_ms: 0.157668
+  type: 'test'
+  ...
+# Subtest: inverted ranges give a useful message and no results
+ok 48 - inverted ranges give a useful message and no results
+  ---
+  duration_ms: 0.281153
+  type: 'test'
+  ...
+# Subtest: negative ranges rejected
+ok 49 - negative ranges rejected
+  ---
+  duration_ms: 0.155965
+  type: 'test'
+  ...
+# Subtest: NaN ranges rejected
+ok 50 - NaN ranges rejected
+  ---
+  duration_ms: 0.096225
+  type: 'test'
+  ...
+# Subtest: empty results are valid
+ok 51 - empty results are valid
+  ---
+  duration_ms: 0.140562
+  type: 'test'
+  ...
+# Subtest: manual and mechanical transmission normalize to Manual
+ok 52 - manual and mechanical transmission normalize to Manual
+  ---
+  duration_ms: 0.26572
+  type: 'test'
+  ...
+# Subtest: certification is never inferred
+ok 53 - certification is never inferred
+  ---
+  duration_ms: 0.158689
+  type: 'test'
+  ...
+# Subtest: favorite filter uses only selected IDs
+ok 54 - favorite filter uses only selected IDs
+  ---
+  duration_ms: 0.141283
+  type: 'test'
+  ...
+# Subtest: price ascending puts unknown prices last
+ok 55 - price ascending puts unknown prices last
+  ---
+  duration_ms: 0.189446
+  type: 'test'
+  ...
+# Subtest: price descending puts unknown prices last
+ok 56 - price descending puts unknown prices last
+  ---
+  duration_ms: 0.933717
+  type: 'test'
+  ...
+# Subtest: year descending
+ok 57 - year descending
+  ---
+  duration_ms: 0.216185
+  type: 'test'
+  ...
+# Subtest: mileage ascending
+ok 58 - mileage ascending
+  ---
+  duration_ms: 0.154342
+  type: 'test'
+  ...
+# Subtest: sort does not mutate original inventory
+ok 59 - sort does not mutate original inventory
+  ---
+  duration_ms: 0.178449
+  type: 'test'
+  ...
+# Subtest: model facet respects selected brands
+ok 60 - model facet respects selected brands
+  ---
+  duration_ms: 0.286061
+  type: 'test'
+  ...
+# Subtest: facet counts ignore only their own selection
+ok 61 - facet counts ignore only their own selection
+  ---
+  duration_ms: 9.581844
+  type: 'test'
+  ...
+# Subtest: unknown attributes do not acquire an invented brand
+ok 62 - unknown attributes do not acquire an invented brand
+  ---
+  duration_ms: 0.239401
+  type: 'test'
+  ...
+# Subtest: URL roundtrip keeps multi-selections, range and sort
+ok 63 - URL roundtrip keeps multi-selections, range and sort
+  ---
+  duration_ms: 0.726824
+  type: 'test'
+  ...
+# Subtest: unrelated campaign parameters are preserved
+ok 64 - unrelated campaign parameters are preserved
+  ---
+  duration_ms: 0.154262
+  type: 'test'
+  ...
+# Subtest: clearing filters removes all u_ params
+ok 65 - clearing filters removes all u_ params
+  ---
+  duration_ms: 0.206521
+  type: 'test'
+  ...
+# Subtest: invalid URL sort and numbers use safe defaults
+ok 66 - invalid URL sort and numbers use safe defaults
+  ---
+  duration_ms: 0.207803
+  type: 'test'
+  ...
+# Subtest: normalization strips accents
+ok 67 - normalization strips accents
+  ---
+  duration_ms: 0.097357
+  type: 'test'
+  ...
+# Subtest: quarantined reference images never appear
+ok 68 - quarantined reference images never appear
+  ---
+  duration_ms: 0.167171
+  type: 'test'
+  ...
+# Subtest: used images may come from a multibrand HTTPS source
+ok 69 - used images may come from a multibrand HTTPS source
+  ---
+  duration_ms: 0.240252
+  type: 'test'
+  ...
+# Subtest: script URLs are rejected
+ok 70 - script URLs are rejected
+  ---
+  duration_ms: 0.148504
+  type: 'test'
+  ...
+# Subtest: script image URLs are rejected
+ok 71 - script image URLs are rejected
+  ---
+  duration_ms: 0.184948
+  type: 'test'
+  ...
+# Subtest: photo uploads allow raster formats, not SVG data scripts
+ok 72 - photo uploads allow raster formats, not SVG data scripts
+  ---
+  duration_ms: 0.141113
+  type: 'test'
+  ...
+# Subtest: zero/missing price is not advertised as free
+ok 73 - zero/missing price is not advertised as free
+  ---
+  duration_ms: 0.130466
+  type: 'test'
+  ...
+# Subtest: maps URLs preserve address \# characters by encoding
+ok 74 - maps URLs preserve address \# characters by encoding
+  ---
+  duration_ms: 0.508005
+  type: 'test'
+  ...
+# Subtest: maps does not request location or define a false origin
+ok 75 - maps does not request location or define a false origin
+  ---
+  duration_ms: 0.210147
+  type: 'test'
+  ...
+# Subtest: reviewed Place IDs are propagated
+ok 76 - reviewed Place IDs are propagated
+  ---
+  duration_ms: 0.263507
+  type: 'test'
+  ...
+# Subtest: embed URL rejects non Google host
+ok 77 - embed URL rejects non Google host
+  ---
+  duration_ms: 0.224978
+  type: 'test'
+  ...
+# Subtest: reviewed official Google embed accepted
+ok 78 - reviewed official Google embed accepted
+  ---
+  duration_ms: 0.179961
+  type: 'test'
+  ...
+1..78
+# tests 78
+# suites 0
+# pass 78
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 211.87061

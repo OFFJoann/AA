@@ -7,5 +7,8 @@ import './experience.css';
 import './styles/brand.css';
 import './styles/vehicles.css';
 import './styles/used-vehicles.css';
+import './styles/entornos.css';
+import './styles/cinematic.css';
+import './styles/motion-landing.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);

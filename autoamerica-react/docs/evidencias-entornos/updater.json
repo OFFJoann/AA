@@ -1,0 +1,53 @@
+{
+  "environment": "Local temporary Git repositories on Linux, Node 22; no remote GitHub access. Includes CRLF normalization check.",
+  "results": [
+    {
+      "test": "dry-run does not change any file",
+      "passed": true
+    },
+    {
+      "test": "apply succeeds with complete manifest",
+      "passed": true
+    },
+    {
+      "test": "all output hashes match intended payload",
+      "passed": true
+    },
+    {
+      "test": "repeat apply is idempotent",
+      "passed": true
+    },
+    {
+      "test": "restore dry-run does not change files",
+      "passed": true
+    },
+    {
+      "test": "restore recovers exact prior contents",
+      "passed": true
+    },
+    {
+      "test": "unknown teammate version is rejected without writing",
+      "passed": true
+    },
+    {
+      "test": "shared dependency changes are rejected",
+      "passed": true
+    },
+    {
+      "test": "new path occupied by teammate is not overwritten",
+      "passed": true
+    },
+    {
+      "test": "dirty working tree is rejected without data loss",
+      "passed": true
+    },
+    {
+      "test": "restore preserves subsequent local edits",
+      "passed": true
+    },
+    {
+      "test": "CRLF equivalent content accepted after index refresh",
+      "passed": true
+    }
+  ]
+}

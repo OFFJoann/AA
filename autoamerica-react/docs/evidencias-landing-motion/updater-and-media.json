@@ -1,0 +1,53 @@
+{
+  "environment": "Local temporary Git repositories and synthetic MP4; production repository not touched.",
+  "checks": [
+    {
+      "name": "Updater dry run changes nothing",
+      "pass": true
+    },
+    {
+      "name": "Updater applies with backup",
+      "pass": true
+    },
+    {
+      "name": "Updater does not commit",
+      "pass": true
+    },
+    {
+      "name": "Repeated update is idempotent",
+      "pass": true
+    },
+    {
+      "name": "Restore preview succeeds",
+      "pass": true
+    },
+    {
+      "name": "Restore recovers clean base",
+      "pass": true
+    },
+    {
+      "name": "Rejects newer team content without overwrite",
+      "pass": true
+    },
+    {
+      "name": "Rejects dirty repo without deleting unknown files",
+      "pass": true
+    },
+    {
+      "name": "Video import dry run preserves registry",
+      "pass": true
+    },
+    {
+      "name": "Video import writes only requested model file",
+      "pass": true
+    },
+    {
+      "name": "Video import backs up original registry",
+      "pass": true
+    },
+    {
+      "name": "Rejects HTML disguised as MP4",
+      "pass": true
+    }
+  ]
+}

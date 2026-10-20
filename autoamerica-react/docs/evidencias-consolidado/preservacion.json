@@ -1,0 +1,77 @@
+[
+  {
+    "file": "autoamerica-react/package.json",
+    "identicalToLandingMotion": true,
+    "sha256": "d86597e3110645c308153f74781f0531e093e6c3bea456047692c1e12a5b40b8"
+  },
+  {
+    "file": "autoamerica-react/package-lock.json",
+    "identicalToLandingMotion": true,
+    "sha256": "e58740d2bac22184741d35e5bd68b60914716dc840b2e79ea79a0e521d8b93d0"
+  },
+  {
+    "file": "autoamerica-react/Dockerfile",
+    "identicalToLandingMotion": true,
+    "sha256": "b665860c9fc3e0d3e2e5f267f6d47bfe2a35200ba3c176da50f4068a6b572639"
+  },
+  {
+    "file": "autoamerica-react/compose.yaml",
+    "identicalToLandingMotion": true,
+    "sha256": "9c5a8ee0725b3fd25e9721e4d182847898fecc31552bf746b0185e0dd7d09f44"
+  },
+  {
+    "file": "autoamerica-react/nginx.conf",
+    "identicalToLandingMotion": true,
+    "sha256": "79b0ab84d26434ffc8b6186b2a3ef2dec10cdd7cadbd845e3e79693dddaadddd"
+  },
+  {
+    "file": "autoamerica-react/vite.config.ts",
+    "identicalToLandingMotion": true,
+    "sha256": "237273ea93007d683d30b12445567b622fdaaac16a1e5aa46077402683884d17"
+  },
+  {
+    "file": "autoamerica-react/src/App.tsx",
+    "identicalToLandingMotion": true,
+    "sha256": "b4716787e7663c295263ad69aa6c50a13e1d096aa6e0fc1ba15ff12959976ea2"
+  },
+  {
+    "file": "autoamerica-react/src/catalog.ts",
+    "identicalToLandingMotion": true,
+    "sha256": "167bdfa9ff653058de10ae2d37ca1492210bbe57eaacd7b7c1e12e3c1356e8dc"
+  },
+  {
+    "file": "autoamerica-react/src/components/AdminCMS.tsx",
+    "identicalToLandingMotion": true,
+    "sha256": "e41c5ddd0ac0debf47bbd4ecbff434e0e6bb42c1a4f431ae9f2950d3b433187f"
+  },
+  {
+    "file": "autoamerica-react/src/components/EditorTour.tsx",
+    "identicalToLandingMotion": true,
+    "sha256": "0fab8b4f1643c2032174d78538986714486742bdeeebf21370e2bbaa525e0e36"
+  },
+  {
+    "file": "autoamerica-react/src/components/VehicleScene.tsx",
+    "identicalToLandingMotion": true,
+    "sha256": "57d19c2c93aa10e3bb896689dca835599442e04ec102d080cd87abfdbec8cba9"
+  },
+  {
+    "file": "autoamerica-react/src/components/parts/PartsExplorer.tsx",
+    "identicalToLandingMotion": true,
+    "sha256": "30c1252e05fc6fa5487212ed00843c6197b36163f03205d2599805e07138902c"
+  },
+  {
+    "file": "autoamerica-react/src/components/vehicles/VehicleCompare.tsx",
+    "identicalToLandingMotion": true,
+    "sha256": "39b67b0683198fdefb91d1b8d497536fba3d4fed6b4ea6bd4b21575f7c2ad989"
+  },
+  {
+    "file": "autoamerica-react/src/components/used-vehicles/UsedVehicleCatalog.tsx",
+    "identicalToLandingMotion": true,
+    "sha256": "731b474f2025c6f50f801be0781659720add0e08fcdebc6f8cc548ec38bbae61"
+  },
+  {
+    "file": "autoamerica-react/src/components/LocationMap.tsx",
+    "identicalToLandingMotion": true,
+    "sha256": "4ca3ede23bed67b1c7ee0cf0404e64586d4855091ba9e38e2963fe8435f5ffa9"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "typescript": "5.8.3",
+  "files": 37,
+  "syntaxDiagnostics": [],
+  "missingLocalImports": [],
+  "externalImports": [
+    "react",
+    "lucide-react",
+    "three",
+    "three/addons/controls/OrbitControls.js",
+    "three/addons/geometries/RoundedBoxGeometry.js",
+    "three/addons/environments/RoomEnvironment.js",
+    "react-dom/client"
+  ],
+  "cssFiles": 10,
+  "cssErrors": [],
+  "scope": "Syntax and local import existence only, not full typecheck or React/Vite build"
+}
