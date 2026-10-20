@@ -1,0 +1,54 @@
+[
+  {
+    "id": "rav4",
+    "name": "Toyota RAV4 Xroad 2.5",
+    "year": 2017,
+    "mileage": 108700,
+    "price": 92900000,
+    "transmission": "Automática",
+    "location": "Medellín",
+    "image": "/assets/used-rav4.webp",
+    "url": "https://autoamerica.com.co/usados-listadosv2/?usado_id=6388",
+    "category": "Usado Toyota",
+    "snapshotDate": "2026-10-19"
+  },
+  {
+    "id": "yaris",
+    "name": "Toyota Yaris Cross XS HEV",
+    "year": 2022,
+    "mileage": 86834,
+    "price": 99900000,
+    "transmission": "Automática",
+    "location": "Medellín",
+    "image": "/assets/used-yaris.webp",
+    "url": "https://autoamerica.com.co/usados-listadosv2/?usado_id=6250",
+    "category": "Usado Toyota",
+    "snapshotDate": "2026-10-19"
+  },
+  {
+    "id": "corolla",
+    "name": "Toyota Corolla Cross SEG HEV",
+    "year": 2022,
+    "mileage": 60000,
+    "price": 118900000,
+    "transmission": "Automática",
+    "location": "Medellín",
+    "image": "/assets/used-corolla.webp",
+    "url": "https://autoamerica.com.co/usados-listadosv2/?usado_id=6309",
+    "category": "Usado Toyota",
+    "snapshotDate": "2026-10-19"
+  },
+  {
+    "id": "fortuner",
+    "name": "Toyota Fortuner Street 2.7",
+    "year": 2020,
+    "mileage": 71300,
+    "price": 164900000,
+    "transmission": "Automática",
+    "location": "Medellín",
+    "image": "/assets/used-fortuner.webp",
+    "url": "https://autoamerica.com.co/usados-listadosv2/?usado_id=6413",
+    "category": "Usado Toyota",
+    "snapshotDate": "2026-10-19"
+  }
+]

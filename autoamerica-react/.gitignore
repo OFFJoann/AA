@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.sites-runtime/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.DS_Store
+.openai/
+.sites-checkout*/
+*.log
+coverage/

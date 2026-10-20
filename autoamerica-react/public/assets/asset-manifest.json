@@ -1,0 +1,372 @@
+[
+  {
+    "name": "logo-autoamerica.png",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2022/08/logo-autoamerica-new.png",
+    "original_dimensions": [
+      154,
+      29
+    ],
+    "dimensions": [
+      154,
+      29
+    ],
+    "mode": "RGBA",
+    "bytes": 1913,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGBA",
+    "verified_decoding": true
+  },
+  {
+    "name": "logo-toyota.png",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2022/08/logo-toyotaPrin-new.png",
+    "original_dimensions": [
+      160,
+      29
+    ],
+    "dimensions": [
+      160,
+      29
+    ],
+    "mode": "RGBA",
+    "bytes": 1814,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGBA",
+    "verified_decoding": true
+  },
+  {
+    "name": "logo-mobile.png",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2022/08/logo-toyota-autoamerica-movil.png",
+    "original_dimensions": [
+      216,
+      63
+    ],
+    "dimensions": [
+      216,
+      63
+    ],
+    "mode": "RGBA",
+    "bytes": 4376,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGBA",
+    "verified_decoding": true
+  },
+  {
+    "name": "prado.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/08/PRADO-TXL-GASOLINA.png",
+    "original_dimensions": [
+      1000,
+      535
+    ],
+    "dimensions": [
+      1000,
+      535
+    ],
+    "mode": "P",
+    "bytes": 34244,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGB",
+    "verified_decoding": true
+  },
+  {
+    "name": "corolla-cross.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/08/COROLLA-CROSS-HV-1.png",
+    "original_dimensions": [
+      1000,
+      535
+    ],
+    "dimensions": [
+      1000,
+      535
+    ],
+    "mode": "P",
+    "bytes": 43370,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGBA",
+    "verified_decoding": true
+  },
+  {
+    "name": "hilux.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/08/1000X535-HILUX-D.C.-SRV-2.4-DIESEL-4X4-AT.png",
+    "original_dimensions": [
+      1000,
+      535
+    ],
+    "dimensions": [
+      1000,
+      535
+    ],
+    "mode": "P",
+    "bytes": 30510,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGB",
+    "verified_decoding": true
+  },
+  {
+    "name": "yaris-cross.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/08/Yaris-Cross-HEV-XS-27.png",
+    "original_dimensions": [
+      1000,
+      535
+    ],
+    "dimensions": [
+      1000,
+      535
+    ],
+    "mode": "RGB",
+    "bytes": 29456,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGB",
+    "verified_decoding": true
+  },
+  {
+    "name": "rav4.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/08/RAV4-HEV-1000X535.png",
+    "original_dimensions": [
+      1000,
+      535
+    ],
+    "dimensions": [
+      1000,
+      535
+    ],
+    "mode": "RGB",
+    "bytes": 22814,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGB",
+    "verified_decoding": true
+  },
+  {
+    "name": "taller.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2022/05/taller-06.png",
+    "original_dimensions": [
+      2084,
+      861
+    ],
+    "dimensions": [
+      1800,
+      744
+    ],
+    "mode": "RGB",
+    "bytes": 137412,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGB",
+    "verified_decoding": true
+  },
+  {
+    "name": "taller-detail.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2021/03/taller-2.jpg",
+    "original_dimensions": [
+      800,
+      580
+    ],
+    "dimensions": [
+      800,
+      580
+    ],
+    "mode": "RGB",
+    "bytes": 76890,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGB",
+    "verified_decoding": true
+  },
+  {
+    "name": "repuestos.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/07/repuetos-imgprin.jpg",
+    "original_dimensions": [
+      1136,
+      984
+    ],
+    "dimensions": [
+      1136,
+      984
+    ],
+    "mode": "RGB",
+    "bytes": 73724,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGB",
+    "verified_decoding": true
+  },
+  {
+    "name": "part-disc.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/09/disco-freno-delantero.png",
+    "original_dimensions": [
+      1000,
+      750
+    ],
+    "dimensions": [
+      1000,
+      750
+    ],
+    "mode": "RGBA",
+    "bytes": 52750,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGBA",
+    "verified_decoding": true
+  },
+  {
+    "name": "part-suspension.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/09/amortiguador-delantero.png",
+    "original_dimensions": [
+      1000,
+      750
+    ],
+    "dimensions": [
+      1000,
+      750
+    ],
+    "mode": "RGBA",
+    "bytes": 16108,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGBA",
+    "verified_decoding": true
+  },
+  {
+    "name": "part-filter.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/09/filtro-aire-motor.png",
+    "original_dimensions": [
+      1000,
+      750
+    ],
+    "dimensions": [
+      1000,
+      750
+    ],
+    "mode": "RGBA",
+    "bytes": 28178,
+    "use": "Imagen oficial publicada en Autoamérica, usar como referencia; no implica disponibilidad ni versión exacta.",
+    "optimized_mode": "RGBA",
+    "verified_decoding": true
+  },
+  {
+    "name": "hero.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/08/4N4A4062.jpg",
+    "source_page": "https://autoamerica.com.co/nueva-land-cruiser-prado-250/",
+    "original_dimensions": [
+      914,
+      609
+    ],
+    "dimensions": [
+      914,
+      609
+    ],
+    "mode": "RGB",
+    "bytes": 263450,
+    "use": "Fotografía oficial Autoamérica. En algunas aparece leyenda original Imágenes de referencia. Fotografía correspondiente a publicación 2024; no representa necesariamente equipamiento vigente.",
+    "optimized_mode": "RGB",
+    "verified_decoding": true
+  },
+  {
+    "name": "hero-road.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/08/4N4A2630.jpg",
+    "source_page": "https://autoamerica.com.co/nueva-land-cruiser-prado-250/",
+    "original_dimensions": [
+      914,
+      609
+    ],
+    "dimensions": [
+      914,
+      609
+    ],
+    "mode": "RGB",
+    "bytes": 276588,
+    "use": "Fotografía oficial Autoamérica. En algunas aparece leyenda original Imágenes de referencia. Fotografía correspondiente a publicación 2024; no representa necesariamente equipamiento vigente.",
+    "optimized_mode": "RGB",
+    "verified_decoding": true
+  },
+  {
+    "name": "prado-interior.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/08/4N4A2504-1.jpg",
+    "source_page": "https://autoamerica.com.co/nueva-land-cruiser-prado-250/",
+    "original_dimensions": [
+      914,
+      609
+    ],
+    "dimensions": [
+      914,
+      609
+    ],
+    "mode": "RGB",
+    "bytes": 113900,
+    "use": "Fotografía oficial Autoamérica. En algunas aparece leyenda original Imágenes de referencia. Fotografía correspondiente a publicación 2024; no representa necesariamente equipamiento vigente.",
+    "optimized_mode": "RGB",
+    "verified_decoding": true
+  },
+  {
+    "name": "prado-detail.webp",
+    "source_url": "https://autoamerica.com.co/wp-content/uploads/2020/08/4N4A3938.jpg",
+    "source_page": "https://autoamerica.com.co/nueva-land-cruiser-prado-250/",
+    "original_dimensions": [
+      914,
+      609
+    ],
+    "dimensions": [
+      914,
+      609
+    ],
+    "mode": "RGB",
+    "bytes": 113500,
+    "use": "Fotografía oficial Autoamérica. En algunas aparece leyenda original Imágenes de referencia. Fotografía correspondiente a publicación 2024; no representa necesariamente equipamiento vigente.",
+    "optimized_mode": "RGB",
+    "verified_decoding": true
+  },
+  {
+    "name": "used-rav4.webp",
+    "source_url": "https://peugeot.automotora.com.co/crmautos/uploads/usados/JKN024.jpg",
+    "source_page": "https://autoamerica.com.co/usados-toyota/",
+    "dimensions": [
+      1100,
+      825
+    ],
+    "original_dimensions": [
+      1280,
+      960
+    ],
+    "bytes": 30496,
+    "use": "Usado observado en sitio público 2026-10-19; precio y disponibilidad requieren confirmación. Imagen oficial enlazada desde Autoamérica."
+  },
+  {
+    "name": "used-yaris.webp",
+    "source_url": "https://peugeot.automotora.com.co/crmautos/uploads/usados/KTQ980.jpg",
+    "source_page": "https://autoamerica.com.co/usados-toyota/",
+    "dimensions": [
+      1100,
+      825
+    ],
+    "original_dimensions": [
+      1280,
+      960
+    ],
+    "bytes": 224062,
+    "use": "Usado observado en sitio público 2026-10-19; precio y disponibilidad requieren confirmación. Imagen oficial enlazada desde Autoamérica."
+  },
+  {
+    "name": "used-corolla.webp",
+    "source_url": "https://peugeot.automotora.com.co/crmautos/uploads/usados/JPW850.jpg",
+    "source_page": "https://autoamerica.com.co/usados-toyota/",
+    "dimensions": [
+      1100,
+      825
+    ],
+    "original_dimensions": [
+      1280,
+      960
+    ],
+    "bytes": 306206,
+    "use": "Usado observado en sitio público 2026-10-19; precio y disponibilidad requieren confirmación. Imagen oficial enlazada desde Autoamérica."
+  },
+  {
+    "name": "used-fortuner.webp",
+    "source_url": "https://peugeot.automotora.com.co/crmautos/uploads/usados/GZP209.jpg",
+    "source_page": "https://autoamerica.com.co/usados-toyota/",
+    "dimensions": [
+      1100,
+      825
+    ],
+    "original_dimensions": [
+      1280,
+      960
+    ],
+    "bytes": 30496,
+    "use": "Usado observado en sitio público 2026-10-19; precio y disponibilidad requieren confirmación. Imagen oficial enlazada desde Autoamérica."
+  }
+]

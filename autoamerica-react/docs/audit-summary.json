@@ -1,0 +1,256 @@
+{
+  "created_at": "2026-10-19T23:08:29.650816+00:00",
+  "method": "GET público, robots y 13 sitemaps; revisión editorial de HTML sin envío de formularios ni autenticación.",
+  "sitemap_entry_count": 375,
+  "discovered_unique_urls": 373,
+  "reviewed_urls": 359,
+  "successfully_reviewed_urls": 359,
+  "duplicate_sitemap_urls": {
+    "https://autoamerica.com.co/mantenimiento-express/": 2,
+    "https://autoamerica.com.co/tienda/": 2
+  },
+  "sitemaps": [
+    {
+      "url": "https://autoamerica.com.co/post-sitemap.xml",
+      "status": 200,
+      "count": 61
+    },
+    {
+      "url": "https://autoamerica.com.co/page-sitemap.xml",
+      "status": 200,
+      "count": 106
+    },
+    {
+      "url": "https://autoamerica.com.co/product-sitemap.xml",
+      "status": 200,
+      "count": 105
+    },
+    {
+      "url": "https://autoamerica.com.co/vehiculo-sitemap.xml",
+      "status": 200,
+      "count": 20
+    },
+    {
+      "url": "https://autoamerica.com.co/repuesto-sitemap.xml",
+      "status": 200,
+      "count": 18
+    },
+    {
+      "url": "https://autoamerica.com.co/mantenimiento-sitemap.xml",
+      "status": 200,
+      "count": 16
+    },
+    {
+      "url": "https://autoamerica.com.co/category-sitemap.xml",
+      "status": 200,
+      "count": 2
+    },
+    {
+      "url": "https://autoamerica.com.co/familia_repuestos-sitemap.xml",
+      "status": 200,
+      "count": 6
+    },
+    {
+      "url": "https://autoamerica.com.co/configurador1-sitemap.xml",
+      "status": 200,
+      "count": 12
+    },
+    {
+      "url": "https://autoamerica.com.co/product_cat-sitemap.xml",
+      "status": 200,
+      "count": 15
+    },
+    {
+      "url": "https://autoamerica.com.co/pa_color-sitemap.xml",
+      "status": 200,
+      "count": 5
+    },
+    {
+      "url": "https://autoamerica.com.co/pa_talla-sitemap.xml",
+      "status": 200,
+      "count": 6
+    },
+    {
+      "url": "https://autoamerica.com.co/author-sitemap.xml",
+      "status": 200,
+      "count": 3
+    }
+  ],
+  "editorial_findings": [
+    {
+      "finding": "La portada raíz funciona como selector Toyota/Usados y /home/ contiene el showroom principal.",
+      "sources": [
+        "https://autoamerica.com.co/",
+        "https://autoamerica.com.co/home/"
+      ]
+    },
+    {
+      "finding": "El listado de repuestos solicita VIN y fotografía antes de cotizar por WhatsApp. No se verificó una tabla técnica de compatibilidad completa.",
+      "sources": [
+        "https://autoamerica.com.co/repuesto/"
+      ]
+    },
+    {
+      "finding": "Existe antecedente de experiencias 360 externas SpinCar/Impel. No se verificaron derechos, archivos CAD ni despiece reutilizable.",
+      "sources": [
+        "https://autoamerica.com.co/concesionario-virtual/",
+        "https://autoamerica.com.co/360-yaris/"
+      ]
+    },
+    {
+      "finding": "Se observaron recursos WordPress, Astra, Elementor y WooCommerce en HTML público. Esto no evalúa seguridad ni versiones soportadas.",
+      "sources": [
+        "https://autoamerica.com.co/home/"
+      ]
+    },
+    {
+      "finding": "El sitemap incluye rutas de sistema y agradecimientos; se requiere definir qué conservar, redirigir o excluir durante migración.",
+      "sources": [
+        "https://autoamerica.com.co/page-sitemap.xml"
+      ]
+    },
+    {
+      "finding": "9 URLs leídas terminaron en otro destino tras redirección. Las categorías de producto deben revisarse al definir equivalencias para la migración; no asumir correspondencia uno a uno con contenido independiente.",
+      "sources": [
+        "https://autoamerica.com.co/categoria-producto/4runner/",
+        "https://autoamerica.com.co/categoria-producto/corolla-cross/",
+        "https://autoamerica.com.co/categoria-producto/corolla/",
+        "https://autoamerica.com.co/categoria-producto/fortuner/",
+        "https://autoamerica.com.co/categoria-producto/hilux/",
+        "https://autoamerica.com.co/categoria-producto/prado/",
+        "https://autoamerica.com.co/categoria-producto/tundra/",
+        "https://autoamerica.com.co/categoria-producto/yaris-cross/",
+        "https://autoamerica.com.co/categoria-producto/yaris/"
+      ]
+    }
+  ],
+  "limitations": [
+    "El inventario cubre las URLs de los sitemaps recuperados, no garantiza descubrir contenido sin enlaces o no indexado.",
+    "No se iniciaron transacciones, pagos, sesiones ni envíos de formularios.",
+    "No se ejecutó una auditoría de seguridad, medición de Core Web Vitals ni validación de integraciones privadas.",
+    "Una revisión de HTML público no demuestra funcionamiento de contenido cargado por JavaScript ni totalidad del inventario de usados."
+  ],
+  "observed_used_detail_urls": 55,
+  "internal_linked_urls_not_in_sitemap": 119,
+  "priority_reviewed_urls": 112,
+  "final_public_coverage": {
+    "completed_at": "2026-10-19T23:24:16.598103+00:00",
+    "sitemap_urls": 373,
+    "priority_reviewed_urls": 112,
+    "automatic_extension_attempted_urls": 247,
+    "automatic_extension_readable_urls": 247,
+    "total_attempted_unique_urls": 359,
+    "total_readable_html_urls": 359,
+    "excluded_urls_count": 14,
+    "blocked_urls_count": 0,
+    "other_errors_count": 0,
+    "accounted_urls": 373,
+    "excluded_urls": [
+      {
+        "url": "https://autoamerica.com.co/actualiza-tus-datos/",
+        "reason": "Acción sobre datos personales."
+      },
+      {
+        "url": "https://autoamerica.com.co/carrito/",
+        "reason": "Estado de carrito de compra."
+      },
+      {
+        "url": "https://autoamerica.com.co/cartracking/",
+        "reason": "Seguimiento de vehículos; posible información individual."
+      },
+      {
+        "url": "https://autoamerica.com.co/darse-de-baja/",
+        "reason": "Acción sobre datos o consentimiento."
+      },
+      {
+        "url": "https://autoamerica.com.co/facturas-pendientes/",
+        "reason": "Facturas y datos transaccionales."
+      },
+      {
+        "url": "https://autoamerica.com.co/finalizar-compra/",
+        "reason": "Finalización de compra."
+      },
+      {
+        "url": "https://autoamerica.com.co/formulario-pagos/",
+        "reason": "Flujo transaccional de pagos."
+      },
+      {
+        "url": "https://autoamerica.com.co/landing-portalaliado/",
+        "reason": "Portal de terceros/aliados fuera de revisión pública general."
+      },
+      {
+        "url": "https://autoamerica.com.co/mi-cuenta/",
+        "reason": "Área de cuenta y autenticación."
+      },
+      {
+        "url": "https://autoamerica.com.co/pagos/",
+        "reason": "Portal transaccional de pagos."
+      },
+      {
+        "url": "https://autoamerica.com.co/validar-pago/",
+        "reason": "Validación transaccional de pagos."
+      },
+      {
+        "url": "https://autoamerica.com.co/videos-internos/",
+        "reason": "Contenido denominado interno."
+      },
+      {
+        "url": "https://autoamerica.com.co/web-to-kumo-usados/",
+        "reason": "Integración de envío de datos."
+      },
+      {
+        "url": "https://autoamerica.com.co/web-to-kumo/",
+        "reason": "Integración de envío de datos."
+      }
+    ],
+    "blocked_urls": [],
+    "other_errors": [],
+    "method": "Se conservaron 112 lecturas prioritarias. Ampliación por GET de las URLs públicas pendientes, máximo dos solicitudes simultáneas y separación mínima de 0,6 s entre inicios. Se aplicó robots.txt y se excluyeron rutas de transacciones, cuenta, datos personales e integraciones internas.",
+    "h1_limit": "H1 específico capturado en las 247 lecturas nuevas y recuperado de HTML local para 10 páginas prioritarias. No está disponible por separado para 102 páginas de la primera revisión; no se repitieron esas solicitudes.",
+    "functional_limit": "La ampliación automática registra estado HTTP, título, H1 y canonical. No demuestra el funcionamiento de formularios, integraciones, pagos, contenido interactivo, seguridad o rendimiento.",
+    "redirected_readable_urls_count": 9,
+    "redirected_readable_urls": [
+      {
+        "url": "https://autoamerica.com.co/categoria-producto/4runner/",
+        "final_url": "https://autoamerica.com.co/home/"
+      },
+      {
+        "url": "https://autoamerica.com.co/categoria-producto/corolla-cross/",
+        "final_url": "https://autoamerica.com.co/home/"
+      },
+      {
+        "url": "https://autoamerica.com.co/categoria-producto/corolla/",
+        "final_url": "https://autoamerica.com.co/home/"
+      },
+      {
+        "url": "https://autoamerica.com.co/categoria-producto/fortuner/",
+        "final_url": "https://autoamerica.com.co/home/"
+      },
+      {
+        "url": "https://autoamerica.com.co/categoria-producto/hilux/",
+        "final_url": "https://autoamerica.com.co/home/"
+      },
+      {
+        "url": "https://autoamerica.com.co/categoria-producto/prado/",
+        "final_url": "https://autoamerica.com.co/home/"
+      },
+      {
+        "url": "https://autoamerica.com.co/categoria-producto/tundra/",
+        "final_url": "https://autoamerica.com.co/home/"
+      },
+      {
+        "url": "https://autoamerica.com.co/categoria-producto/yaris-cross/",
+        "final_url": "https://autoamerica.com.co/home/"
+      },
+      {
+        "url": "https://autoamerica.com.co/categoria-producto/yaris/",
+        "final_url": "https://autoamerica.com.co/home/"
+      }
+    ],
+    "distinct_readable_final_urls_count": 350,
+    "h1_priority_recovered_from_local_html": 10,
+    "h1_priority_not_separately_available": 102,
+    "redirect_limit": "Los conteos de URLs legibles incluyen destinos alcanzados tras redirección. No equivalen necesariamente a contenidos independientes. No se registró el código de cada salto intermedio."
+  },
+  "coverage_statement": "Se inventariaron 373 URLs en 13 sitemaps. 359 URLs produjeron HTML legible (112 con revisión temática prioritaria y 247 en ampliación automática); 14 rutas se excluyeron. Se observaron 0 bloqueadas y 0 con otros errores. 9 URLs legibles redirigieron a otro destino, con 350 destinos finales distintos. No se validó funcionamiento integral, seguridad ni rendimiento."
+}

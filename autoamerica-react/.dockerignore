@@ -1,0 +1,12 @@
+node_modules
+dist
+.git
+.gitignore
+.sites-runtime
+.sites-checkout*
+.openai
+coverage
+*.log
+Dockerfile*
+compose*.yml
+compose*.yaml
