@@ -4,6 +4,7 @@ import type { Vehicle } from './data';
 
 export type CatalogKind = 'new' | 'used';
 export type CatalogRecord = {
+  brand?: string; model?: string; bodyType?: string; certified?: boolean;
   id: string;
   kind: CatalogKind;
   status: 'draft' | 'published' | 'withdrawn';
@@ -24,6 +25,7 @@ export type CatalogRecord = {
 };
 
 export type UsedVehicle = {
+  brand?: string; model?: string; bodyType?: string; certified?: boolean; power?: string;
   id: string; name: string; year: number; mileage: number; price: number;
   transmission: string; location: string; image: string; url: string;
   category?: string; origin?: CatalogRecord['origin'];
@@ -33,12 +35,13 @@ export type UsedVehicle = {
 export function createInitialCatalog(): CatalogRecord[] {
   const fresh: CatalogRecord[] = referenceVehicles.map(vehicle => ({
     ...vehicle, id: `new:${vehicle.id}`, kind: 'new', status: 'published',
-    year: 0, price: 0, mileage: 0, transmission: 'Por confirmar',
+    brand: 'Toyota', model: vehicle.name, bodyType: vehicle.category,
+    year: vehicle.year || 0, price: vehicle.price || 0, mileage: 0, transmission: vehicle.transmission || 'Por confirmar',
     location: 'Palacé', availability: 'confirm', origin: 'reference',
   }));
   const used: CatalogRecord[] = usedSnapshot.map(vehicle => ({
     ...vehicle, id: `used:${vehicle.id}`, kind: 'used', status: 'published',
-    category: 'SUV', power: vehicle.name.includes('HEV') ? 'Híbrido' : 'Gasolina',
+    category: vehicle.bodyType || 'Por confirmar', power: vehicle.power || 'Por confirmar',
     description: 'Vehículo de la muestra pública de Autoamérica. Confirma su estado y disponibilidad con un asesor.',
     tag: 'UNA NUEVA HISTORIA TE ESPERA', availability: 'confirm', origin: 'reference',
   }));
@@ -55,6 +58,7 @@ export function toNewVehicle(record: CatalogRecord): Vehicle {
     image: record.image, description: record.description, url: record.url, tag: record.tag,
     price: record.price, year: record.year, location: record.location,
     transmission: record.transmission, origin: record.origin,
+    brand: record.brand || 'Toyota', model: record.model || record.name, bodyType: record.bodyType || record.category,
   };
 }
 
@@ -63,7 +67,8 @@ export function toUsedVehicle(record: CatalogRecord): UsedVehicle {
     id: record.id, name: record.name, year: record.year, mileage: record.mileage,
     price: record.price, transmission: record.transmission, location: record.location,
     image: record.image, url: record.url,
-    category: record.origin === 'marketing' ? 'Demo de mercadeo' : 'Usado Toyota',
+    category: record.category, brand: record.brand || '', model: record.model || '',
+    bodyType: record.bodyType || record.category, power: record.power, certified: record.certified,
     origin: record.origin,
   };
 }

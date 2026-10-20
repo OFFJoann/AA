@@ -7,10 +7,15 @@
     "price": 92900000,
     "transmission": "Automática",
     "location": "Medellín",
-    "image": "/assets/used-rav4.webp",
+    "image": "",
     "url": "https://autoamerica.com.co/usados-listadosv2/?usado_id=6388",
     "category": "Usado Toyota",
-    "snapshotDate": "2026-10-19"
+    "snapshotDate": "2026-10-19",
+    "brand": "Toyota",
+    "model": "RAV4",
+    "bodyType": "SUV",
+    "power": "Gasolina",
+    "photoStatus": "pending"
   },
   {
     "id": "yaris",
@@ -23,7 +28,12 @@
     "image": "/assets/used-yaris.webp",
     "url": "https://autoamerica.com.co/usados-listadosv2/?usado_id=6250",
     "category": "Usado Toyota",
-    "snapshotDate": "2026-10-19"
+    "snapshotDate": "2026-10-19",
+    "brand": "Toyota",
+    "model": "Yaris Cross",
+    "bodyType": "SUV",
+    "power": "Híbrido",
+    "photoStatus": "source-linked"
   },
   {
     "id": "corolla",
@@ -36,7 +46,12 @@
     "image": "/assets/used-corolla.webp",
     "url": "https://autoamerica.com.co/usados-listadosv2/?usado_id=6309",
     "category": "Usado Toyota",
-    "snapshotDate": "2026-10-19"
+    "snapshotDate": "2026-10-19",
+    "brand": "Toyota",
+    "model": "Corolla Cross",
+    "bodyType": "SUV",
+    "power": "Híbrido",
+    "photoStatus": "source-linked"
   },
   {
     "id": "fortuner",
@@ -46,9 +61,14 @@
     "price": 164900000,
     "transmission": "Automática",
     "location": "Medellín",
-    "image": "/assets/used-fortuner.webp",
+    "image": "",
     "url": "https://autoamerica.com.co/usados-listadosv2/?usado_id=6413",
     "category": "Usado Toyota",
-    "snapshotDate": "2026-10-19"
+    "snapshotDate": "2026-10-19",
+    "brand": "Toyota",
+    "model": "Fortuner",
+    "bodyType": "SUV",
+    "power": "Gasolina",
+    "photoStatus": "pending"
   }
 ]

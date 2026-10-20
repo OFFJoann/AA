@@ -1,3 +1,5 @@
+> **Entrega Red & Black (20/10/2026):** [qué cambió](autoamerica-react/docs/entrega-red-black.md), [cómo editarlo](autoamerica-react/docs/guia-penalver-cambios.md) y [validación pendiente de compilación](autoamerica-react/docs/validacion-red-black.md). Los usados admiten cualquier marca.
+
 # Autoamérica — experiencia interactiva
 
 Aplicación React, TypeScript y Three.js con catálogo, explorador 3D de cinco vehículos y CMS de demostración.

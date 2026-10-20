@@ -1,0 +1,11 @@
+{
+  "environment": "Offline compatibility preview (not Vite build). Synthetic Mazda row exists only in memory during test.",
+  "passed": [
+    "Original six-step CMS tour opens and completes",
+    "CMS creates a non-Toyota unit; brand and model facets update live",
+    "Withdrawn used unit disappears without reloading",
+    "Story scroll updates scene transform variables",
+    "Manual reduced-motion mode removes scene transforms"
+  ],
+  "runtimeErrors": []
+}

@@ -1,0 +1,69 @@
+/* Shared semantic tokens. Johan can reuse data-theme without duplicating colors. */
+:root {
+  --aa-red:#eb0a1e; --aa-red-hover:#c60819; --aa-black:#101012;
+  --aa-background:#fff; --aa-surface:#f5f5f6; --aa-card:#fff; --aa-text:#161619;
+  --aa-muted:#626268; --aa-border:#dfdfe3; --aa-tint:#fff0f1;
+  --red:var(--aa-red); --red-hover:var(--aa-red-hover); --ink:var(--aa-text);
+  --muted:var(--aa-muted); --line:var(--aa-border); --paper:var(--aa-background);
+  color-scheme:light;
+}
+:root[data-theme='dark'] {
+  --aa-background:#111114; --aa-surface:#1b1b20; --aa-card:#222228;
+  --aa-text:#f5f5f7; --aa-muted:#b3b3be; --aa-border:#3b3b44; --aa-tint:#36171e;
+  color-scheme:dark;
+}
+html {scroll-padding-top:100px}
+body {background:var(--aa-background);color:var(--aa-text)}
+button,a,input,select,textarea {-webkit-tap-highlight-color:transparent}
+button:disabled {cursor:not-allowed;opacity:.5}
+:focus-visible {outline:3px solid #fa5967;outline-offset:4px}
+.section-width {max-width:1280px;width:calc(100% - 96px)}
+.section-pad {padding:100px 0}
+.sr-only {position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;padding:0;border:0}
+.aa-kicker {display:flex;align-items:center;gap:9px;font-size:10px;font-weight:700;letter-spacing:.13em;line-height:1.7;text-transform:uppercase}
+.aa-kicker i {width:6px;height:6px;background:var(--aa-red);display:inline-block;flex-shrink:0;border-radius:50%}
+.aa-section-title {display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:38px}
+.aa-section-title h2 {font-size:clamp(32px,3.7vw,58px);font-weight:550;letter-spacing:-.055em;line-height:1.05;margin-top:19px}
+.aa-section-title h2 em {font-style:normal;color:var(--aa-muted)}
+.aa-section-title>p {font-size:13px;line-height:1.8;color:var(--aa-muted);max-width:350px}
+.aa-pills {display:flex;flex-wrap:wrap;gap:7px}
+.aa-pills button {padding:11px 19px;border-radius:50px;border:1px solid var(--aa-border);font-size:12px;min-height:42px;transition:background .2s}
+.aa-pills button[aria-pressed=true] {background:var(--aa-red);border-color:var(--aa-red);color:#fff}
+.aa-footnote {font-size:11px;line-height:1.8;color:var(--aa-muted);margin-top:20px}
+.aa-image-pending {display:flex!important;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:24px;background:#eeeef0;color:#64646e;text-align:center;min-height:160px}
+.aa-image-pending strong {font-size:13px}.aa-image-pending span {font-size:11px;line-height:1.6;max-width:210px}
+.aa-empty {text-align:center;padding:65px 24px;border:1px dashed var(--aa-border);border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:16px;color:var(--aa-muted)}
+.aa-empty h3 {font-size:24px;color:var(--aa-text)}.aa-empty p {line-height:1.7;max-width:480px;font-size:14px}
+.aa-compare-pick {display:inline-flex;align-items:center;gap:7px;font-size:12px;min-height:42px;margin-top:10px;color:var(--aa-muted)}
+.aa-compare-pick[aria-pressed=true] {color:var(--aa-red);font-weight:650}
+.utility-bar {background:#111114;color:#d0d0d6;border-color:#303037;font-size:10px}
+.main-header {background:var(--aa-background);color:var(--aa-text);border-color:var(--aa-border);height:80px}
+.main-nav {gap:23px;margin-right:0}.main-nav a {font-size:12px}.header-inner {gap:18px}.aa-theme {flex-shrink:0}
+.main-nav.open {background:var(--aa-background)}
+.button {border-radius:6px;min-height:48px;font-size:13px}
+.button.outline,.icon-button {border-color:var(--aa-border);color:inherit}
+.button.outline:hover,.icon-button:hover {background:var(--aa-tint)}
+.button.light {background:#fff;color:#141418}.button.light:hover {background:#eeeef0}
+.button.red {background:var(--aa-red);color:#fff}.button.red:hover {background:var(--aa-red-hover)}
+.services-section,.locations-section {background:var(--aa-background);color:var(--aa-text)}
+.service-row,.service-icon {color:var(--aa-text);border-color:var(--aa-border)}.service-row p {color:var(--aa-muted)}
+.service-feature {background:#131316}.service-feature-copy {color:white}.service-feature-shade {background:linear-gradient(0deg,#09090cf0,transparent 95%)}
+.final-cta {background:var(--aa-red);color:#fff}.final-cta h2 {color:#fff}
+footer {background:#101013;color:#fff}.footer-main p,.footer-main a,.footer-main button {color:#bcbcc3}.footer-main h4 {color:#f5f5f7}
+.modal {background:var(--aa-card);color:var(--aa-text)}.modal .notice {background:var(--aa-surface);color:var(--aa-muted);border-color:var(--aa-border)}
+.modal input,.modal select,.modal textarea {background:var(--aa-background);color:var(--aa-text);border-color:var(--aa-border)}
+.modal .quote-subject {color:var(--aa-muted)}.modal .sim-result {background:var(--aa-surface);color:var(--aa-text)}
+.compare-bar {background:#111114;color:#fff;border:1px solid #44444c;border-radius:12px;bottom:20px;box-shadow:0 12px 40px #0003}
+.compare-bar .icon-button {color:white;border-color:#44444c}.compare-bar .icon-button:hover {background:#29292e}
+.toast {background:#1b1b20;color:#fff;border-color:#38383e}
+.explorer-track,.explorer-sticky {background:#101013!important}.scene-views {background:#1e1e23;border-color:#494951}
+.scene-views button[aria-pressed=true] {background:#3d3d44}.scene-views button:hover {background:#33333b}
+.explorer-track .light-eyebrow,.explorer-track .explore-hint,.explorer-track .part-description {color:#c1c1ca}
+.explorer-track .live-dot {background:var(--aa-red)}.explorer-track .section-number {color:#fff}
+.explorer-track .scene-models button[aria-pressed=true] {border-color:var(--aa-red)}
+/* The native dialog traps focus. Mobile filters are separate from the app modal. */
+.aa-filter-dialog::backdrop {background:#09090c99;backdrop-filter:blur(4px)}
+@media(min-width:1500px){.section-width {max-width:1400px}}
+@media(max-width:1000px){.section-width {width:calc(100% - 48px)}.section-pad {padding:70px 0}.aa-section-title {align-items:flex-start}.main-nav {gap:14px}.brand-main {width:112px}.brand-toyota {width:86px}.header-inner {gap:12px}}
+@media(max-width:760px){.section-width {width:calc(100% - 36px)}.section-pad {padding:58px 0}.aa-section-title {display:block;margin-bottom:28px}.aa-section-title>p {margin-top:20px}.main-header {height:70px}.brand-main {width:102px}.brand-toyota {width:80px}.brand {gap:10px}.main-nav {top:70px}.header-cta {display:none}.aa-theme {margin-left:auto}.aa-kicker {font-size:9px}.compare-bar {gap:10px;padding:10px 12px;bottom:10px;max-width:calc(100% - 24px)}.compare-bar>span {font-size:11px}.compare-bar .button {font-size:11px}.utility-bar span {font-size:9px}}
+@media(prefers-reduced-motion:reduce){html {scroll-behavior:auto!important}*,*::before,*::after {animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}

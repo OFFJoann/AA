@@ -1,0 +1,20 @@
+{
+  "environment": "Offline compatibility preview: React 18.2, local SVG icon substitutes, original Three renderer omitted. Not the production React 19/Vite build.",
+  "passed": [
+    "Landing rendered, initial scroll 0",
+    "New carousel next model",
+    "Two vehicles comparison and differences toggle",
+    "Used free-text filter",
+    "Used price maximum",
+    "Invalid numeric ranges visible",
+    "Dark theme switched",
+    "Original credit simulator opens and accepts down payment",
+    "Cinematic model route opens",
+    "Return to catalog",
+    "Service filter for real branch references",
+    "Original CMS opens",
+    "390px mobile landing without horizontal overflow",
+    "Mobile filter drawer and year filter"
+  ],
+  "runtimeErrors": []
+}

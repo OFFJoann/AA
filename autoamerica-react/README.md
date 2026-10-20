@@ -1,3 +1,5 @@
+> **Actualización Red & Black, 20/10/2026.** Consulta primero [la entrega actual](docs/entrega-red-black.md) y [sus pruebas y limitaciones](docs/validacion-red-black.md). El contenido posterior es la documentación histórica de la base; sus verificaciones de compilación no certifican esta actualización. No se modificaron dependencias ni Docker.
+
 # Autoamérica — Tu próximo camino
 
 Proyecto portable en **React + TypeScript + Three.js**, construido con Vite. Contiene la propuesta navegable de Autoamérica y su CMS de demostración. Fecha de referencia: 19 de octubre de 2026.

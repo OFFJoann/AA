@@ -1,0 +1,59 @@
+{
+  "package.json": {
+    "unchanged": true,
+    "sha256": "d86597e3110645c308153f74781f0531e093e6c3bea456047692c1e12a5b40b8"
+  },
+  "package-lock.json": {
+    "unchanged": true,
+    "sha256": "e58740d2bac22184741d35e5bd68b60914716dc840b2e79ea79a0e521d8b93d0"
+  },
+  "Dockerfile": {
+    "unchanged": true,
+    "sha256": "b665860c9fc3e0d3e2e5f267f6d47bfe2a35200ba3c176da50f4068a6b572639"
+  },
+  "compose.yaml": {
+    "unchanged": true,
+    "sha256": "9c5a8ee0725b3fd25e9721e4d182847898fecc31552bf746b0185e0dd7d09f44"
+  },
+  "nginx.conf": {
+    "unchanged": true,
+    "sha256": "79b0ab84d26434ffc8b6186b2a3ef2dec10cdd7cadbd845e3e79693dddaadddd"
+  },
+  ".dockerignore": {
+    "unchanged": true,
+    "sha256": "d1de8da393a95ace194f9949619ef5d5ba8272af797fc302aaa667d73c221fae"
+  },
+  "src/components/EditorTour.tsx": {
+    "unchanged": true,
+    "sha256": "0fab8b4f1643c2032174d78538986714486742bdeeebf21370e2bbaa525e0e36"
+  },
+  "src/components/VehicleScene.tsx": {
+    "unchanged": true,
+    "sha256": "57d19c2c93aa10e3bb896689dca835599442e04ec102d080cd87abfdbec8cba9"
+  },
+  "src/components/VehicleFallback.tsx": {
+    "unchanged": true,
+    "sha256": "527ad60ae4fb7d6e1f966f96e8733ed7ad83a14d8ae2708f745a40623670d3d1"
+  },
+  "src/components/vehicleExterior.ts": {
+    "unchanged": true,
+    "sha256": "df9eceea15d03ec0d8f4d1fbd778150357dfaa9124cdd6483e7246ba2ed2a2a7"
+  },
+  "src/components/explosionLayout.ts": {
+    "unchanged": true,
+    "sha256": "015b51cad57a6989fc9cc36e84e2524f85a5e85bedacd039e9480dc3ae99cff4"
+  },
+  "tests/explosionLayout.test.ts": {
+    "unchanged": true,
+    "sha256": "a10485ef7423334e3112c2c9272644c17026aa5ddb50a5f48ffa9484dd508864"
+  },
+  "function:QuoteForm": {
+    "unchanged": true
+  },
+  "function:CreditSimulator": {
+    "unchanged": true
+  },
+  "function:Explorer": {
+    "unchanged": true
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "date": "2026-10-20",
+  "policy": {
+    "new": "Authorized Toyota vehicle imagery only",
+    "used": "Any brand; image must match actual inventory unit"
+  },
+  "limits": "Visual review and inherited provenance, not a full re-verification of live sources or rights.",
+  "assets": [
+    {
+      "file": "/assets/logo-autoamerica.png",
+      "sha256": "afa163c8f78bc9205b1094028664f7039c972fd455573f71d1ae78fc2cda099e",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2022/08/logo-autoamerica-new.png",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/logo-toyota.png",
+      "sha256": "7111314e9c5072d48e806dbc915f866db88af31fd1edfed57e3090943847ca9d",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2022/08/logo-toyotaPrin-new.png",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/logo-mobile.png",
+      "sha256": "2ea94ae4b7ad586c5022dfcc7fccab8bb6903225e1e75304d08a8f8d41ef0ee4",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2022/08/logo-toyota-autoamerica-movil.png",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/prado.webp",
+      "sha256": "d038a3c7d0e8facd2644a6ec4e8d2e7cc565870ce2decb62369e11ea28747622",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/08/PRADO-TXL-GASOLINA.png",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/corolla-cross.webp",
+      "sha256": "ef0ad3e8d91141deaca243debf2401d025323a0d2efe3507b40d3e9e54f1b5b5",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/08/COROLLA-CROSS-HV-1.png",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/hilux.webp",
+      "sha256": "36f92ae3425cab93642e966d0f0be202821fed35b3f1a730f4f68aac202050e1",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/08/1000X535-HILUX-D.C.-SRV-2.4-DIESEL-4X4-AT.png",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/yaris-cross.webp",
+      "sha256": "39f75335cae75e898f817ec59252e3e06d81e68f99cfada134bf3e46ff394e1c",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/08/Yaris-Cross-HEV-XS-27.png",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/rav4.webp",
+      "sha256": "fcae3c4387e3747c016e5688ac6fd94100f8a42fb5add6ecba337a409bf87b53",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/08/RAV4-HEV-1000X535.png",
+      "reviewStatus": "quarantined",
+      "decision": "Model correspondence not confirmed. No active commercial card references this file.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/taller.webp",
+      "sha256": "ff3c9840b4b195312a69e79675a70f37e394d0b759cfbd5de204dd78ce716405",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2022/05/taller-06.png",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/taller-detail.webp",
+      "sha256": "510e31b17d4f8d04193b6807a75c3223d0bb7a52edbcbbe5d16768c5970d3100",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2021/03/taller-2.jpg",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/repuestos.webp",
+      "sha256": "dc85f179db53da7408091d5267752eae091fa03e3c908679d4879d014c33933a",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/07/repuetos-imgprin.jpg",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/part-disc.webp",
+      "sha256": "d2053fea4f5808457ab9eadbee081faae0bf13f778faf8a94f4a919fe62314f3",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/09/disco-freno-delantero.png",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/part-suspension.webp",
+      "sha256": "37f37b5f62119aacd07d8e50399a43f4a07028c6370f7ea0705245060c195079",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/09/amortiguador-delantero.png",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/part-filter.webp",
+      "sha256": "44b7a43b0247adb40ea29056b97ef0fbc3dd3741578a10881f1c75109d7ca5c6",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/09/filtro-aire-motor.png",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/hero.webp",
+      "sha256": "b557cd30ff7f49e23a473169d103cec106290440a0fe4a01613f9bb161764758",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/08/4N4A4062.jpg",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/hero-road.webp",
+      "sha256": "65290f82da513f9b9abae2c617343bcdeb3774a815dceb8d00cc875b39a73e5a",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/08/4N4A2630.jpg",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/prado-interior.webp",
+      "sha256": "656f8b5c60157255567766f443ee4c46f4438ffede47270d946be1fe8d8f97a7",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/08/4N4A2504-1.jpg",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/prado-detail.webp",
+      "sha256": "063737f54c9cfe630f8723794fb75b1b3c41e9d87a6dffe957524e1e5b3248ed",
+      "sourceUrlRecorded": "https://autoamerica.com.co/wp-content/uploads/2020/08/4N4A3938.jpg",
+      "reviewStatus": "reference-provenance-inherited",
+      "decision": "Existing asset, source record retained; verify rights and model/version before production.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/used-rav4.webp",
+      "sha256": "625047f203bdcf79e2d22d02118a9ad1b6c97c72c35ce5d7b66db780bfd7800b",
+      "sourceUrlRecorded": "https://peugeot.automotora.com.co/crmautos/uploads/usados/JKN024.jpg",
+      "reviewStatus": "quarantined",
+      "decision": "Identical generic image; not accepted as distinct unit photography.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/used-yaris.webp",
+      "sha256": "3df45422a6b65b2963e48958fcd387c8bec97733f5176d27d35b8bb6a30242d8",
+      "sourceUrlRecorded": "https://peugeot.automotora.com.co/crmautos/uploads/usados/KTQ980.jpg",
+      "reviewStatus": "unit-source-inherited",
+      "decision": "Used snapshot unit. Any brand is allowed; validate current unit and permission.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/used-corolla.webp",
+      "sha256": "cb0af62b06dd5d8eb9eddc3397e3c0046b0ac695b04a10e620f7b0c5a4312972",
+      "sourceUrlRecorded": "https://peugeot.automotora.com.co/crmautos/uploads/usados/JPW850.jpg",
+      "reviewStatus": "unit-source-inherited",
+      "decision": "Used snapshot unit. Any brand is allowed; validate current unit and permission.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/used-fortuner.webp",
+      "sha256": "625047f203bdcf79e2d22d02118a9ad1b6c97c72c35ce5d7b66db780bfd7800b",
+      "sourceUrlRecorded": "https://peugeot.automotora.com.co/crmautos/uploads/usados/GZP209.jpg",
+      "reviewStatus": "quarantined",
+      "decision": "Identical generic image; not accepted as distinct unit photography.",
+      "licenseStatus": "pending-owner-confirmation",
+      "sourceRedownloadVerified": false
+    },
+    {
+      "file": "/assets/photo-pending.svg",
+      "reviewStatus": "original-ui-placeholder",
+      "decision": "Neutral UI icon and text, not a generated vehicle.",
+      "sha256": "e28bd682c154159b1152fec5a4da455323adacb2180b4ddb5470315dbd4c35b9",
+      "sourceRedownloadVerified": false
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+import { useState } from 'react';
+import { ArrowUpRight,ArrowLeftRight } from 'lucide-react';
+import type { Vehicle } from '../../data';
+import type { UsedVehicle } from '../../catalog';
+import { formatMoney,formatNumber } from '../../lib/presentation';
+import VehicleImage from './VehicleImage';
+export type ComparableVehicle=Vehicle|UsedVehicle;
+export default function VehicleCompare({items,onQuote,onRemove}:{items:ComparableVehicle[];onQuote:(s:string)=>void;onRemove:(id:string)=>void}){
+  const [differences,setDifferences]=useState(false);
+  const row=(name:string,fn:(v:ComparableVehicle)=>string)=>({name,values:items.map(fn)});
+  const rows=[row('Tipo de vehículo',v=>'mileage'in v?'Usado':'Nuevo'),row('Marca',v=>v.brand||('mileage'in v?'Por confirmar':'Toyota')),row('Carrocería',v=>v.bodyType||v.category||'Por confirmar'),row('Motorización',v=>v.power||'Por confirmar'),row('Año',v=>v.year&&v.year>0?String(v.year):'Por confirmar'),row('Transmisión',v=>v.transmission||'Por confirmar'),row('Kilometraje',v=>'mileage'in v&&v.mileage>=0?`${formatNumber(v.mileage)} km`:'No aplica / por confirmar'),row('Sede / ubicación',v=>v.location||'Por confirmar'),row('Precio publicado',v=>formatMoney(v.price))];
+  const visible=rows.filter(r=>!differences||new Set(r.values).size>1);
+  return <div className="aa-comparison"><span className="aa-kicker"><i/> COMPARA. ELIGE. VIVE.</span><h2>Dos opciones.<br/>Tu mejor decisión.</h2><p>Compara modelos o unidades. Las celdas destacadas muestran diferencias, no ventajas automáticas.</p><label className="aa-diff-switch"><input type="checkbox" checked={differences} onChange={e=>setDifferences(e.target.checked)}/><ArrowLeftRight size={17}/> Mostrar solo diferencias</label>{items.length?<div className="aa-comparison-scroll"><table><caption className="sr-only">Comparación de vehículos seleccionados</caption><thead><tr><th scope="col">CARACTERÍSTICA</th>{items.map(v=><th key={v.id} scope="col"><VehicleImage src={v.image} alt={v.name}/><h3>{v.name}</h3><button className="text-button" onClick={()=>onRemove(v.id)}>Quitar de comparación</button></th>)}</tr></thead><tbody>{visible.map(r=><tr key={r.name} className={new Set(r.values).size>1?'aa-row-different':''}><th scope="row">{r.name}</th>{r.values.map((value,i)=><td key={items[i].id}>{value}</td>)}</tr>)}</tbody><tfoot><tr><th scope="row">Siguiente paso</th>{items.map(v=><td key={v.id}><button className="button red small" onClick={()=>onQuote(v.name)}>Cotizar <ArrowUpRight size={16}/></button></td>)}</tr></tfoot></table>{!visible.length&&<p className="aa-empty">No hay diferencias en los datos disponibles.</p>}</div>:<p className="aa-empty">Selecciona dos vehículos desde el catálogo para compararlos.</p>}<p className="notice">Valores del catálogo de demostración. No reemplazan la ficha técnica de una versión ni confirman inventario, financiación o disponibilidad.</p></div>;
+}

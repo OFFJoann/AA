@@ -14,7 +14,7 @@ export const vehicleModels: VehicleModel[] = [
   { id: 'corolla-cross', name: 'Corolla Cross HEV', image: '/assets/corolla-cross.webp', silhouette: 'crossover', scale: [.90, .88, .87] },
   { id: 'hilux', name: 'Hilux', image: '/assets/hilux.webp', silhouette: 'pickup', scale: [1.08, .96, .89] },
   { id: 'yaris-cross', name: 'Yaris Cross HEV', image: '/assets/yaris-cross.webp', silhouette: 'crossover', scale: [.87, .85, .84] },
-  { id: 'rav4', name: 'RAV4 HEV', image: '/assets/rav4.webp', silhouette: 'crossover', scale: [.94, .90, .89] },
+  { id: 'rav4', name: 'RAV4 HEV', image: '/assets/photo-pending.svg', silhouette: 'crossover', scale: [.94, .90, .89] },
 ];
 
 export function getVehicleModel(id: VehicleModelId = 'prado'): VehicleModel {

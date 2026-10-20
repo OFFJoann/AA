@@ -4,4 +4,8 @@ import App from './App';
 import './styles.css';
 import './experience.css';
 
+import './styles/brand.css';
+import './styles/vehicles.css';
+import './styles/used-vehicles.css';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
