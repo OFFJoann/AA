@@ -10,3 +10,4 @@ dist/
 .sites-checkout*/
 *.log
 coverage/
+server/data/

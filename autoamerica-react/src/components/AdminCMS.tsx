@@ -10,6 +10,7 @@ interface AdminCMSProps {
   onSave: (record: CatalogRecord) => void;
   onReset: () => void;
   onOpenSite: (kind?: CatalogKind) => void;
+  embedded?: boolean;
 }
 const images = [
   ['prado.webp', 'Land Cruiser Prado'], ['corolla-cross.webp', 'Corolla Cross'], ['hilux.webp', 'Hilux'],
@@ -22,7 +23,7 @@ const money = (value: number) => new Intl.NumberFormat('es-CO', { style: 'curren
 const createRecordId = () => typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : Array.from(crypto.getRandomValues(new Uint32Array(4)), value => value.toString(16)).join('-');
 const emptyRecord = (kind: CatalogKind): CatalogRecord => ({ id: createRecordId(), kind, brand: kind === 'new' ? 'Toyota' : '', model: '', status: 'draft', name: '', category: '', power: '', year: 0, price: 0, mileage: kind === 'used' ? -1 : 0, transmission: '', location: '', image: '', description: '', tag: 'Unidad de demostración', url: '', availability: 'confirm', origin: 'marketing' });
 
-export default function AdminCMS({ records, onSave, onReset, onOpenSite }: AdminCMSProps) {
+export default function AdminCMS({ records, onSave, onReset, onOpenSite, embedded }: AdminCMSProps) {
   const [kind, setKind] = useState<'all' | CatalogKind>('all');
   const [status, setStatus] = useState<'all' | CatalogRecord['status']>('all');
   const [query, setQuery] = useState('');
@@ -85,8 +86,8 @@ export default function AdminCMS({ records, onSave, onReset, onOpenSite }: Admin
     reader.readAsDataURL(selected);
   };
 
-  return <div className="cms-shell">
-    <aside className="cms-sidebar">
+  return <div className={'cms-shell' + (embedded ? ' cms-embedded' : '')}>
+    {!embedded && <aside className="cms-sidebar">
       <button className="cms-brand" onClick={() => onOpenSite()} aria-label="Volver a la propuesta Autoamérica"><img src="/assets/logo-autoamerica.png" alt="Autoamérica" /><span>ESTUDIO EDITORIAL</span></button>
       <div className="cms-side-label">TU ESPACIO DE TRABAJO</div>
       <button className={'cms-side-link ' + (kind === 'all' ? 'cms-side-active' : '')} onClick={() => { setDraft(null); setKind('all'); }}><LayoutDashboard size={17} /> Todo el catálogo <span>{records.length}</span></button>
@@ -95,10 +96,10 @@ export default function AdminCMS({ records, onSave, onReset, onOpenSite }: Admin
       <div className="cms-side-divider" />
       <button className="cms-side-link" onClick={() => onOpenSite(kind === 'all' ? undefined : kind)}><ArrowUpRight size={17} /> Ver sitio web</button>
       <div className="cms-side-bottom"><div className="cms-avatar">M</div><div><strong>Equipo de mercadeo</strong><small>Entorno de demostración</small></div></div>
-    </aside>
+    </aside>}
 
     <div className="cms-main">
-      <header className="cms-topbar"><div className="cms-breadcrumb">Contenido <ChevronRight size={13} /><strong>{draft ? 'Editor de vehículos' : 'Catálogo'}</strong></div><button className="cms-btn cms-btn-quiet" onClick={() => onOpenSite(draft?.kind ?? (kind === 'all' ? undefined : kind))}><Eye size={15} /> Ver propuesta <ArrowUpRight size={13} /></button></header>
+      {!embedded && <header className="cms-topbar"><div className="cms-breadcrumb">Contenido <ChevronRight size={13} /><strong>{draft ? 'Editor de vehículos' : 'Catálogo'}</strong></div><button className="cms-btn cms-btn-quiet" onClick={() => onOpenSite(draft?.kind ?? (kind === 'all' ? undefined : kind))}><Eye size={15} /> Ver propuesta <ArrowUpRight size={13} /></button></header>}
       <main className="cms-content">
         <div className="cms-demo-banner"><ShieldCheck size={18} /><div><strong>CMS de demostración</strong><span>Cambios solo en esta pestaña; no modifica el sitio actual.</span></div><span className="cms-demo-dot">DEMO</span></div>
         <div className="cms-tour-invitation"><div><strong>¿Primera vez editando un vehículo?</strong><span>Te acompañamos desde la ficha hasta la publicación.</span></div><button type="button" className="cms-btn cms-btn-secondary" onClick={startTour}>Iniciar tour asistido <ChevronRight size={16}/></button></div>

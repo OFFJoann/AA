@@ -1,5 +1,5 @@
 /** Pure route parsing; no browser globals. Application is hosted at domain root. */
-export type Page = 'home' | 'new' | 'used' | 'aftersales' | 'parts' | 'locations' | 'vehicle' | 'not-found';
+export type Page = 'home' | 'new' | 'used' | 'aftersales' | 'parts' | 'locations' | 'vehicle' | 'crm' | 'not-found';
 export type SiteRoute = { page: Page; path: string; vehicleId?: string };
 const models = new Set(['prado','hilux','corolla-cross','rav4','yaris-cross']);
 const legacy: Record<string,string> = {inicio:'/',modelos:'/nuevos',usados:'/usados',servicios:'/posventa',repuestos:'/posventa/repuestos',sedes:'/sedes'};
@@ -20,7 +20,7 @@ export function canonicalLocation(input: string, origin = 'https://autoamerica.e
 }
 export function resolveRoute(path: string): SiteRoute {
   const clean=path.replace(/\/+$/,'')||'/';
-  const routes:Record<string,Page>={'/':'home','/nuevos':'new','/usados':'used','/posventa':'aftersales','/posventa/repuestos':'parts','/sedes':'locations'};
+  const routes:Record<string,Page>={'/':'home','/nuevos':'new','/usados':'used','/posventa':'aftersales','/posventa/repuestos':'parts','/sedes':'locations','/crm':'crm'};
   if(routes[clean]) return {page:routes[clean],path:clean};
   const match=clean.match(/^\/nuevos\/([^/]+)$/);
   if(match) {try {
@@ -31,6 +31,6 @@ export function resolveRoute(path: string): SiteRoute {
   return {page:'not-found',path:clean};
 }
 export function pageTitle(route: SiteRoute): string {
-  const names: Record<Page,string> = {home:'Elige tu siguiente camino',new:'Vehículos nuevos',used:'Usados multimarca',aftersales:'Posventa Toyota',parts:'Repuestos y explorador 3D',locations:'Sedes y horarios',vehicle:'Conoce tu Toyota','not-found':'Página no encontrada'};
+  const names: Record<Page,string> = {home:'Elige tu siguiente camino',new:'Vehículos nuevos',used:'Usados multimarca',aftersales:'Posventa Toyota',parts:'Repuestos y explorador 3D',locations:'Sedes y horarios',vehicle:'Conoce tu Toyota',crm:'CRM Autoamérica','not-found':'Página no encontrada'};
   return `${names[route.page]} | Autoamérica`;
 }

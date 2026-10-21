@@ -1,4 +1,17 @@
 services:
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_PATH: /data/app.db
+      ADMIN_EMAIL: admin@autoamerica.com
+      ADMIN_PASSWORD: autoamerica2026
+      ADMIN_NAME: Administrador
+    volumes:
+      - crm-data:/data
+    restart: unless-stopped
+
   web:
     build:
       context: .
@@ -7,4 +20,10 @@ services:
       - "4173:80"
     volumes:
       - ./public/videos:/usr/share/nginx/html/videos:ro
+    depends_on:
+      api:
+        condition: service_healthy
     restart: unless-stopped
+
+volumes:
+  crm-data:
