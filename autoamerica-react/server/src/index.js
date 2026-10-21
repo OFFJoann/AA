@@ -1,5 +1,9 @@
 ﻿import express from 'express';
-import { openDatabase, seed, seedVideos, rowToRecord, recordToColumns, validateRecord } from './db.js';
+import { randomUUID } from 'node:crypto';
+import {
+  openDatabase, seed, seedVideos, seedPromotions, rowToRecord, recordToColumns, validateRecord,
+  rowToPromotion, promotionToColumns, validatePromotion,
+} from './db.js';
 import {
   verifyPassword, createSession, getSessionUser, destroySession,
   sessionToken, sessionCookie, clearedCookie, requireAuth, sameOrigin,
@@ -97,6 +101,64 @@ router.post('/catalog/reset', auth, (req, res) => {
   db.prepare('DELETE FROM videos').run();
   seed(db);
   res.json(db.prepare('SELECT * FROM catalog ORDER BY kind, name').all().map(rowToRecord));
+});
+
+router.get('/promotions', (req, res) => {
+  const wantsAll = String(req.query?.all || '') === '1';
+  if (wantsAll && !getSessionUser(db, sessionToken(req))) return res.status(401).json({ error: 'Sesión requerida.' });
+  const rows = wantsAll
+    ? db.prepare('SELECT * FROM promotions ORDER BY sort ASC, updated_at DESC').all()
+    : db.prepare('SELECT * FROM promotions WHERE active = 1 ORDER BY sort ASC, updated_at DESC').all();
+  res.json(rows.map(rowToPromotion));
+});
+
+router.post('/promotions', auth, (req, res) => {
+  if (!sameOrigin(req)) return res.status(403).json({ error: 'Origen no permitido.' });
+  const error = validatePromotion(req.body);
+  if (error) return res.status(400).json({ error });
+  const id = String(req.body?.id || '').trim() || randomUUID();
+  if (id.length > 80) return res.status(400).json({ error: 'El identificador es demasiado largo.' });
+  const columns = promotionToColumns({ ...req.body, id });
+  const now = Date.now();
+  const exists = db.prepare('SELECT id FROM promotions WHERE id = ?').get(columns.id);
+  if (exists) {
+    db.prepare(`UPDATE promotions SET title=?,body=?,badge=?,image=?,cta_label=?,cta_url=?,expires=?,active=?,sort=?,updated_at=? WHERE id=?`)
+      .run(columns.title, columns.body, columns.badge, columns.image, columns.cta_label, columns.cta_url,
+        columns.expires, columns.active, columns.sort, now, columns.id);
+  } else {
+    db.prepare(`INSERT INTO promotions (id,title,body,badge,image,cta_label,cta_url,expires,active,sort,updated_at)
+      VALUES (?,?,?,?,?,?,?,?,?,?,?)`)
+      .run(columns.id, columns.title, columns.body, columns.badge, columns.image, columns.cta_label,
+        columns.cta_url, columns.expires, columns.active, columns.sort, now);
+  }
+  res.status(201).json(rowToPromotion(db.prepare('SELECT * FROM promotions WHERE id = ?').get(columns.id)));
+});
+
+router.put('/promotions/:id', auth, (req, res) => {
+  if (!sameOrigin(req)) return res.status(403).json({ error: 'Origen no permitido.' });
+  if (String(req.params.id) !== String(req.body?.id)) return res.status(400).json({ error: 'El id no coincide.' });
+  const error = validatePromotion(req.body);
+  if (error) return res.status(400).json({ error });
+  const exists = db.prepare('SELECT id FROM promotions WHERE id = ?').get(req.params.id);
+  if (!exists) return res.status(404).json({ error: 'Promoción no encontrada.' });
+  const columns = promotionToColumns(req.body);
+  db.prepare(`UPDATE promotions SET title=?,body=?,badge=?,image=?,cta_label=?,cta_url=?,expires=?,active=?,sort=?,updated_at=? WHERE id=?`)
+    .run(columns.title, columns.body, columns.badge, columns.image, columns.cta_label, columns.cta_url,
+      columns.expires, columns.active, columns.sort, Date.now(), columns.id);
+  res.json(rowToPromotion(db.prepare('SELECT * FROM promotions WHERE id = ?').get(columns.id)));
+});
+
+router.delete('/promotions/:id', auth, (req, res) => {
+  if (!sameOrigin(req)) return res.status(403).json({ error: 'Origen no permitido.' });
+  db.prepare('DELETE FROM promotions WHERE id = ?').run(req.params.id);
+  res.json({ ok: true });
+});
+
+router.post('/promotions/reset', auth, (req, res) => {
+  if (!sameOrigin(req)) return res.status(403).json({ error: 'Origen no permitido.' });
+  db.prepare('DELETE FROM promotions').run();
+  seedPromotions(db);
+  res.json(db.prepare('SELECT * FROM promotions ORDER BY sort ASC, updated_at DESC').all().map(rowToPromotion));
 });
 
 router.get('/videos', (_req, res) => {

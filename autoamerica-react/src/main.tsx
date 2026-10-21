@@ -10,5 +10,6 @@ import './styles/used-vehicles.css';
 import './styles/entornos.css';
 import './styles/cinematic.css';
 import './styles/motion-landing.css';
+import './styles/promotions.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "promo-bienvenida",
+    "title": "Bono de bienvenida",
+    "text": "Un beneficio adicional para estrenar tu próximo Toyota. Aplícalo en la versión que elijas y empieza tu camino con todo.",
+    "badge": "Hasta $2.000.000",
+    "image": "/assets/hilux.webp",
+    "ctaLabel": "Ver modelos nuevos",
+    "ctaUrl": "/nuevos",
+    "expires": "Campaña vigente hasta el 31 de diciembre de 2026",
+    "active": true,
+    "sort": 1
+  },
+  {
+    "id": "promo-mantenimiento",
+    "title": "Mantenimiento sin costo",
+    "text": "Los dos primeros mantenimientos programados de tu Toyota nuevo, sin costo, en cualquiera de nuestras sedes.",
+    "badge": "2 servicios",
+    "image": "/assets/taller.webp",
+    "ctaLabel": "Agendar mantenimiento",
+    "ctaUrl": "/posventa",
+    "expires": "Válido para vehículos nuevos matriculados durante 2026",
+    "active": true,
+    "sort": 2
+  },
+  {
+    "id": "promo-credito",
+    "title": "Tu cuota, a tu ritmo",
+    "text": "Simula tu crédito en segundos y descubre una cuota mensual que se ajuste a tu presupuesto.",
+    "badge": "Financiación a tu medida",
+    "image": "/assets/rav4.webp",
+    "ctaLabel": "Simular mi crédito",
+    "ctaUrl": "/nuevos",
+    "expires": "Sujeto a estudio y aprobación de la entidad financiera",
+    "active": true,
+    "sort": 3
+  }
+]

@@ -1,4 +1,5 @@
 import type { CatalogRecord } from '../catalog';
+import type { Promotion } from '../promotions';
 
 export type CrmUser = { id: number; email: string; name: string; role: string };
 
@@ -39,4 +40,12 @@ export const api = {
   saveVideo: (id: string, url: string) =>
     request<{ id: string; url: string }>(`/videos/${encodeURIComponent(id)}`, { method: 'PUT', body: JSON.stringify({ url }) }),
   resetVideos: () => request<Record<string, string>>('/videos/reset', { method: 'POST' }),
+  promotions: (all = false) => request<Promotion[]>(all ? '/promotions?all=1' : '/promotions'),
+  savePromotion: (promotion: Promotion, exists: boolean) =>
+    exists
+      ? request<Promotion>(`/promotions/${encodeURIComponent(promotion.id)}`, { method: 'PUT', body: JSON.stringify(promotion) })
+      : request<Promotion>('/promotions', { method: 'POST', body: JSON.stringify(promotion) }),
+  deletePromotion: (id: string) =>
+    request<{ ok: boolean }>(`/promotions/${encodeURIComponent(id)}`, { method: 'DELETE' }),
+  resetPromotions: () => request<Promotion[]>('/promotions/reset', { method: 'POST' }),
 };

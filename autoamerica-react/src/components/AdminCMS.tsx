@@ -101,7 +101,7 @@ export default function AdminCMS({ records, onSave, onReset, onOpenSite, embedde
     <div className="cms-main">
       {!embedded && <header className="cms-topbar"><div className="cms-breadcrumb">Contenido <ChevronRight size={13} /><strong>{draft ? 'Editor de vehículos' : 'Catálogo'}</strong></div><button className="cms-btn cms-btn-quiet" onClick={() => onOpenSite(draft?.kind ?? (kind === 'all' ? undefined : kind))}><Eye size={15} /> Ver propuesta <ArrowUpRight size={13} /></button></header>}
       <main className="cms-content">
-        <div className="cms-demo-banner"><ShieldCheck size={18} /><div><strong>CMS de demostración</strong><span>Cambios solo en esta pestaña; no modifica el sitio actual.</span></div><span className="cms-demo-dot">DEMO</span></div>
+        <div className="cms-demo-banner"><ShieldCheck size={18} /><div><strong>Panel de administración</strong><span>Los cambios se guardan en el servidor y se publican en el sitio.</span></div><span className="cms-demo-dot">CRM</span></div>
         <div className="cms-tour-invitation"><div><strong>¿Primera vez editando un vehículo?</strong><span>Te acompañamos desde la ficha hasta la publicación.</span></div><button type="button" className="cms-btn cms-btn-secondary" onClick={startTour}>Iniciar tour asistido <ChevronRight size={16}/></button></div>
         {!draft ? <>
           <div className="cms-page-heading"><div><span className="cms-eyebrow">CONTENIDO QUE MUEVE TU NEGOCIO</span><h1>Tu catálogo, bajo control.</h1><p>Agrega vehículos, actualiza sus detalles y decide qué mostrar.</p></div><button className="cms-btn cms-btn-primary" onClick={() => create(kind === 'used' ? 'used' : 'new')}><Plus size={17} /> Agregar vehículo</button></div>

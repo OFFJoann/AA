@@ -55,6 +55,19 @@ export function openDatabase() {
       url TEXT NOT NULL,
       updated_at INTEGER NOT NULL
     );
+    CREATE TABLE IF NOT EXISTS promotions (
+      id TEXT PRIMARY KEY,
+      title TEXT NOT NULL,
+      body TEXT NOT NULL DEFAULT '',
+      badge TEXT NOT NULL DEFAULT '',
+      image TEXT NOT NULL DEFAULT '',
+      cta_label TEXT NOT NULL DEFAULT '',
+      cta_url TEXT NOT NULL DEFAULT '',
+      expires TEXT NOT NULL DEFAULT '',
+      active INTEGER NOT NULL DEFAULT 1,
+      sort INTEGER NOT NULL DEFAULT 0,
+      updated_at INTEGER NOT NULL
+    );
   `);
   seed(db);
   return db;
@@ -89,6 +102,8 @@ export function seed(db) {
   }
   const videoCount = db.prepare('SELECT COUNT(*) AS n FROM videos').get().n;
   if (videoCount === 0) seedVideos(db);
+  const promotionCount = db.prepare('SELECT COUNT(*) AS n FROM promotions').get().n;
+  if (promotionCount === 0) seedPromotions(db);
 }
 
 export function seedVideos(db) {
@@ -96,6 +111,59 @@ export function seedVideos(db) {
   const defaults = JSON.parse(readFileSync(join(seedDir, 'videos.json'), 'utf8'));
   const insert = db.prepare('INSERT INTO videos (vehicle_id,url,updated_at) VALUES (?,?,?)');
   for (const [id, url] of Object.entries(defaults)) insert.run(id, url, now);
+}
+
+export function seedPromotions(db) {
+  const now = Date.now();
+  const defaults = JSON.parse(readFileSync(join(seedDir, 'promotions.json'), 'utf8'));
+  const insert = db.prepare(`INSERT INTO promotions
+    (id,title,body,badge,image,cta_label,cta_url,expires,active,sort,updated_at)
+    VALUES (?,?,?,?,?,?,?,?,?,?,?)`);
+  for (const item of defaults) {
+    insert.run(String(item.id), String(item.title ?? ''), String(item.text ?? ''), String(item.badge ?? ''),
+      String(item.image ?? ''), String(item.ctaLabel ?? ''), String(item.ctaUrl ?? ''), String(item.expires ?? ''),
+      item.active === false ? 0 : 1, Number(item.sort) || 0, now);
+  }
+}
+
+export function rowToPromotion(row) {
+  return {
+    id: row.id, title: row.title, text: row.body, badge: row.badge, image: row.image,
+    ctaLabel: row.cta_label, ctaUrl: row.cta_url, expires: row.expires,
+    active: row.active === 1, sort: row.sort,
+  };
+}
+
+export function promotionToColumns(promotion) {
+  return {
+    id: String(promotion.id), title: String(promotion.title ?? '').trim(), body: String(promotion.text ?? ''),
+    badge: String(promotion.badge ?? ''), image: String(promotion.image ?? ''),
+    cta_label: String(promotion.ctaLabel ?? ''), cta_url: String(promotion.ctaUrl ?? ''),
+    expires: String(promotion.expires ?? ''), active: promotion.active === false ? 0 : 1,
+    sort: Number(promotion.sort) || 0,
+  };
+}
+
+export function validatePromotion(promotion) {
+  if (!promotion || typeof promotion !== 'object') return 'Solicitud vacía.';
+  if (typeof promotion.title !== 'string' || !promotion.title.trim()) return 'El título es obligatorio.';
+  if (promotion.title.trim().length > 120) return 'El título no puede superar 120 caracteres.';
+  const limits = [['text', 800], ['badge', 40], ['expires', 90], ['ctaLabel', 40]];
+  for (const [field, max] of limits) {
+    const value = promotion[field];
+    if (value != null && typeof value !== 'string') return `El campo ${field} debe ser texto.`;
+    if (typeof value === 'string' && value.length > max) return `El campo ${field} supera ${max} caracteres.`;
+  }
+  const ctaUrl = String(promotion.ctaUrl ?? '').trim();
+  if (ctaUrl && !/^https?:\/\//i.test(ctaUrl) && !ctaUrl.startsWith('/')) {
+    return 'El enlace debe ser una URL http(s) o una ruta interna que empiece por /.';
+  }
+  const image = String(promotion.image ?? '');
+  if (image && !/^data:image\//.test(image) && !/^https?:\/\//i.test(image) && !image.startsWith('/')) {
+    return 'La imagen debe ser un archivo cargado, una URL http(s) o una ruta interna.';
+  }
+  if (image.length > 7_000_000) return 'La imagen es demasiado grande.';
+  return null;
 }
 
 export function rowToRecord(row) {
