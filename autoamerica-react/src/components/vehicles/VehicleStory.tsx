@@ -2,7 +2,7 @@ import VehicleMotionBackground from './VehicleMotionBackground';
 import OfficialVehicleTours from './OfficialVehicleTours';
 import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties } from 'react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Camera, ChevronDown, List, Mouse, Search, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, BookOpen, Camera, ChevronDown, Film, List, Mouse, Search, ShieldCheck } from 'lucide-react';
 import type { Vehicle } from '../../data';
 import { findTechnicalProfile, eligibleMedia, technicalSources } from '../../data/technicalProfiles';
 import type { TechnicalGroup, TechnicalVariant, TechnicalProfile, StoryMedia } from '../../data/technicalProfiles';
@@ -14,7 +14,7 @@ import ReferenceVehicleStory from './ReferenceVehicleStory';
 import Vehicle360Viewer from './Vehicle360Viewer';
 import { modelKey } from '../../lib/vehicleBackground';
 
-type Props={vehicle:Vehicle;onBack:()=>void;onQuote:(subject:string)=>void;onCredit:(subject:string,price?:number)=>void;onExplorer:()=>void};
+type Props={vehicle:Vehicle;onBack:()=>void;onQuote:(subject:string)=>void;onCredit:(subject:string,price?:number)=>void;onVideo:(subject:string,id:string)=>void;onExplorer:()=>void};
 type Chapter={id:string;label:string;title:string;description:string;group?:TechnicalGroup;media?:StoryMedia};
 function chaptersFor(p:TechnicalProfile,v:TechnicalVariant):Chapter[]{
  const media=eligibleMedia(p,v.id),exterior=media.find(m=>m.kind==='exterior'),interior=media.find(m=>m.kind==='interior'),detail=media.find(m=>m.kind==='detail');
@@ -59,7 +59,7 @@ function TechnicalSheet({variant,profile}:{variant:TechnicalVariant;profile:Tech
    <aside className="aa-tech-sources"><h3>Documentación de origen</h3><p>{profile.notice}</p><div>{profile.sources.map(id=><a key={id} href={technicalSources[id].url} target="_blank" rel="noreferrer">{technicalSources[id].title} {technicalSources[id].type==='pdf'?'· Abrir PDF':'· Consultar'} <ArrowUpRight size={16}/></a>)}</div><small>Consulta de fuentes: 20/10/2026. Resumen de especificaciones comerciales; no es un manual de reparación, homologación ni oferta de inventario. Las condiciones definitivas se confirman con Autoamérica.</small></aside>
  </section>;
 }
-function CinematicStory({profile,vehicle,onQuote,onCredit,onExplorer}:Props&{profile:TechnicalProfile}){
+function CinematicStory({profile,vehicle,onQuote,onCredit,onVideo,onExplorer}:Props&{profile:TechnicalProfile}){
  // IDs from the catalog include the new: prefix. Never attach reference media to marketing edits.
  const hasLocal360=modelKey(vehicle.id,vehicle.origin)==='corolla-cross';
  const [variantId,setVariantId]=useState(profile.variants[0].id);
@@ -114,7 +114,7 @@ function CinematicStory({profile,vehicle,onQuote,onCredit,onExplorer}:Props&{pro
      <span className="sr-only" aria-live="polite">Capítulo {state.active+1}: {active.label}</span>
     </div>
    </div>}
-  <div className="aa-story-shortcuts section-width"><button className="button red" onClick={()=>onQuote(subject)}>Consultar esta configuración <ArrowUpRight size={18}/></button><button className="button outline" onClick={()=>onCredit(subject)}>Simular con mi presupuesto</button><button className="text-button" onClick={onExplorer}>Explorador 3D conceptual <ArrowUpRight size={15}/></button></div>
+  <div className="aa-story-shortcuts section-width"><button className="button red" onClick={()=>onQuote(subject)}>Consultar esta configuración <ArrowUpRight size={18}/></button><button className="button outline" onClick={()=>onCredit(subject)}>Simular con mi presupuesto</button><button className="button outline" onClick={()=>onVideo(profile.name,vehicle.id)}><Film size={18}/> Video cinematográfico</button><button className="text-button" onClick={onExplorer}>Explorador 3D conceptual <ArrowUpRight size={15}/></button></div>
   {hasLocal360&&<div id="vista-360" style={{scrollMarginTop:'140px'}}><Vehicle360Viewer title="Toyota Corolla Cross Hybrid SE 2026" basePath="/assets/360/corolla-cross" /></div>}
   <div className="section-width aa-story-official"><OfficialVehicleTours id={vehicle.id} origin={vehicle.origin}/></div>
   <TechnicalSheet key={variant.id} profile={profile} variant={variant}/>

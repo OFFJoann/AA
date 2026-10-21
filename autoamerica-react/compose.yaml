@@ -5,4 +5,6 @@ services:
       dockerfile: Dockerfile
     ports:
       - "4173:80"
+    volumes:
+      - ./public/videos:/usr/share/nginx/html/videos:ro
     restart: unless-stopped

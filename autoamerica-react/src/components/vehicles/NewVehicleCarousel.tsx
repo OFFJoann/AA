@@ -3,14 +3,14 @@ import OfficialVehicleTours from './OfficialVehicleTours';
 import { SiteLink } from '../../navigation/SiteNavigation';
 import { vehiclePath } from '../../lib/routes';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowLeft,ArrowRight,ArrowUpRight,Check,Plus,ChevronRight } from 'lucide-react';
+import { ArrowLeft,ArrowRight,ArrowUpRight,Check,Plus,ChevronRight,Film } from 'lucide-react';
 import type { Vehicle } from '../../data';
 import VehicleImage from './VehicleImage';
 import { formatMoney } from '../../lib/presentation';
 import { useMotionPreference } from '../../hooks/useMotionPreference';
 
-type Props={items:Vehicle[];selected:string[];onCompare:(id:string)=>void;onDiscover:(v:Vehicle)=>void;onQuote:(s:string)=>void;onCredit:(s:string,p?:number)=>void};
-export default function NewVehicleCarousel({items,selected,onCompare,onDiscover,onQuote,onCredit}:Props){
+type Props={items:Vehicle[];selected:string[];onCompare:(id:string)=>void;onDiscover:(v:Vehicle)=>void;onQuote:(s:string)=>void;onCredit:(s:string,p?:number)=>void;onVideo:(s:string,id:string)=>void};
+export default function NewVehicleCarousel({items,selected,onCompare,onDiscover,onQuote,onCredit,onVideo}:Props){
   const [category,setCategory]=useState('Todos');
   const [activeId,setActiveId]=useState(items[0]?.id||'');
   const strip=useRef<HTMLDivElement>(null);
@@ -30,7 +30,7 @@ export default function NewVehicleCarousel({items,selected,onCompare,onDiscover,
         onTouchStart={e=>{const t=e.touches[0];dragStart.current={x:t.clientX,y:t.clientY};}}
         onTouchEnd={e=>{const t=e.changedTouches[0],s=dragStart.current; if(s&&Math.abs(t.clientX-s.x)>65&&Math.abs(t.clientY-s.y)<65)move(t.clientX<s.x?1:-1);dragStart.current=null;}}>
         <VehicleMotionBackground modelId={active.id} origin={active.origin} poster={active.image} className="aa-showroom-bg"/>
-        <div className="aa-model-description" key={active.id+'copy'}><span className="aa-kicker">{active.power} <span className="aa-category-slash">/</span> {active.category}</span><h3>{active.name}</h3><p>{active.description}</p><div className="aa-model-price"><small>PRECIO DE LA VERSIÓN</small><strong>{formatMoney(active.price)}</strong></div><div className="aa-model-buttons"><SiteLink className="button red" href={vehiclePath(active.id)}>Conocer modelo <ArrowUpRight size={18}/></SiteLink><button className="text-button" onClick={()=>onQuote(active.name)}>Cotizar <ChevronRight size={18}/></button></div><button className="aa-compare-pick" onClick={()=>onCompare(active.id)} aria-pressed={selected.includes(active.id)}>{selected.includes(active.id)?<Check size={16}/>:<Plus size={16}/>} {selected.includes(active.id)?'Añadido al comparador':'Añadir al comparador'}</button><OfficialVehicleTours id={active.id} origin={active.origin}/></div>
+        <div className="aa-model-description" key={active.id+'copy'}><span className="aa-kicker">{active.power} <span className="aa-category-slash">/</span> {active.category}</span><h3>{active.name}</h3><p>{active.description}</p><div className="aa-model-price"><small>PRECIO DE LA VERSIÓN</small><strong>{formatMoney(active.price)}</strong></div><div className="aa-model-buttons"><SiteLink className="button red" href={vehiclePath(active.id)}>Conocer modelo <ArrowUpRight size={18}/></SiteLink><button className="text-button" onClick={()=>onQuote(active.name)}>Cotizar <ChevronRight size={18}/></button><button className="text-button" onClick={()=>onVideo(active.name,active.id)}>Video cinematográfico <Film size={17}/></button></div><button className="aa-compare-pick" onClick={()=>onCompare(active.id)} aria-pressed={selected.includes(active.id)}>{selected.includes(active.id)?<Check size={16}/>:<Plus size={16}/>} {selected.includes(active.id)?'Añadido al comparador':'Añadir al comparador'}</button><OfficialVehicleTours id={active.id} origin={active.origin}/></div>
         <div className="aa-model-visual" key={active.id+'image'}><span className="aa-model-type" aria-hidden="true">{active.category.toUpperCase()}</span><VehicleImage src={active.image} alt={`Toyota ${active.name}`} priority/><span className="aa-reference-label">IMAGEN COMERCIAL DE REFERENCIA</span></div>
         <div className="aa-model-controls"><button className="icon-button" aria-label="Vehículo anterior" onClick={()=>move(-1)} disabled={filtered.length<2}><ArrowLeft size={18}/></button><span aria-live="polite" aria-atomic="true">{String(index+1).padStart(2,'0')} <b>/ {String(filtered.length).padStart(2,'0')}</b><span className="sr-only"> {active.name}</span></span><button className="icon-button" aria-label="Vehículo siguiente" onClick={()=>move(1)} disabled={filtered.length<2}><ArrowRight size={18}/></button><button className="aa-finance-link" onClick={()=>onCredit(active.name,active.price)}>Simular crédito <ArrowUpRight size={14}/></button></div>
       </div>:<div className="aa-empty"><h3>No hay modelos en esta categoría.</h3><button className="button outline" onClick={()=>setCategory('Todos')}>Ver todos</button></div>}

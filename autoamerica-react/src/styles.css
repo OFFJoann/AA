@@ -53,3 +53,10 @@
 .sim-breakdown div{display:flex;justify-content:space-between;gap:10px;font-size:11px;color:#b9b9b9}
 .sim-breakdown b{color:#eeeeee;font-weight:650}
 @media(max-width:760px){.sim-fields{grid-template-columns:1fr}.sim-result{padding:18px}.sim-result>strong{font-size:33px}.sim-breakdown{grid-template-columns:1fr}.card-cta .button{font-size:10px;gap:5px;padding:10px 6px}}
+
+.video-modal{max-width:min(950px,calc(100vw - 32px))}
+.video-frame{padding:55px}
+.video-frame h2{font-size:36px;margin-top:17px;letter-spacing:-.04em}
+.cinema-video{display:block;width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;margin-top:24px;object-fit:contain}
+.video-note{font-size:10px;color:#8a8a8a;margin-top:14px}
+@media(max-width:760px){.video-frame{padding:46px 20px 28px}.video-frame h2{font-size:25px}.cinema-video{margin-top:16px}}

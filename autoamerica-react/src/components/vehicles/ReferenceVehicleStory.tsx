@@ -1,12 +1,12 @@
 import { useEffect,useRef,useState } from 'react';
 import type { ReactNode } from 'react';
-import { ArrowLeft,ArrowUpRight,ArrowDown,Box,FileText } from 'lucide-react';
+import { ArrowLeft,ArrowUpRight,ArrowDown,Box,FileText,Film } from 'lucide-react';
 import type { Vehicle } from '../../data';
 import VehicleImage from './VehicleImage';
 import { formatMoney,safeExternalUrl } from '../../lib/presentation';
 import { useMotionPreference } from '../../hooks/useMotionPreference';
 
-type Props={vehicle:Vehicle;onBack:()=>void;onQuote:(s:string)=>void;onCredit:(s:string,p?:number)=>void;onExplorer:()=>void};
+type Props={vehicle:Vehicle;onBack:()=>void;onQuote:(s:string)=>void;onCredit:(s:string,p?:number)=>void;onVideo:(s:string,id:string)=>void;onExplorer:()=>void};
 /** Each scene has its own progress; no forced wheel interception or scroll hijacking. */
 function Scene({number,title,copy,image,alt,wide=false,children}:{number:string;title:string;copy:string;image?:string;alt:string;wide?:boolean;children?:ReactNode}){
   const element=useRef<HTMLElement>(null);const reduced=useMotionPreference();
@@ -21,7 +21,7 @@ function Scene({number,title,copy,image,alt,wide=false,children}:{number:string;
   },[reduced]);
   return <section ref={element} className={`aa-story-scene ${wide?'aa-story-wide':''} ${reduced?'aa-no-motion':''}`}><div className="aa-story-scene-inner section-width"><div className="aa-story-scene-copy"><span className="aa-kicker">{number} / DESCUBRE CADA DETALLE</span><h2>{title}</h2><p>{copy}</p>{children}</div><div className="aa-story-scene-image"><VehicleImage src={image} alt={alt}/><span>Fotografía comercial de referencia</span></div></div></section>;
 }
-export default function VehicleStory({vehicle,onBack,onQuote,onCredit,onExplorer}:Props){
+export default function VehicleStory({vehicle,onBack,onQuote,onCredit,onVideo,onExplorer}:Props){
   const [staticView,setStaticView]=useState(false);const reduced=useMotionPreference();const name=vehicle.name;
   const isPrado=/prado/i.test(name)&&vehicle.origin==='reference';
   const hero=isPrado?'/assets/hero-road.webp':vehicle.image;
@@ -41,6 +41,6 @@ export default function VehicleStory({vehicle,onBack,onQuote,onCredit,onExplorer
     <section className="aa-specifications section-pad" id="aa-specifications"><div className="section-width"><span className="aa-kicker"><i/> 03 / DATOS PARA DECIDIR</span><div className="aa-section-title"><h2>La emoción, en detalle.</h2><p>La información siempre a mano.<br/>Sin tener que recorrer todas las escenas.</p></div><div className="aa-spec-grid"><div className="aa-spec-card"><span>MODELO</span><h3>{name}</h3><dl>{[
       ['Carrocería',vehicle.category],['Motorización de la gama',vehicle.power],['Año',vehicle.year||'Por confirmar'],['Transmisión',vehicle.transmission||'Por confirmar'],['Sede',vehicle.location||'Por confirmar'],['Precio publicado',formatMoney(vehicle.price)],
     ].map(([k,v])=><div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl></div><aside className="aa-spec-aside"><FileText size={27}/><h3>Elige tu versión.</h3><p>Potencia, dimensiones, seguridad y equipamiento cambian por año y versión. Consulta la ficha publicada por Autoamérica antes de tomar tu decisión.</p><a className="button outline" href={source} target="_blank" rel="noreferrer">Ficha oficial del modelo <ArrowUpRight size={17}/></a><p className="aa-footnote">No se añaden especificaciones que no estén disponibles en el catálogo. Este bloque queda preparado para los datos técnicos de Johan.</p></aside></div></div></section>
-    <section className="aa-story-conversion"><div className="section-width"><span className="aa-kicker">04 / TU PRÓXIMO PASO</span><h2>Lo extraordinario<br/>comienza contigo.</h2><div className="aa-conversion-actions"><button className="button red" onClick={()=>onQuote(name)}>Quiero cotizar <ArrowUpRight size={18}/></button><button className="button light" onClick={()=>onCredit(name,vehicle.price)}>Simular crédito <ArrowUpRight size={18}/></button><button className="button outline" onClick={onExplorer}><Box size={18}/> Explorar en 3D</button></div><p>El visor 3D es conceptual; no es un modelo técnico oficial del vehículo.</p></div></section>
+    <section className="aa-story-conversion"><div className="section-width"><span className="aa-kicker">04 / TU PRÓXIMO PASO</span><h2>Lo extraordinario<br/>comienza contigo.</h2><div className="aa-conversion-actions"><button className="button red" onClick={()=>onQuote(name)}>Quiero cotizar <ArrowUpRight size={18}/></button><button className="button light" onClick={()=>onCredit(name,vehicle.price)}>Simular crédito <ArrowUpRight size={18}/></button><button className="button light" onClick={()=>onVideo(name,vehicle.id)}><Film size={18}/> Video cinematográfico</button><button className="button outline" onClick={onExplorer}><Box size={18}/> Explorar en 3D</button></div><p>El visor 3D es conceptual; no es un modelo técnico oficial del vehículo.</p></div></section>
   </div>;
 }
